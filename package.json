@@ -12,8 +12,7 @@
     "lint": "prettier --check \"**/*.ts(x)\"",
     "lint:fix": "prettier --write \"**/*.ts(x)\"",
     "ci": "npm run lint",
-    "prepare": "husky install",
-    "types": "npx sanity-codegen"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@babel/preset-env": "^7.15.4",
