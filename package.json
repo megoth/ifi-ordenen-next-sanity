@@ -8,9 +8,17 @@
     "start:web": "next start",
     "build:sanity": "cd studio && npx @sanity/cli build ../public/studio -y && cd ..",
     "start:sanity": "cp .env ./studio/.env.development && cd studio && npx @sanity/cli start",
-    "postinstall": "lerna bootstrap"
+    "postinstall": "lerna bootstrap",
+    "lint": "prettier --check \"**/*.ts(x)\"",
+    "lint:fix": "prettier --write \"**/*.ts(x)\"",
+    "ci": "npm run lint",
+    "prepare": "husky install",
+    "types": "npx sanity-codegen"
   },
   "dependencies": {
+    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^2.18.0",
     "@sanity/image-url": "^1.0.1",
@@ -24,10 +32,16 @@
     "swr": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.5",
     "@fullhuman/postcss-purgecss": "^4.0.3",
     "@sanity/cli": "^2.18.0",
+    "@types/express": "^4.17.13",
+    "husky": "^7.0.2",
     "lerna": "^4.0.0",
     "postcss-preset-env": "^6.7.0",
-    "tailwindcss": "^2.2.13"
+    "prettier": "^2.4.0",
+    "sanity-codegen": "^0.9.5",
+    "tailwindcss": "^2.2.13",
+    "typescript": "^4.4.2"
   }
 }
