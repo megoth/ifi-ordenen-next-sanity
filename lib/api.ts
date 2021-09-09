@@ -1,6 +1,7 @@
 import client, { previewClient } from "./sanity";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { CommentSchema, PostSchema } from "../studio/schemas/types";
+import PostSchema = Sanity.Schema.PostSchema;
+import CommentSchema = Sanity.Schema.CommentSchema;
 
 const postFields = `
   _id,

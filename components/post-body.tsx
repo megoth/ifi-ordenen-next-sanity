@@ -1,7 +1,7 @@
 import React from "react";
 import markdownStyles from "./markdown-styles.module.css";
 import BlockContent from "@sanity/block-content-to-react";
-import { BlockContentSchema } from "../studio/schemas/types";
+import BlockContentSchema = Sanity.Schema.BlockContentSchema;
 
 interface Props {
   content?: BlockContentSchema;

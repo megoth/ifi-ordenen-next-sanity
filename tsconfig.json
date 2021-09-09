@@ -22,7 +22,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "lib.d.ts"
+    "lib.d.ts",
+    "schema-types.d.ts"
   ],
   "exclude": [
     "node_modules"

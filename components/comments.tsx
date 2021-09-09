@@ -1,6 +1,6 @@
 import React from "react";
 import Date from "./date";
-import { CommentSchema } from "../studio/schemas/types";
+import CommentSchema = Sanity.Schema.CommentSchema;
 
 interface Props {
   comments?: Array<CommentSchema>;
