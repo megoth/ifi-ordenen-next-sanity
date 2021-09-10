@@ -15,9 +15,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@babel/preset-env": "^7.15.4",
-    "@babel/preset-react": "^7.14.5",
-    "@babel/preset-typescript": "^7.15.0",
     "@sanity/block-content-to-react": "^3.0.0",
     "@sanity/client": "^2.18.0",
     "@sanity/image-url": "^1.0.1",
@@ -31,9 +28,7 @@
     "swr": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.5",
     "@fullhuman/postcss-purgecss": "^4.0.3",
-    "@sanity-codegen/types": "^1.0.0-alpha.0",
     "@sanity/cli": "^2.18.0",
     "@types/express": "^4.17.13",
     "husky": "^7.0.2",

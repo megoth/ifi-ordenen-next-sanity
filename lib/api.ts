@@ -1,7 +1,9 @@
 import client, { previewClient } from "./sanity";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import PostSchema = Sanity.Schema.PostSchema;
-import CommentSchema = Sanity.Schema.CommentSchema;
+
+// until we get proper types available
+type PostSchema = any;
+type CommentSchema = any;
 
 const postFields = `
   _id,
@@ -15,6 +17,7 @@ const postFields = `
 `;
 export interface PostModel
   extends Omit<PostSchema, "publishedAt" | "slug" | "mainImage" | "author"> {
+  title: string;
   date: string;
   excerpt: string;
   slug: string;

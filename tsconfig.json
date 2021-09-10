@@ -7,8 +7,8 @@
       "esnext"
     ],
     "allowJs": false,
-    "skipLibCheck": false,
-    "strict": true,
+    "skipLibCheck": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -21,9 +21,7 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "lib.d.ts",
-    "schema-types.d.ts"
+    "**/*.tsx"
   ],
   "exclude": [
     "node_modules"

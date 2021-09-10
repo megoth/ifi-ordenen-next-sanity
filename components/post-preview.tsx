@@ -14,7 +14,7 @@ interface Props
 export default function PostPreview(props: Props) {
   const { title, date, excerpt, author, slug } = props;
   return (
-    <div>
+    <div key={slug}>
       <div className="mb-5">
         <CoverImage {...props} />
       </div>
