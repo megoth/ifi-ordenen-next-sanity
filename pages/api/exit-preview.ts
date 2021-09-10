@@ -1,8 +1,7 @@
-import { Request, Response } from "express";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function exit(_: Request, res: Response) {
+export default async function exit(_: NextApiRequest, res: NextApiResponse) {
   // Exit the current user from "Preview Mode". This function accepts no args.
-  // @ts-ignore
   res.clearPreviewData();
 
   // Redirect the user back to the index page.

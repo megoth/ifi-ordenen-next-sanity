@@ -1,5 +1,5 @@
 import sanityClient from "@sanity/client";
-import { Request, Response } from "express";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const config = {
   dataset: process.env.SANITY_STUDIO_API_DATASET,
@@ -9,7 +9,10 @@ const config = {
 };
 const client = sanityClient(config);
 
-export default async function createComment(req: Request, res: Response) {
+export default async function createComment(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const { _id, name, email, comment } = JSON.parse(req.body);
   try {
     await client.create({

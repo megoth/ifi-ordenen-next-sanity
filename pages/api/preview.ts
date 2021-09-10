@@ -1,7 +1,10 @@
 import { getPreviewPostBySlug } from "../../lib/api";
-import { Request, Response } from "express";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function preview(req: Request, res: Response) {
+export default async function preview(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   // Check the secret and next parameters
   // This secret should only be known to this API route and the CMS
   if (
@@ -20,7 +23,6 @@ export default async function preview(req: Request, res: Response) {
   }
 
   // Enable Preview Mode by setting the cookies
-  // @ts-ignore
   res.setPreviewData({});
 
   // Redirect to the path from the fetched post
