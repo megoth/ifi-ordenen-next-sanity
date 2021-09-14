@@ -1,11 +1,8 @@
 import React from "react";
 import Date from "./date";
+import { PostAndMorePostsQuery } from "../lib/api";
 
-type CommentSchema = Sanity.Schema.CommentSchema;
-
-interface Props {
-  comments?: Array<CommentSchema>;
-}
+interface Props extends Pick<PostAndMorePostsQuery, "comments"> {}
 
 export default function Comments({ comments = [] }: Props) {
   return (

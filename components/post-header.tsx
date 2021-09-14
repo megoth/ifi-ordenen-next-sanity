@@ -3,13 +3,9 @@ import Avatar from "../components/avatar";
 import Date from "../components/date";
 import CoverImage from "../components/cover-image";
 import PostTitle from "../components/post-title";
-import { PostAndMorePostsModel } from "../lib/api";
+import { PostAndMorePostsQuery } from "../lib/api";
 
-interface Props
-  extends Pick<
-    PostAndMorePostsModel,
-    "title" | "coverImage" | "date" | "author" | "slug"
-  > {}
+interface Props extends PostAndMorePostsQuery {}
 
 export default function PostHeader(props: Props) {
   const { title, date, author } = props;

@@ -3,13 +3,9 @@ import Avatar from "../components/avatar";
 import Date from "../components/date";
 import CoverImage from "../components/cover-image";
 import Link from "next/link";
-import { PostModel } from "../lib/api";
+import { PostQuery } from "../lib/api";
 
-interface Props
-  extends Pick<
-    PostModel,
-    "title" | "date" | "excerpt" | "author" | "slug" | "coverImage"
-  > {}
+interface Props extends PostQuery {}
 
 export default function HeroPost(props: Props) {
   const { title, date, excerpt, author, slug } = props;

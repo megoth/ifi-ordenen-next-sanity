@@ -12,8 +12,8 @@ import Layout from "../../components/layout";
 import {
   getAllPostsWithSlug,
   getPostAndMorePosts,
-  PostAndMorePostsModel,
-  PostModel,
+  PostAndMorePostsQuery,
+  PostQuery,
 } from "../../lib/api";
 import PostTitle from "../../components/post-title";
 import Head from "next/head";
@@ -22,8 +22,8 @@ import Form from "../../components/form";
 import { GetStaticProps } from "next";
 
 interface Props {
-  post: PostAndMorePostsModel;
-  morePosts: Array<PostModel>;
+  post: PostAndMorePostsQuery;
+  morePosts: Array<PostQuery>;
 }
 
 export default function Post({ post, morePosts }: Props) {
@@ -46,13 +46,7 @@ export default function Post({ post, morePosts }: Props) {
                 </title>
                 {/* <meta property="og:image" content={post.ogImage.url} /> */}
               </Head>
-              <PostHeader
-                {...post}
-                title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
-                author={post.author}
-              />
+              <PostHeader {...post} />
               <PostBody content={post.body} />
             </article>
 

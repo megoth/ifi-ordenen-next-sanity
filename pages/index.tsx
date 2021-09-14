@@ -4,12 +4,12 @@ import MoreStories from "../components/more-stories";
 import HeroPost from "../components/hero-post";
 import Intro from "../components/intro";
 import Layout from "../components/layout";
-import { getAllPostsForHome, PostModel } from "../lib/api";
+import { getAllPostsForHome, PostQuery } from "../lib/api";
 import Head from "next/head";
 import { CMS_NAME } from "../lib/constants";
 
 interface Props {
-  allPosts: Array<PostModel>;
+  allPosts: Array<PostQuery>;
 }
 
 export default function Index({ allPosts }: Props) {

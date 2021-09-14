@@ -1,9 +1,6 @@
 import client, { previewClient } from "./sanity";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
-type CommentSchema = Sanity.Schema.CommentSchema;
-type PostSchema = Sanity.Schema.PostSchema;
-
 const postFields = `
   _id,
   name,
@@ -14,9 +11,11 @@ const postFields = `
   'coverImage': mainImage,
   'author': author->{name, 'picture': image.asset->url},
 `;
-export interface PostModel
-  extends Omit<PostSchema, "publishedAt" | "slug" | "mainImage" | "author"> {
-  title: string;
+export interface PostQuery
+  extends Omit<
+    Sanity.Schema.PostSchema,
+    "publishedAt" | "slug" | "mainImage" | "author"
+  > {
   date: string;
   excerpt: string;
   slug: string;
@@ -27,7 +26,7 @@ export interface PostModel
   };
 }
 
-const getUniquePosts = (posts: Array<PostModel>) => {
+const getUniquePosts = (posts: Array<PostQuery>) => {
   const slugs = new Set();
   return posts.filter((post) => {
     if (slugs.has(post.slug)) {
@@ -65,8 +64,8 @@ export async function getAllPostsForHome(preview: boolean) {
   return getUniquePosts(results);
 }
 
-export interface PostAndMorePostsModel extends PostModel {
-  comments: Array<CommentSchema>;
+export interface PostAndMorePostsQuery extends PostQuery {
+  comments?: Array<Sanity.Schema.CommentSchema>;
 }
 export async function getPostAndMorePosts(
   slug: string | string[] | undefined,

@@ -1,9 +1,9 @@
 import React from "react";
 import PostPreview from "../components/post-preview";
-import { PostModel } from "../lib/api";
+import { PostQuery } from "../lib/api";
 
 interface Props {
-  posts: Array<PostModel>;
+  posts: Array<PostQuery>;
 }
 
 export default function MoreStories({ posts }: Props) {
