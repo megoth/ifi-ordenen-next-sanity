@@ -10,7 +10,7 @@ interface Props extends PostQuery {}
 export default function PostPreview(props: Props) {
   const { title, date, excerpt, author, slug } = props;
   return (
-    <div key={slug}>
+    <div>
       <div className="mb-5">
         <CoverImage {...props} />
       </div>
