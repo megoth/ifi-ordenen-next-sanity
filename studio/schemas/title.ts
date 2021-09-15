@@ -43,6 +43,11 @@ export default {
         },
       ],
     },
+    {
+      name: "order",
+      title: "Rekkefølge",
+      type: "number",
+    },
   ],
   preview: {
     select: {

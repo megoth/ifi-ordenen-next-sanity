@@ -705,6 +705,30 @@
             ],
             "list": null
           }
+        },
+        {
+          "name": "order",
+          "title": "Rekkefølge",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "order",
+            "readOnly": false,
+            "title": "Rekkefølge",
+            "hasValidation": false,
+            "type": "Number",
+            "list": null
+          }
         }
       ]
     },
@@ -917,6 +941,184 @@
           }
         }
       ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
+      "name": "person",
+      "title": "Person",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "name",
+          "title": "Navn",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "name",
+            "readOnly": false,
+            "title": "Navn",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "slug",
+          "title": "Slug (brukernavn)",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "slug",
+            "readOnly": false,
+            "title": "Slug (brukernavn)",
+            "hasValidation": false,
+            "type": "Slug"
+          }
+        },
+        {
+          "name": "mainImage",
+          "title": "Main image",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "mainImage",
+            "readOnly": false,
+            "title": "Main image",
+            "hasValidation": false,
+            "type": "Image",
+            "fields": null
+          }
+        },
+        {
+          "name": "titles",
+          "title": "Tildelinger",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "titles",
+            "readOnly": false,
+            "title": "Tildelinger",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "award"
+              }
+            ],
+            "list": null
+          }
+        },
+        {
+          "name": "associations",
+          "title": "Foreninger/organisasjoner",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "associations",
+            "readOnly": false,
+            "title": "Foreninger/organisasjoner",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "Reference",
+                "to": [
+                  {
+                    "codegen": {
+                      "required": false
+                    },
+                    "description": null,
+                    "hidden": false,
+                    "name": null,
+                    "readOnly": false,
+                    "title": null,
+                    "hasValidation": false,
+                    "to": "association",
+                    "type": "RegistryReference"
+                  }
+                ],
+                "weak": false
+              }
+            ],
+            "list": null
+          }
+        }
+      ]
     }
   ],
   "registeredTypes": [
@@ -961,6 +1163,186 @@
         }
       ],
       "list": null
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "name": "award",
+      "readOnly": false,
+      "title": "Tildeling",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "title",
+          "title": "Tittel",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "title",
+            "readOnly": false,
+            "title": "Tittel",
+            "hasValidation": false,
+            "type": "Reference",
+            "to": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "to": "title",
+                "type": "RegistryReference"
+              }
+            ],
+            "weak": false
+          }
+        },
+        {
+          "name": "year",
+          "title": "År",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "year",
+            "readOnly": false,
+            "title": "År",
+            "hasValidation": false,
+            "type": "Date"
+          }
+        },
+        {
+          "name": "yearOrder",
+          "title": "Rekkefølge (ift år)",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "yearOrder",
+            "readOnly": false,
+            "title": "Rekkefølge (ift år)",
+            "hasValidation": false,
+            "type": "Number",
+            "list": null
+          }
+        },
+        {
+          "name": "reason",
+          "title": "Fremhevet grunnlag",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "reason",
+            "readOnly": false,
+            "title": "Fremhevet grunnlag",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": "Block",
+                "hasValidation": false,
+                "type": "Block",
+                "of": null,
+                "markDefs": []
+              }
+            ],
+            "list": null
+          }
+        },
+        {
+          "name": "description",
+          "title": "Grunnlag (resten)",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "description",
+            "readOnly": false,
+            "title": "Grunnlag (resten)",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": "Block",
+                "hasValidation": false,
+                "type": "Block",
+                "of": null,
+                "markDefs": []
+              }
+            ],
+            "list": null
+          }
+        }
+      ]
     }
   ]
 }

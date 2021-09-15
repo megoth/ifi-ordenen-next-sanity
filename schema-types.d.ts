@@ -172,6 +172,11 @@ Comments won't show on the site without approval
        * Beskrivelse - `Array`
        */
       description?: Array<Sanity.Keyed<Sanity.Block>>;
+
+      /**
+       * Rekkefølge - `Number`
+       */
+      order?: number;
     }
 
     /**
@@ -219,6 +224,45 @@ Comments won't show on the site without approval
       previous?: Sanity.Reference<Association>;
     }
 
+    /**
+     * Person
+     */
+    interface Person extends Sanity.Document {
+      _type: "person";
+
+      /**
+       * Navn - `String`
+       */
+      name?: string;
+
+      /**
+       * Slug (brukernavn) - `Slug`
+       */
+      slug?: {
+        _type: "slug";
+        current: string;
+      };
+
+      /**
+       * Main image - `Image`
+       */
+      mainImage?: {
+        asset: Sanity.Asset;
+        crop?: Sanity.ImageCrop;
+        hotspot?: Sanity.ImageHotspot;
+      };
+
+      /**
+       * Tildelinger - `Array`
+       */
+      titles?: Array<Sanity.Keyed<Award>>;
+
+      /**
+       * Foreninger/organisasjoner - `Array`
+       */
+      associations?: Array<Sanity.KeyedReference<Association>>;
+    }
+
     type BlockContent = Array<
       | Sanity.Keyed<Sanity.Block>
       | Sanity.Keyed<{
@@ -228,6 +272,42 @@ Comments won't show on the site without approval
         }>
     >;
 
-    type Document = Post | Author | Category | Comment | Title | Association;
+    type Award = {
+      _type: "award";
+
+      /**
+       * Tittel - `Reference`
+       */
+      title?: Sanity.Reference<Title>;
+
+      /**
+       * År - `Date`
+       */
+      year?: string;
+
+      /**
+       * Rekkefølge (ift år) - `Number`
+       */
+      yearOrder?: number;
+
+      /**
+       * Fremhevet grunnlag - `Array`
+       */
+      reason?: Array<Sanity.Keyed<Sanity.Block>>;
+
+      /**
+       * Grunnlag (resten) - `Array`
+       */
+      description?: Array<Sanity.Keyed<Sanity.Block>>;
+    };
+
+    type Document =
+      | Post
+      | Author
+      | Category
+      | Comment
+      | Title
+      | Association
+      | Person;
   }
 }

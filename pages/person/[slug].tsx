@@ -8,17 +8,17 @@ import PostTitle from "../../components/post-title";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import {
-  AssociationAndMoreQuery,
-  getAllAssociationsWithSlug,
-  getAssociationAndMore,
-} from "../../lib/api/associations";
-import PostBody from "../../components/post-body";
+  getAllPeopleWithSlug,
+  getPersonAndMore,
+  PersonAndMoreQuery,
+} from "../../lib/api/people";
+import CoverImage from "../../components/cover-image";
 
-interface Props extends AssociationAndMoreQuery {}
+interface Props extends PersonAndMoreQuery {}
 
-export default function AssociationPage({ association }: Props) {
+export default function PersonPage({ person }: Props) {
   const router = useRouter();
-  if (!router.isFallback && !association?.slug) {
+  if (!router.isFallback && !person?.slug) {
     return <ErrorPage statusCode={404} />;
   }
   return (
@@ -31,10 +31,14 @@ export default function AssociationPage({ association }: Props) {
           <>
             <article>
               <Head>
-                <title>{association.name} | Ifi-ordenen</title>
+                <title>{person.name} | Ifi-ordenen</title>
               </Head>
-              <PostTitle>{association.name}</PostTitle>
-              <PostBody content={association.description} />
+              <PostTitle>{person.name}</PostTitle>
+              <CoverImage
+                title={person.name}
+                coverImage={person.mainImage}
+                slug={person.slug}
+              />
             </article>
           </>
         )}
@@ -47,21 +51,21 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  const data = await getAssociationAndMore(params!.slug, preview);
+  const data = await getPersonAndMore(params!.slug, preview);
   return {
     props: {
       preview,
-      association: data?.association || null,
+      person: data?.person || null,
     },
     revalidate: 1,
   };
 };
 
 export async function getStaticPaths() {
-  const allAssociations = await getAllAssociationsWithSlug();
+  const allPeople = await getAllPeopleWithSlug();
   return {
     paths:
-      allAssociations?.map((post) => ({
+      allPeople?.map((post) => ({
         params: {
           slug: post.slug,
         },

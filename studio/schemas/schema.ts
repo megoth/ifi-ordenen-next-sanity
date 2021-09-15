@@ -12,6 +12,8 @@ import author from "./author";
 import comment from "./comment";
 import title from "./title";
 import association from "./association";
+import award from "./award";
+import person from "./person";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -31,5 +33,7 @@ export default createSchema({
     comment,
     title,
     association,
+    award,
+    person,
   ]),
 });
