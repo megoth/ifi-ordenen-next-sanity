@@ -1,12 +1,8 @@
 import React from "react";
 import Date from "./date";
+import { PostAndMorePostsQuery } from "../lib/api";
 
-// until we get proper types available
-type CommentSchema = any;
-
-interface Props {
-  comments?: Array<CommentSchema>;
-}
+interface Props extends Pick<PostAndMorePostsQuery, "comments"> {}
 
 export default function Comments({ comments = [] }: Props) {
   return (

@@ -1,12 +1,10 @@
 import React from "react";
 import markdownStyles from "./markdown-styles.module.css";
 import BlockContent from "@sanity/block-content-to-react";
-
-// until we get proper types available
-type BlockContentSchema = any;
+import { PostQuery } from "../lib/api";
 
 interface Props {
-  content?: BlockContentSchema;
+  content?: PostQuery["body"];
 }
 
 export default function PostBody({ content }: Props) {
