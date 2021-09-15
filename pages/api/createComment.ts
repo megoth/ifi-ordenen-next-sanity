@@ -1,11 +1,12 @@
-import sanityClient from "@sanity/client";
+import sanityClient, { ClientConfig } from "@sanity/client";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const config = {
+const config: ClientConfig = {
   dataset: process.env.SANITY_STUDIO_API_DATASET,
   projectId: process.env.SANITY_STUDIO_API_PROJECT_ID,
   useCdn: process.env.NODE_ENV === "production",
   token: process.env.SANITY_API_TOKEN,
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
 };
 const client = sanityClient(config);
 
