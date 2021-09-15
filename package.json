@@ -12,7 +12,8 @@
     "lint": "prettier --check \"**/*.ts(x)\"",
     "lint:fix": "prettier --write \"**/*.ts(x)\"",
     "ci": "npm run lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:types": "npx sanity-codegen schema-codegen"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",

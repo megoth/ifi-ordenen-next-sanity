@@ -1,6 +1,6 @@
 import React from "react";
 import PostPreview from "../components/post-preview";
-import { PostQuery } from "../lib/api";
+import { PostQuery } from "../lib/api/posts";
 
 interface Props {
   posts: Array<PostQuery>;

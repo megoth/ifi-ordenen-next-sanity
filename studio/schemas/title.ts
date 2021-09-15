@@ -1,53 +1,53 @@
 export default {
-  name: 'title',
-  title: 'Title',
-  type: 'document',
+  name: "title",
+  title: "Tittel",
+  type: "document",
   fields: [
     {
-      name: 'name',
-      title: 'Name',
-      type: 'string'
+      name: "name",
+      title: "Navn",
+      type: "string",
     },
     {
-      name: 'insignia',
-      title: 'Insignia (Medallion Name)',
-      type: 'string'
+      name: "insignia",
+      title: "Medaljenavn",
+      type: "string",
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
       options: {
-        source: 'name',
-        maxLength: 96
-      }
+        source: "name",
+        maxLength: 96,
+      },
     },
     {
-      name: 'image',
-      title: 'Image',
-      type: 'image',
+      name: "image",
+      title: "Bilde",
+      type: "image",
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
     },
     {
-      name: 'description',
-      title: 'Description',
-      type: 'array',
+      name: "description",
+      title: "Beskrivelse",
+      type: "array",
       of: [
         {
-          title: 'Block',
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: []
-        }
-      ]
-    }
+          title: "Block",
+          type: "block",
+          styles: [{ title: "Normal", value: "normal" }],
+          lists: [],
+        },
+      ],
+    },
   ],
   preview: {
     select: {
-      title: 'name',
-      media: 'image'
-    }
-  }
-}
+      title: "name",
+      media: "image",
+    },
+  },
+};

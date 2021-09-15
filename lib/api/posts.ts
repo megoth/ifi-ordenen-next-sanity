@@ -1,4 +1,4 @@
-import client, { previewClient } from "./sanity";
+import client, { previewClient } from "../sanity";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 const postFields = `
@@ -13,7 +13,7 @@ const postFields = `
 `;
 export interface PostQuery
   extends Omit<
-    Sanity.Schema.PostSchema,
+    Sanity.Schema.Post,
     "publishedAt" | "slug" | "mainImage" | "author"
   > {
   date: string;
@@ -65,7 +65,7 @@ export async function getAllPostsForHome(preview: boolean) {
 }
 
 export interface PostAndMorePostsQuery extends PostQuery {
-  comments?: Array<Sanity.Schema.CommentSchema>;
+  comments?: Array<Sanity.Schema.Comment>;
 }
 export async function getPostAndMorePosts(
   slug: string | string[] | undefined,

@@ -568,12 +568,12 @@
       "readOnly": false,
       "hasValidation": false,
       "name": "title",
-      "title": "Title",
+      "title": "Tittel",
       "type": "Document",
       "fields": [
         {
           "name": "name",
-          "title": "Name",
+          "title": "Navn",
           "description": "",
           "hidden": false,
           "readOnly": false,
@@ -589,7 +589,7 @@
             "hidden": false,
             "name": "name",
             "readOnly": false,
-            "title": "Name",
+            "title": "Navn",
             "hasValidation": false,
             "type": "String",
             "list": null
@@ -597,7 +597,7 @@
         },
         {
           "name": "insignia",
-          "title": "Insignia (Medallion Name)",
+          "title": "Medaljenavn",
           "description": "",
           "hidden": false,
           "readOnly": false,
@@ -613,7 +613,7 @@
             "hidden": false,
             "name": "insignia",
             "readOnly": false,
-            "title": "Insignia (Medallion Name)",
+            "title": "Medaljenavn",
             "hasValidation": false,
             "type": "String",
             "list": null
@@ -644,7 +644,7 @@
         },
         {
           "name": "image",
-          "title": "Image",
+          "title": "Bilde",
           "description": "",
           "hidden": false,
           "readOnly": false,
@@ -660,10 +660,181 @@
             "hidden": false,
             "name": "image",
             "readOnly": false,
-            "title": "Image",
+            "title": "Bilde",
             "hasValidation": false,
             "type": "Image",
             "fields": null
+          }
+        },
+        {
+          "name": "description",
+          "title": "Beskrivelse",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "description",
+            "readOnly": false,
+            "title": "Beskrivelse",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": "Block",
+                "hasValidation": false,
+                "type": "Block",
+                "of": null,
+                "markDefs": []
+              }
+            ],
+            "list": null
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
+      "name": "association",
+      "title": "Forening/Organisasjon",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "name",
+          "title": "Navn",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "name",
+            "readOnly": false,
+            "title": "Navn",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "short",
+          "title": "Forkortelse",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "short",
+            "readOnly": false,
+            "title": "Forkortelse",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "active",
+          "title": "Aktiv",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "active",
+            "readOnly": false,
+            "title": "Aktiv",
+            "hasValidation": false,
+            "type": "Boolean"
+          }
+        },
+        {
+          "name": "slug",
+          "title": "Slug",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "slug",
+            "readOnly": false,
+            "title": "Slug",
+            "hasValidation": false,
+            "type": "Slug"
+          }
+        },
+        {
+          "name": "url",
+          "title": "Nettside",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "url",
+            "readOnly": false,
+            "title": "Nettside",
+            "hasValidation": false,
+            "type": "Url"
           }
         },
         {
@@ -704,6 +875,45 @@
               }
             ],
             "list": null
+          }
+        },
+        {
+          "name": "previous",
+          "title": "Tidligere kjent som",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "previous",
+            "readOnly": false,
+            "title": "Tidligere kjent som",
+            "hasValidation": false,
+            "type": "Reference",
+            "to": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "to": "association",
+                "type": "RegistryReference"
+              }
+            ],
+            "weak": false
           }
         }
       ]

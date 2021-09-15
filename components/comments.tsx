@@ -1,6 +1,6 @@
 import React from "react";
 import Date from "./date";
-import { PostAndMorePostsQuery } from "../lib/api";
+import { PostAndMorePostsQuery } from "../lib/api/posts";
 
 interface Props extends Pick<PostAndMorePostsQuery, "comments"> {}
 

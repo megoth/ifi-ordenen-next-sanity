@@ -2,7 +2,7 @@ import React from "react";
 import cn from "classnames";
 import Link from "next/link";
 import { imageBuilder } from "../lib/sanity";
-import { PostQuery } from "../lib/api";
+import { PostQuery } from "../lib/api/posts";
 
 interface Props extends Pick<PostQuery, "title" | "coverImage" | "slug"> {}
 

@@ -5,7 +5,7 @@ declare namespace Sanity {
     /**
      * Post
      */
-    interface PostSchema extends Sanity.Document {
+    interface Post extends Sanity.Document {
       _type: "post";
 
       /**
@@ -24,7 +24,7 @@ declare namespace Sanity {
       /**
        * Author - `Reference`
        */
-      author?: Sanity.Reference<AuthorSchema>;
+      author?: Sanity.Reference<Author>;
 
       /**
        * Main image - `Image`
@@ -38,7 +38,7 @@ declare namespace Sanity {
       /**
        * Categories - `Array`
        */
-      categories?: Array<Sanity.KeyedReference<CategorySchema>>;
+      categories?: Array<Sanity.KeyedReference<Category>>;
 
       /**
        * Published at - `Datetime`
@@ -48,13 +48,13 @@ declare namespace Sanity {
       /**
        * Body - `RegistryReference`
        */
-      body?: BlockContentSchema;
+      body?: BlockContent;
     }
 
     /**
      * Author
      */
-    interface AuthorSchema extends Sanity.Document {
+    interface Author extends Sanity.Document {
       _type: "author";
 
       /**
@@ -88,7 +88,7 @@ declare namespace Sanity {
     /**
      * Category
      */
-    interface CategorySchema extends Sanity.Document {
+    interface Category extends Sanity.Document {
       _type: "category";
 
       /**
@@ -105,7 +105,7 @@ declare namespace Sanity {
     /**
      * Comment
      */
-    interface CommentSchema extends Sanity.Document {
+    interface Comment extends Sanity.Document {
       _type: "comment";
 
       /**
@@ -132,22 +132,22 @@ Comments won't show on the site without approval
       /**
        * Post - `Reference`
        */
-      post?: Sanity.Reference<PostSchema>;
+      post?: Sanity.Reference<Post>;
     }
 
     /**
-     * Title
+     * Tittel
      */
-    interface TitleSchema extends Sanity.Document {
+    interface Title extends Sanity.Document {
       _type: "title";
 
       /**
-       * Name - `String`
+       * Navn - `String`
        */
       name?: string;
 
       /**
-       * Insignia (Medallion Name) - `String`
+       * Medaljenavn - `String`
        */
       insignia?: string;
 
@@ -160,7 +160,7 @@ Comments won't show on the site without approval
       };
 
       /**
-       * Image - `Image`
+       * Bilde - `Image`
        */
       image?: {
         asset: Sanity.Asset;
@@ -169,12 +169,57 @@ Comments won't show on the site without approval
       };
 
       /**
-       * Description - `Array`
+       * Beskrivelse - `Array`
        */
       description?: Array<Sanity.Keyed<Sanity.Block>>;
     }
 
-    type BlockContentSchema = Array<
+    /**
+     * Forening/Organisasjon
+     */
+    interface Association extends Sanity.Document {
+      _type: "association";
+
+      /**
+       * Navn - `String`
+       */
+      name?: string;
+
+      /**
+       * Forkortelse - `String`
+       */
+      short?: string;
+
+      /**
+       * Aktiv - `Boolean`
+       */
+      active?: boolean;
+
+      /**
+       * Slug - `Slug`
+       */
+      slug?: {
+        _type: "slug";
+        current: string;
+      };
+
+      /**
+       * Nettside - `Url`
+       */
+      url?: string;
+
+      /**
+       * Description - `Array`
+       */
+      description?: Array<Sanity.Keyed<Sanity.Block>>;
+
+      /**
+       * Tidligere kjent som - `Reference`
+       */
+      previous?: Sanity.Reference<Association>;
+    }
+
+    type BlockContent = Array<
       | Sanity.Keyed<Sanity.Block>
       | Sanity.Keyed<{
           asset: Sanity.Asset;
@@ -183,11 +228,6 @@ Comments won't show on the site without approval
         }>
     >;
 
-    type Document =
-      | PostSchema
-      | AuthorSchema
-      | CategorySchema
-      | CommentSchema
-      | TitleSchema;
+    type Document = Post | Author | Category | Comment | Title | Association;
   }
 }

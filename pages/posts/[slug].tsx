@@ -14,7 +14,7 @@ import {
   getPostAndMorePosts,
   PostAndMorePostsQuery,
   PostQuery,
-} from "../../lib/api";
+} from "../../lib/api/posts";
 import PostTitle from "../../components/post-title";
 import Head from "next/head";
 import { CMS_NAME } from "../../lib/constants";
