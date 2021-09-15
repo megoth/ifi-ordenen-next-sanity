@@ -1,20 +1,18 @@
-import Avatar from '../components/avatar'
-import Date from '../components/date'
-import CoverImage from '../components/cover-image'
-import Link from 'next/link'
+import React from "react";
+import Avatar from "../components/avatar";
+import Date from "../components/date";
+import CoverImage from "../components/cover-image";
+import Link from "next/link";
+import { PostQuery } from "../lib/api";
 
-export default function HeroPost({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}) {
+interface Props extends PostQuery {}
+
+export default function HeroPost(props: Props) {
+  const { title, date, excerpt, author, slug } = props;
   return (
     <section>
       <div className="mb-8 md:mb-16">
-        <CoverImage slug={slug} imageObject={coverImage} title={title} url={coverImage} />
+        <CoverImage {...props} />
       </div>
       <div className="md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">
         <div>
@@ -33,5 +31,5 @@ export default function HeroPost({
         </div>
       </div>
     </section>
-  )
+  );
 }

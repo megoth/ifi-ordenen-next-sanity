@@ -1,20 +1,18 @@
-import Avatar from '../components/avatar'
-import Date from '../components/date'
-import CoverImage from './cover-image'
-import Link from 'next/link'
-import {imageBuilder} from '../lib/sanity'
-export default function PostPreview({
-  title,
-  coverImage,
-  date,
-  excerpt,
-  author,
-  slug,
-}) {
+import React from "react";
+import Avatar from "../components/avatar";
+import Date from "../components/date";
+import CoverImage from "./cover-image";
+import Link from "next/link";
+import { PostQuery } from "../lib/api";
+
+interface Props extends PostQuery {}
+
+export default function PostPreview(props: Props) {
+  const { title, date, excerpt, author, slug } = props;
   return (
-    <div>
+    <div key={slug}>
       <div className="mb-5">
-        <CoverImage slug={slug} title={title} imageObject={coverImage} url={imageBuilder(coverImage).url()} />
+        <CoverImage {...props} />
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
@@ -27,5 +25,5 @@ export default function PostPreview({
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
       <Avatar name={author?.name} picture={author?.picture} />
     </div>
-  )
+  );
 }

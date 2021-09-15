@@ -17,6 +17,10 @@ npm run dev
 
 # Run the Studio
 npm run start:sanity
+
+# Generating types for Sanity schemes
+npm run types
 ```
 
-The blog will be running at `http://localhost:3000`, the Studio will run at `http://localhost:3333`.
+The blog will be running at `http://localhost:3000`, the Studio will run at `http://localhost:3333`. The types need 
+to be generated after changes in Sanity schemes.
