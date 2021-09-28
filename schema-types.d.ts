@@ -353,6 +353,23 @@ Helst en eller flere
       associations?: Array<Sanity.KeyedReference<Association>>;
     }
 
+    /**
+     * Site Settings
+     */
+    interface SiteSettings extends Sanity.Document {
+      _type: "siteSettings";
+
+      /**
+       * Site Title - `String`
+       */
+      title?: string;
+
+      /**
+       * Site Description - `Text`
+       */
+      description?: string;
+    }
+
     type BlockContent = Array<
       | Sanity.Keyed<Sanity.Block>
       | Sanity.Keyed<{
@@ -405,6 +422,7 @@ Nødvendig
       | Association
       | Person
       | Source
-      | Event;
+      | Event
+      | SiteSettings;
   }
 }

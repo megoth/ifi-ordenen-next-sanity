@@ -13,10 +13,11 @@ import {
   getAssociationAndMore,
 } from "../../lib/api/associations";
 import PostBody from "../../components/post-body";
+import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 
-interface Props extends AssociationAndMoreQuery {}
+interface Props extends AssociationAndMoreQuery, SiteSettingsPage {}
 
-export default function AssociationPage({ association }: Props) {
+export default function AssociationPage({ association, siteSettings }: Props) {
   const router = useRouter();
   if (!router.isFallback && !association?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -24,7 +25,7 @@ export default function AssociationPage({ association }: Props) {
   return (
     <Layout>
       <Container>
-        <Header />
+        <Header title={siteSettings?.title} />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -47,11 +48,15 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  const data = await getAssociationAndMore(params!.slug, preview);
+  const [data, siteSettings] = await Promise.all([
+    getAssociationAndMore(params!.slug, preview),
+    getSiteSettings(preview),
+  ]);
   return {
     props: {
       preview,
       association: data?.association || null,
+      siteSettings,
     },
     revalidate: 1,
   };

@@ -13,10 +13,11 @@ import {
   PersonAndMoreQuery,
 } from "../../lib/api/people";
 import CoverImage from "../../components/cover-image";
+import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 
-interface Props extends PersonAndMoreQuery {}
+interface Props extends PersonAndMoreQuery, SiteSettingsPage {}
 
-export default function PersonPage({ person }: Props) {
+export default function PersonPage({ person, siteSettings }: Props) {
   const router = useRouter();
   if (!router.isFallback && !person?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -24,7 +25,7 @@ export default function PersonPage({ person }: Props) {
   return (
     <Layout>
       <Container>
-        <Header />
+        <Header title={siteSettings?.title} />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -51,11 +52,15 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  const data = await getPersonAndMore(params!.slug, preview);
+  const [data, siteSettings] = await Promise.all([
+    getPersonAndMore(params!.slug, preview),
+    getSiteSettings(preview),
+  ]);
   return {
     props: {
       preview,
       person: data?.person || null,
+      siteSettings,
     },
     revalidate: 1,
   };

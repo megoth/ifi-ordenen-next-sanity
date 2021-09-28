@@ -1,0 +1,16 @@
+import S from "@sanity/desk-tool/structure-builder";
+
+export default () =>
+  S.list()
+    .title("Base")
+    .items([
+      S.listItem()
+        .title("Innstillinger")
+        .child(
+          S.document().schemaType("siteSettings").documentId("siteSettings")
+        ),
+      S.divider(),
+      ...S.documentTypeListItems().filter(
+        (listItem) => !["siteSettings"].includes(listItem.getId())
+      ),
+    ]);

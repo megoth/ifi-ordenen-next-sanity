@@ -1482,6 +1482,67 @@
           }
         }
       ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
+      "name": "siteSettings",
+      "title": "Site Settings",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "title",
+          "title": "Site Title",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "title",
+            "readOnly": false,
+            "title": "Site Title",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "description",
+          "title": "Site Description",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "description",
+            "readOnly": false,
+            "title": "Site Description",
+            "hasValidation": false,
+            "type": "Text"
+          }
+        }
+      ]
     }
   ],
   "registeredTypes": [

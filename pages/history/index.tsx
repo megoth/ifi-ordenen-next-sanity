@@ -9,17 +9,18 @@ import {
   getYears,
 } from "../../lib/api/history";
 import HistoryYearEntry from "../../components/history-year-entry";
+import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 
-interface Props {
+interface Props extends SiteSettingsPage {
   allEvents?: Array<EventForListQuery>;
 }
 
-export default function AllPeoplePage({ allEvents }: Props) {
+export default function AllPeoplePage({ allEvents, siteSettings }: Props) {
   const years = getYears(allEvents).reverse();
   return (
     <Layout>
       <Container>
-        <Header />
+        <Header title={siteSettings?.title} />
         <PostTitle>Historie</PostTitle>
         <ul>
           {years.map((year) => (
@@ -37,9 +38,12 @@ export default function AllPeoplePage({ allEvents }: Props) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allEvents = await getAllEventsForHistoryPage(preview);
+  const [allEvents, siteSettings] = await Promise.all([
+    getAllEventsForHistoryPage(preview),
+    getSiteSettings(preview),
+  ]);
   return {
-    props: { allEvents },
+    props: { allEvents, siteSettings },
     revalidate: 1,
   };
 }

@@ -20,13 +20,14 @@ import Head from "next/head";
 import { CMS_NAME } from "../../lib/constants";
 import Form from "../../components/form";
 import { GetStaticProps } from "next";
+import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 
-interface Props {
+interface Props extends SiteSettingsPage {
   post: PostAndMorePostsQuery;
   morePosts: Array<PostQuery>;
 }
 
-export default function Post({ post, morePosts }: Props) {
+export default function Post({ post, morePosts, siteSettings }: Props) {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -34,7 +35,7 @@ export default function Post({ post, morePosts }: Props) {
   return (
     <Layout>
       <Container>
-        <Header />
+        <Header title={siteSettings?.title} />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -66,12 +67,16 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  const data = await getPostAndMorePosts(params!.slug, preview);
+  const [data, siteSettings] = await Promise.all([
+    getPostAndMorePosts(params!.slug, preview),
+    getSiteSettings(preview),
+  ]);
   return {
     props: {
       preview,
       post: data?.post || null,
       morePosts: data?.morePosts || null,
+      siteSettings,
     },
     revalidate: 1,
   };

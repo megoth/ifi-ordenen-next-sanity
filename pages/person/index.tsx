@@ -9,12 +9,13 @@ import {
   PersonForListQuery,
 } from "../../lib/api/people";
 import { getTitles } from "../../lib/api/awards";
+import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 
-interface Props {
+interface Props extends SiteSettingsPage {
   allPeople?: Array<PersonForListQuery>;
 }
 
-export default function AllPeoplePage({ allPeople }: Props) {
+export default function AllPeoplePage({ allPeople, siteSettings }: Props) {
   const titles = getTitles(allPeople);
   const peopleSorted = allPeople.sort(
     (a, b) => a.year * 100 + a.yearOrder - b.year * 100 + b.yearOrder
@@ -22,7 +23,7 @@ export default function AllPeoplePage({ allPeople }: Props) {
   return (
     <Layout>
       <Container>
-        <Header />
+        <Header title={siteSettings?.title} />
         <PostTitle>Personer</PostTitle>
         {titles.map((title) => (
           <section key={title}>
@@ -48,9 +49,12 @@ export default function AllPeoplePage({ allPeople }: Props) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const allPeople = await getAllPeopleForPeoplePage(preview);
+  const [allPeople, siteSettings] = await Promise.all([
+    getAllPeopleForPeoplePage(preview),
+    getSiteSettings(preview),
+  ]);
   return {
-    props: { allPeople },
+    props: { allPeople, siteSettings },
     revalidate: 1,
   };
 }

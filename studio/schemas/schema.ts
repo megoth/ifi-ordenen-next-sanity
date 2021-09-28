@@ -16,6 +16,7 @@ import award from "./award";
 import person from "./person";
 import source from "./source";
 import event from "./event";
+import siteSettings from "./siteSettings";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -39,5 +40,6 @@ export default createSchema({
     person,
     source,
     event,
+    siteSettings,
   ]),
 });

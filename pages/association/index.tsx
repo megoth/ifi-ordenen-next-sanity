@@ -8,16 +8,20 @@ import {
 import Header from "../../components/header";
 import PostTitle from "../../components/post-title";
 import Link from "next/link";
+import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 
-interface Props {
+interface Props extends SiteSettingsPage {
   associations?: Array<AssociationQuery>;
 }
 
-export default function AllAssociationsPage({ associations }: Props) {
+export default function AllAssociationsPage({
+  associations,
+  siteSettings,
+}: Props) {
   return (
     <Layout>
       <Container>
-        <Header />
+        <Header title={siteSettings?.title} />
         <PostTitle>
           Organisasjoner tilknyttet Institutt for informatikk
         </PostTitle>
@@ -57,9 +61,12 @@ export default function AllAssociationsPage({ associations }: Props) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const associations = await getAllAssociationsForAssociationPage(preview);
+  const [associations, siteSettings] = await Promise.all([
+    getAllAssociationsForAssociationPage(preview),
+    getSiteSettings(preview),
+  ]);
   return {
-    props: { associations },
+    props: { associations, siteSettings },
     revalidate: 1,
   };
 }
