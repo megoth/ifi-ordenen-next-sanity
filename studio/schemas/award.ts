@@ -6,12 +6,14 @@ export default {
     {
       name: "title",
       title: "Tittel",
+      description: "Nødvendig",
       type: "reference",
       to: { type: "title" },
     },
     {
       name: "year",
       title: "År",
+      description: "Nødvendig",
       type: "date",
       options: {
         dateFormat: "YYYY",
@@ -20,13 +22,14 @@ export default {
     {
       name: "yearOrder",
       title: "Rekkefølge (ift år)",
-      type: "number",
       description:
         "For å rangere mottagere innad hvert år. Et tall mellom 0 og 100",
+      type: "number",
     },
     {
       name: "reason",
       title: "Fremhevet grunnlag",
+      description: "Nødvendig",
       type: "array",
       of: [
         {
@@ -40,6 +43,7 @@ export default {
     {
       name: "description",
       title: "Grunnlag (resten)",
+      description: "Nødvendig",
       type: "array",
       of: [
         {

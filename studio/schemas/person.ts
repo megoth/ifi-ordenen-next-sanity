@@ -6,11 +6,13 @@ export default {
     {
       name: "name",
       title: "Navn",
+      description: "Nødvendig",
       type: "string",
     },
     {
       name: "slug",
       title: "Slug (brukernavn)",
+      description: "Nødvendig",
       type: "slug",
       options: {
         source: "title",
@@ -20,6 +22,7 @@ export default {
     {
       name: "mainImage",
       title: "Main image",
+      description: "Nødvendig",
       type: "image",
       options: {
         hotspot: true,
@@ -28,6 +31,7 @@ export default {
     {
       name: "titles",
       title: "Tildelinger",
+      description: "Nødvendig",
       type: "array",
       of: [{ type: "award" }],
     },

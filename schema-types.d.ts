@@ -143,16 +143,19 @@ Comments won't show on the site without approval
 
       /**
        * Navn - `String`
+Nødvendig
        */
       name?: string;
 
       /**
        * Medaljenavn - `String`
+Nødvendig
        */
       insignia?: string;
 
       /**
        * Slug - `Slug`
+Nødvendig
        */
       slug?: {
         _type: "slug";
@@ -161,6 +164,7 @@ Comments won't show on the site without approval
 
       /**
        * Bilde - `Image`
+Nødvendig
        */
       image?: {
         asset: Sanity.Asset;
@@ -170,11 +174,13 @@ Comments won't show on the site without approval
 
       /**
        * Beskrivelse - `Array`
+Nødvendig
        */
       description?: Array<Sanity.Keyed<Sanity.Block>>;
 
       /**
        * Rekkefølge - `Number`
+Nødvendig
        */
       order?: number;
     }
@@ -187,6 +193,7 @@ Comments won't show on the site without approval
 
       /**
        * Navn - `String`
+Nødvendig
        */
       name?: string;
 
@@ -202,6 +209,7 @@ Comments won't show on the site without approval
 
       /**
        * Slug - `Slug`
+Nødvendig
        */
       slug?: {
         _type: "slug";
@@ -232,11 +240,13 @@ Comments won't show on the site without approval
 
       /**
        * Navn - `String`
+Nødvendig
        */
       name?: string;
 
       /**
        * Slug (brukernavn) - `Slug`
+Nødvendig
        */
       slug?: {
         _type: "slug";
@@ -245,6 +255,7 @@ Comments won't show on the site without approval
 
       /**
        * Main image - `Image`
+Nødvendig
        */
       mainImage?: {
         asset: Sanity.Asset;
@@ -254,8 +265,87 @@ Comments won't show on the site without approval
 
       /**
        * Tildelinger - `Array`
+Nødvendig
        */
       titles?: Array<Sanity.Keyed<Award>>;
+
+      /**
+       * Foreninger/organisasjoner - `Array`
+       */
+      associations?: Array<Sanity.KeyedReference<Association>>;
+    }
+
+    /**
+     * Kilde
+     */
+    interface Source extends Sanity.Document {
+      _type: "source";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      text?: string;
+
+      /**
+       * Lenke - `Url`
+       */
+      url?: string;
+    }
+
+    /**
+     * Historisk hendelse
+     */
+    interface Event extends Sanity.Document {
+      _type: "event";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      name?: string;
+
+      /**
+       * Forkortelse - `String`
+       */
+      short?: string;
+
+      /**
+       * År - `Date`
+Nødvendig
+       */
+      year?: string;
+
+      /**
+       * Dato - `Date`
+Hvis man vet nøyaktig dato
+       */
+      date?: string;
+
+      /**
+       * Stor hendelse - `Boolean`
+       */
+      major?: boolean;
+
+      /**
+       * Slug - `Slug`
+Nødvendig om det legges til beskrivelse
+       */
+      slug?: {
+        _type: "slug";
+        current: string;
+      };
+
+      /**
+       * Beskrivelse - `Array`
+       */
+      description?: Array<Sanity.Keyed<Sanity.Block>>;
+
+      /**
+       * Kilder - `Array`
+Helst en eller flere
+       */
+      sources?: Array<Sanity.KeyedReference<Source>>;
 
       /**
        * Foreninger/organisasjoner - `Array`
@@ -277,26 +367,31 @@ Comments won't show on the site without approval
 
       /**
        * Tittel - `Reference`
+Nødvendig
        */
       title?: Sanity.Reference<Title>;
 
       /**
        * År - `Date`
+Nødvendig
        */
       year?: string;
 
       /**
        * Rekkefølge (ift år) - `Number`
+For å rangere mottagere innad hvert år. Et tall mellom 0 og 100
        */
       yearOrder?: number;
 
       /**
        * Fremhevet grunnlag - `Array`
+Nødvendig
        */
       reason?: Array<Sanity.Keyed<Sanity.Block>>;
 
       /**
        * Grunnlag (resten) - `Array`
+Nødvendig
        */
       description?: Array<Sanity.Keyed<Sanity.Block>>;
     };
@@ -308,6 +403,8 @@ Comments won't show on the site without approval
       | Comment
       | Title
       | Association
-      | Person;
+      | Person
+      | Source
+      | Event;
   }
 }

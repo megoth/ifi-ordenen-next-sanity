@@ -574,7 +574,7 @@
         {
           "name": "name",
           "title": "Navn",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -585,7 +585,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "name",
             "readOnly": false,
@@ -598,7 +598,7 @@
         {
           "name": "insignia",
           "title": "Medaljenavn",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -609,7 +609,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "insignia",
             "readOnly": false,
@@ -622,7 +622,7 @@
         {
           "name": "slug",
           "title": "Slug",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -633,7 +633,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "slug",
             "readOnly": false,
@@ -645,7 +645,7 @@
         {
           "name": "image",
           "title": "Bilde",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -656,7 +656,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "image",
             "readOnly": false,
@@ -669,7 +669,7 @@
         {
           "name": "description",
           "title": "Beskrivelse",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -680,7 +680,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "description",
             "readOnly": false,
@@ -709,7 +709,7 @@
         {
           "name": "order",
           "title": "Rekkefølge",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -720,7 +720,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "order",
             "readOnly": false,
@@ -747,7 +747,7 @@
         {
           "name": "name",
           "title": "Navn",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -758,7 +758,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "name",
             "readOnly": false,
@@ -818,7 +818,7 @@
         {
           "name": "slug",
           "title": "Slug",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -829,7 +829,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "slug",
             "readOnly": false,
@@ -957,7 +957,7 @@
         {
           "name": "name",
           "title": "Navn",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -968,7 +968,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "name",
             "readOnly": false,
@@ -981,7 +981,7 @@
         {
           "name": "slug",
           "title": "Slug (brukernavn)",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -992,7 +992,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "slug",
             "readOnly": false,
@@ -1004,7 +1004,7 @@
         {
           "name": "mainImage",
           "title": "Main image",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -1015,7 +1015,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "mainImage",
             "readOnly": false,
@@ -1028,7 +1028,7 @@
         {
           "name": "titles",
           "title": "Tildelinger",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -1039,7 +1039,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "titles",
             "readOnly": false,
@@ -1059,6 +1059,369 @@
                 "hasValidation": false,
                 "type": "RegistryReference",
                 "to": "award"
+              }
+            ],
+            "list": null
+          }
+        },
+        {
+          "name": "associations",
+          "title": "Foreninger/organisasjoner",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "associations",
+            "readOnly": false,
+            "title": "Foreninger/organisasjoner",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "Reference",
+                "to": [
+                  {
+                    "codegen": {
+                      "required": false
+                    },
+                    "description": null,
+                    "hidden": false,
+                    "name": null,
+                    "readOnly": false,
+                    "title": null,
+                    "hasValidation": false,
+                    "to": "association",
+                    "type": "RegistryReference"
+                  }
+                ],
+                "weak": false
+              }
+            ],
+            "list": null
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
+      "name": "source",
+      "title": "Kilde",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "text",
+          "title": "Navn",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "text",
+            "readOnly": false,
+            "title": "Navn",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "url",
+          "title": "Lenke",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "url",
+            "readOnly": false,
+            "title": "Lenke",
+            "hasValidation": false,
+            "type": "Url"
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
+      "name": "event",
+      "title": "Historisk hendelse",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "name",
+          "title": "Navn",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "name",
+            "readOnly": false,
+            "title": "Navn",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "short",
+          "title": "Forkortelse",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "short",
+            "readOnly": false,
+            "title": "Forkortelse",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "year",
+          "title": "År",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "year",
+            "readOnly": false,
+            "title": "År",
+            "hasValidation": false,
+            "type": "Date"
+          }
+        },
+        {
+          "name": "date",
+          "title": "Dato",
+          "description": "Hvis man vet nøyaktig dato",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Hvis man vet nøyaktig dato",
+            "hidden": false,
+            "name": "date",
+            "readOnly": false,
+            "title": "Dato",
+            "hasValidation": false,
+            "type": "Date"
+          }
+        },
+        {
+          "name": "major",
+          "title": "Stor hendelse",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "major",
+            "readOnly": false,
+            "title": "Stor hendelse",
+            "hasValidation": false,
+            "type": "Boolean"
+          }
+        },
+        {
+          "name": "slug",
+          "title": "Slug",
+          "description": "Nødvendig om det legges til beskrivelse",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig om det legges til beskrivelse",
+            "hidden": false,
+            "name": "slug",
+            "readOnly": false,
+            "title": "Slug",
+            "hasValidation": false,
+            "type": "Slug"
+          }
+        },
+        {
+          "name": "description",
+          "title": "Beskrivelse",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "description",
+            "readOnly": false,
+            "title": "Beskrivelse",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": "Block",
+                "hasValidation": false,
+                "type": "Block",
+                "of": null,
+                "markDefs": []
+              }
+            ],
+            "list": null
+          }
+        },
+        {
+          "name": "sources",
+          "title": "Kilder",
+          "description": "Helst en eller flere",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Helst en eller flere",
+            "hidden": false,
+            "name": "sources",
+            "readOnly": false,
+            "title": "Kilder",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "Reference",
+                "to": [
+                  {
+                    "codegen": {
+                      "required": false
+                    },
+                    "description": null,
+                    "hidden": false,
+                    "name": null,
+                    "readOnly": false,
+                    "title": null,
+                    "hasValidation": false,
+                    "to": "source",
+                    "type": "RegistryReference"
+                  }
+                ],
+                "weak": false
               }
             ],
             "list": null
@@ -1179,7 +1542,7 @@
         {
           "name": "title",
           "title": "Tittel",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -1190,7 +1553,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "title",
             "readOnly": false,
@@ -1218,7 +1581,7 @@
         {
           "name": "year",
           "title": "År",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -1229,7 +1592,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "year",
             "readOnly": false,
@@ -1241,7 +1604,7 @@
         {
           "name": "yearOrder",
           "title": "Rekkefølge (ift år)",
-          "description": "",
+          "description": "For å rangere mottagere innad hvert år. Et tall mellom 0 og 100",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -1252,7 +1615,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "For å rangere mottagere innad hvert år. Et tall mellom 0 og 100",
             "hidden": false,
             "name": "yearOrder",
             "readOnly": false,
@@ -1265,7 +1628,7 @@
         {
           "name": "reason",
           "title": "Fremhevet grunnlag",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -1276,7 +1639,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "reason",
             "readOnly": false,
@@ -1305,7 +1668,7 @@
         {
           "name": "description",
           "title": "Grunnlag (resten)",
-          "description": "",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -1316,7 +1679,7 @@
             "codegen": {
               "required": false
             },
-            "description": null,
+            "description": "Nødvendig",
             "hidden": false,
             "name": "description",
             "readOnly": false,

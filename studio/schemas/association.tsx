@@ -8,6 +8,7 @@ export default {
     {
       name: "name",
       title: "Navn",
+      description: "Nødvendig",
       type: "string",
     },
     {
@@ -19,10 +20,12 @@ export default {
       name: "active",
       title: "Aktiv",
       type: "boolean",
+      initialValue: true,
     },
     {
       name: "slug",
       title: "Slug",
+      description: "Nødvendig",
       type: "slug",
       options: {
         source: "name",

@@ -6,16 +6,19 @@ export default {
     {
       name: "name",
       title: "Navn",
+      description: "Nødvendig",
       type: "string",
     },
     {
       name: "insignia",
       title: "Medaljenavn",
+      description: "Nødvendig",
       type: "string",
     },
     {
       name: "slug",
       title: "Slug",
+      description: "Nødvendig",
       type: "slug",
       options: {
         source: "name",
@@ -25,6 +28,7 @@ export default {
     {
       name: "image",
       title: "Bilde",
+      description: "Nødvendig",
       type: "image",
       options: {
         hotspot: true,
@@ -33,6 +37,7 @@ export default {
     {
       name: "description",
       title: "Beskrivelse",
+      description: "Nødvendig",
       type: "array",
       of: [
         {
@@ -46,6 +51,7 @@ export default {
     {
       name: "order",
       title: "Rekkefølge",
+      description: "Nødvendig",
       type: "number",
     },
   ],
