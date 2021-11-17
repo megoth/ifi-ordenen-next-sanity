@@ -567,8 +567,8 @@
       "hidden": false,
       "readOnly": false,
       "hasValidation": false,
-      "name": "title",
-      "title": "Tittel",
+      "name": "person",
+      "title": "Person",
       "type": "Document",
       "fields": [
         {
@@ -596,32 +596,8 @@
           }
         },
         {
-          "name": "insignia",
-          "title": "Medaljenavn",
-          "description": "Nødvendig",
-          "hidden": false,
-          "readOnly": false,
-          "codegen": {
-            "required": false
-          },
-          "hasValidation": false,
-          "definition": {
-            "codegen": {
-              "required": false
-            },
-            "description": "Nødvendig",
-            "hidden": false,
-            "name": "insignia",
-            "readOnly": false,
-            "title": "Medaljenavn",
-            "hasValidation": false,
-            "type": "String",
-            "list": null
-          }
-        },
-        {
           "name": "slug",
-          "title": "Slug",
+          "title": "Slug (brukernavn)",
           "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
@@ -637,14 +613,14 @@
             "hidden": false,
             "name": "slug",
             "readOnly": false,
-            "title": "Slug",
+            "title": "Slug (brukernavn)",
             "hasValidation": false,
             "type": "Slug"
           }
         },
         {
-          "name": "image",
-          "title": "Bilde",
+          "name": "mainImage",
+          "title": "Main image",
           "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
@@ -658,17 +634,17 @@
             },
             "description": "Nødvendig",
             "hidden": false,
-            "name": "image",
+            "name": "mainImage",
             "readOnly": false,
-            "title": "Bilde",
+            "title": "Main image",
             "hasValidation": false,
             "type": "Image",
             "fields": null
           }
         },
         {
-          "name": "description",
-          "title": "Beskrivelse",
+          "name": "titles",
+          "title": "Tildelinger",
           "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
@@ -682,9 +658,9 @@
             },
             "description": "Nødvendig",
             "hidden": false,
-            "name": "description",
+            "name": "titles",
             "readOnly": false,
-            "title": "Beskrivelse",
+            "title": "Tildelinger",
             "hasValidation": false,
             "type": "Array",
             "of": [
@@ -696,20 +672,19 @@
                 "hidden": false,
                 "name": null,
                 "readOnly": false,
-                "title": "Block",
+                "title": null,
                 "hasValidation": false,
-                "type": "Block",
-                "of": null,
-                "markDefs": []
+                "type": "RegistryReference",
+                "to": "award"
               }
             ],
             "list": null
           }
         },
         {
-          "name": "order",
-          "title": "Rekkefølge",
-          "description": "Nødvendig",
+          "name": "associations",
+          "title": "Foreninger/organisasjoner",
+          "description": "",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -720,13 +695,43 @@
             "codegen": {
               "required": false
             },
-            "description": "Nødvendig",
+            "description": null,
             "hidden": false,
-            "name": "order",
+            "name": "associations",
             "readOnly": false,
-            "title": "Rekkefølge",
+            "title": "Foreninger/organisasjoner",
             "hasValidation": false,
-            "type": "Number",
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "Reference",
+                "to": [
+                  {
+                    "codegen": {
+                      "required": false
+                    },
+                    "description": null,
+                    "hidden": false,
+                    "name": null,
+                    "readOnly": false,
+                    "title": null,
+                    "hasValidation": false,
+                    "to": "association",
+                    "type": "RegistryReference"
+                  }
+                ],
+                "weak": false
+              }
+            ],
             "list": null
           }
         }
@@ -950,8 +955,8 @@
       "hidden": false,
       "readOnly": false,
       "hasValidation": false,
-      "name": "person",
-      "title": "Person",
+      "name": "title",
+      "title": "Tittel",
       "type": "Document",
       "fields": [
         {
@@ -979,8 +984,32 @@
           }
         },
         {
+          "name": "insignia",
+          "title": "Medaljenavn",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "insignia",
+            "readOnly": false,
+            "title": "Medaljenavn",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
           "name": "slug",
-          "title": "Slug (brukernavn)",
+          "title": "Slug",
           "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
@@ -996,14 +1025,14 @@
             "hidden": false,
             "name": "slug",
             "readOnly": false,
-            "title": "Slug (brukernavn)",
+            "title": "Slug",
             "hasValidation": false,
             "type": "Slug"
           }
         },
         {
-          "name": "mainImage",
-          "title": "Main image",
+          "name": "image",
+          "title": "Bilde",
           "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
@@ -1017,17 +1046,17 @@
             },
             "description": "Nødvendig",
             "hidden": false,
-            "name": "mainImage",
+            "name": "image",
             "readOnly": false,
-            "title": "Main image",
+            "title": "Bilde",
             "hasValidation": false,
             "type": "Image",
             "fields": null
           }
         },
         {
-          "name": "titles",
-          "title": "Tildelinger",
+          "name": "description",
+          "title": "Beskrivelse",
           "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
@@ -1041,9 +1070,9 @@
             },
             "description": "Nødvendig",
             "hidden": false,
-            "name": "titles",
+            "name": "description",
             "readOnly": false,
-            "title": "Tildelinger",
+            "title": "Beskrivelse",
             "hasValidation": false,
             "type": "Array",
             "of": [
@@ -1055,86 +1084,19 @@
                 "hidden": false,
                 "name": null,
                 "readOnly": false,
-                "title": null,
+                "title": "Block",
                 "hasValidation": false,
-                "type": "RegistryReference",
-                "to": "award"
+                "type": "Block",
+                "of": null,
+                "markDefs": []
               }
             ],
             "list": null
           }
         },
         {
-          "name": "associations",
-          "title": "Foreninger/organisasjoner",
-          "description": "",
-          "hidden": false,
-          "readOnly": false,
-          "codegen": {
-            "required": false
-          },
-          "hasValidation": false,
-          "definition": {
-            "codegen": {
-              "required": false
-            },
-            "description": null,
-            "hidden": false,
-            "name": "associations",
-            "readOnly": false,
-            "title": "Foreninger/organisasjoner",
-            "hasValidation": false,
-            "type": "Array",
-            "of": [
-              {
-                "codegen": {
-                  "required": false
-                },
-                "description": null,
-                "hidden": false,
-                "name": null,
-                "readOnly": false,
-                "title": null,
-                "hasValidation": false,
-                "type": "Reference",
-                "to": [
-                  {
-                    "codegen": {
-                      "required": false
-                    },
-                    "description": null,
-                    "hidden": false,
-                    "name": null,
-                    "readOnly": false,
-                    "title": null,
-                    "hasValidation": false,
-                    "to": "association",
-                    "type": "RegistryReference"
-                  }
-                ],
-                "weak": false
-              }
-            ],
-            "list": null
-          }
-        }
-      ]
-    },
-    {
-      "codegen": {
-        "required": false
-      },
-      "description": null,
-      "hidden": false,
-      "readOnly": false,
-      "hasValidation": false,
-      "name": "source",
-      "title": "Kilde",
-      "type": "Document",
-      "fields": [
-        {
-          "name": "text",
-          "title": "Navn",
+          "name": "order",
+          "title": "Rekkefølge",
           "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
@@ -1148,35 +1110,12 @@
             },
             "description": "Nødvendig",
             "hidden": false,
-            "name": "text",
+            "name": "order",
             "readOnly": false,
-            "title": "Navn",
+            "title": "Rekkefølge",
             "hasValidation": false,
-            "type": "String",
+            "type": "Number",
             "list": null
-          }
-        },
-        {
-          "name": "url",
-          "title": "Lenke",
-          "description": "",
-          "hidden": false,
-          "readOnly": false,
-          "codegen": {
-            "required": false
-          },
-          "hasValidation": false,
-          "definition": {
-            "codegen": {
-              "required": false
-            },
-            "description": null,
-            "hidden": false,
-            "name": "url",
-            "readOnly": false,
-            "title": "Lenke",
-            "hasValidation": false,
-            "type": "Url"
           }
         }
       ]
@@ -1491,13 +1430,74 @@
       "hidden": false,
       "readOnly": false,
       "hasValidation": false,
+      "name": "source",
+      "title": "Kilde",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "text",
+          "title": "Navn",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "text",
+            "readOnly": false,
+            "title": "Navn",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "url",
+          "title": "Lenke",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "url",
+            "readOnly": false,
+            "title": "Lenke",
+            "hasValidation": false,
+            "type": "Url"
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
       "name": "siteSettings",
       "title": "Site Settings",
       "type": "Document",
       "fields": [
         {
           "name": "title",
-          "title": "Site Title",
+          "title": "Sidens tittel",
           "description": "",
           "hidden": false,
           "readOnly": false,
@@ -1513,7 +1513,7 @@
             "hidden": false,
             "name": "title",
             "readOnly": false,
-            "title": "Site Title",
+            "title": "Sidens tittel",
             "hasValidation": false,
             "type": "String",
             "list": null
@@ -1521,7 +1521,7 @@
         },
         {
           "name": "description",
-          "title": "Site Description",
+          "title": "Beskrivelse av siden",
           "description": "",
           "hidden": false,
           "readOnly": false,
@@ -1537,9 +1537,349 @@
             "hidden": false,
             "name": "description",
             "readOnly": false,
-            "title": "Site Description",
+            "title": "Beskrivelse av siden",
             "hasValidation": false,
             "type": "Text"
+          }
+        },
+        {
+          "name": "mainNav",
+          "title": "Hovedmeny",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "mainNav",
+            "readOnly": false,
+            "title": "Hovedmeny",
+            "hasValidation": false,
+            "type": "Reference",
+            "to": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "to": "navigation",
+                "type": "RegistryReference"
+              }
+            ],
+            "weak": false
+          }
+        },
+        {
+          "name": "subNav",
+          "title": "Undermeny",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "subNav",
+            "readOnly": false,
+            "title": "Undermeny",
+            "hasValidation": false,
+            "type": "Reference",
+            "to": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "to": "navigation",
+                "type": "RegistryReference"
+              }
+            ],
+            "weak": false
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
+      "name": "page",
+      "title": "Side",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "title",
+          "title": "Tittel",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "title",
+            "readOnly": false,
+            "title": "Tittel",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "slug",
+          "title": "Slug",
+          "description": "Nødvendig (unntatt for forsiden)",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig (unntatt for forsiden)",
+            "hidden": false,
+            "name": "slug",
+            "readOnly": false,
+            "title": "Slug",
+            "hasValidation": false,
+            "type": "Slug"
+          }
+        },
+        {
+          "name": "description",
+          "title": "Beskrivelse",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "description",
+            "readOnly": false,
+            "title": "Beskrivelse",
+            "hasValidation": false,
+            "type": "Text"
+          }
+        },
+        {
+          "name": "components",
+          "title": "Innhold",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "components",
+            "readOnly": false,
+            "title": "Innhold",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "title-component"
+              },
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "text-component"
+              },
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "button-component"
+              },
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "buttons-component"
+              }
+            ],
+            "list": null
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
+      "name": "navigation",
+      "title": "Navigering",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "title",
+          "title": "Title",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "title",
+            "readOnly": false,
+            "title": "Title",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "navId",
+          "title": "Navigation Id",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "navId",
+            "readOnly": false,
+            "title": "Navigation Id",
+            "hasValidation": false,
+            "type": "Slug"
+          }
+        },
+        {
+          "name": "items",
+          "title": "Navigation items",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "items",
+            "readOnly": false,
+            "title": "Navigation items",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "navigationItem"
+              }
+            ],
+            "list": null
           }
         }
       ]
@@ -1764,6 +2104,333 @@
               }
             ],
             "list": null
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "name": "text-component",
+      "readOnly": false,
+      "title": "Tekst",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "text",
+          "title": "Tekst",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "text",
+            "readOnly": false,
+            "title": "Tekst",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "Block",
+                "of": null,
+                "markDefs": []
+              }
+            ],
+            "list": null
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "name": "button-component",
+      "readOnly": false,
+      "title": "Knapp",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "text",
+          "title": "Tekst",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "text",
+            "readOnly": false,
+            "title": "Tekst",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "class",
+          "title": "Type knapp",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "class",
+            "readOnly": false,
+            "title": "Type knapp",
+            "hasValidation": false,
+            "type": "String",
+            "list": [
+              {
+                "title": "Primary",
+                "value": "primary"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "name": "buttons-component",
+      "readOnly": false,
+      "title": "Knapper",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "buttons",
+          "title": "Knapper",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "buttons",
+            "readOnly": false,
+            "title": "Knapper",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "button-component"
+              }
+            ],
+            "list": null
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "name": "title-component",
+      "readOnly": false,
+      "title": "Undertittel",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "text",
+          "title": "Tekst",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "text",
+            "readOnly": false,
+            "title": "Tekst",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "name": "link",
+      "readOnly": false,
+      "title": "Link",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "internalLink",
+          "title": "Internal Link",
+          "description": "Select pages for navigation",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Select pages for navigation",
+            "hidden": false,
+            "name": "internalLink",
+            "readOnly": false,
+            "title": "Internal Link",
+            "hasValidation": false,
+            "type": "Reference",
+            "to": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "to": "page",
+                "type": "RegistryReference"
+              }
+            ],
+            "weak": false
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "name": "navigationItem",
+      "readOnly": false,
+      "title": "Navigation Item",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "text",
+          "title": "Navigation Text",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "text",
+            "readOnly": false,
+            "title": "Navigation Text",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "navigationItemUrl",
+          "title": "Navigation Item URL",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "navigationItemUrl",
+            "readOnly": false,
+            "title": "Navigation Item URL",
+            "hasValidation": false,
+            "type": "RegistryReference",
+            "to": "link"
           }
         }
       ]

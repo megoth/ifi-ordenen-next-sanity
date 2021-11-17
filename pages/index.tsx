@@ -18,14 +18,14 @@ export default function Index({ allPosts, siteSettings }: Props) {
   const morePosts = allPosts.slice(1);
   return (
     <>
-      <Layout>
+      <Layout siteSettings={siteSettings}>
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
         <Container>
           <Intro {...siteSettings} />
-          {heroPost && <HeroPost {...heroPost} />}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {/*{heroPost && <HeroPost {...heroPost} />}*/}
+          {/*{morePosts.length > 0 && <MoreStories posts={morePosts} />}*/}
         </Container>
       </Layout>
     </>

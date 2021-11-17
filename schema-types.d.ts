@@ -136,10 +136,10 @@ Comments won't show on the site without approval
     }
 
     /**
-     * Tittel
+     * Person
      */
-    interface Title extends Sanity.Document {
-      _type: "title";
+    interface Person extends Sanity.Document {
+      _type: "person";
 
       /**
        * Navn - `String`
@@ -148,13 +148,7 @@ Nødvendig
       name?: string;
 
       /**
-       * Medaljenavn - `String`
-Nødvendig
-       */
-      insignia?: string;
-
-      /**
-       * Slug - `Slug`
+       * Slug (brukernavn) - `Slug`
 Nødvendig
        */
       slug?: {
@@ -163,26 +157,25 @@ Nødvendig
       };
 
       /**
-       * Bilde - `Image`
+       * Main image - `Image`
 Nødvendig
        */
-      image?: {
+      mainImage?: {
         asset: Sanity.Asset;
         crop?: Sanity.ImageCrop;
         hotspot?: Sanity.ImageHotspot;
       };
 
       /**
-       * Beskrivelse - `Array`
+       * Tildelinger - `Array`
 Nødvendig
        */
-      description?: Array<Sanity.Keyed<Sanity.Block>>;
+      titles?: Array<Sanity.Keyed<Award>>;
 
       /**
-       * Rekkefølge - `Number`
-Nødvendig
+       * Foreninger/organisasjoner - `Array`
        */
-      order?: number;
+      associations?: Array<Sanity.KeyedReference<Association>>;
     }
 
     /**
@@ -233,10 +226,10 @@ Nødvendig
     }
 
     /**
-     * Person
+     * Tittel
      */
-    interface Person extends Sanity.Document {
-      _type: "person";
+    interface Title extends Sanity.Document {
+      _type: "title";
 
       /**
        * Navn - `String`
@@ -245,7 +238,13 @@ Nødvendig
       name?: string;
 
       /**
-       * Slug (brukernavn) - `Slug`
+       * Medaljenavn - `String`
+Nødvendig
+       */
+      insignia?: string;
+
+      /**
+       * Slug - `Slug`
 Nødvendig
        */
       slug?: {
@@ -254,43 +253,26 @@ Nødvendig
       };
 
       /**
-       * Main image - `Image`
+       * Bilde - `Image`
 Nødvendig
        */
-      mainImage?: {
+      image?: {
         asset: Sanity.Asset;
         crop?: Sanity.ImageCrop;
         hotspot?: Sanity.ImageHotspot;
       };
 
       /**
-       * Tildelinger - `Array`
+       * Beskrivelse - `Array`
 Nødvendig
        */
-      titles?: Array<Sanity.Keyed<Award>>;
+      description?: Array<Sanity.Keyed<Sanity.Block>>;
 
       /**
-       * Foreninger/organisasjoner - `Array`
-       */
-      associations?: Array<Sanity.KeyedReference<Association>>;
-    }
-
-    /**
-     * Kilde
-     */
-    interface Source extends Sanity.Document {
-      _type: "source";
-
-      /**
-       * Navn - `String`
+       * Rekkefølge - `Number`
 Nødvendig
        */
-      text?: string;
-
-      /**
-       * Lenke - `Url`
-       */
-      url?: string;
+      order?: number;
     }
 
     /**
@@ -354,20 +336,110 @@ Helst en eller flere
     }
 
     /**
+     * Kilde
+     */
+    interface Source extends Sanity.Document {
+      _type: "source";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      text?: string;
+
+      /**
+       * Lenke - `Url`
+       */
+      url?: string;
+    }
+
+    /**
      * Site Settings
      */
     interface SiteSettings extends Sanity.Document {
       _type: "siteSettings";
 
       /**
-       * Site Title - `String`
+       * Sidens tittel - `String`
        */
       title?: string;
 
       /**
-       * Site Description - `Text`
+       * Beskrivelse av siden - `Text`
        */
       description?: string;
+
+      /**
+       * Hovedmeny - `Reference`
+       */
+      mainNav?: Sanity.Reference<Navigation>;
+
+      /**
+       * Undermeny - `Reference`
+       */
+      subNav?: Sanity.Reference<Navigation>;
+    }
+
+    /**
+     * Side
+     */
+    interface Page extends Sanity.Document {
+      _type: "page";
+
+      /**
+       * Tittel - `String`
+Nødvendig
+       */
+      title?: string;
+
+      /**
+       * Slug - `Slug`
+Nødvendig (unntatt for forsiden)
+       */
+      slug?: {
+        _type: "slug";
+        current: string;
+      };
+
+      /**
+       * Beskrivelse - `Text`
+       */
+      description?: string;
+
+      /**
+       * Innhold - `Array`
+       */
+      components?: Array<
+        | Sanity.Keyed<TitleComponent>
+        | Sanity.Keyed<TextComponent>
+        | Sanity.Keyed<ButtonComponent>
+        | Sanity.Keyed<ButtonsComponent>
+      >;
+    }
+
+    /**
+     * Navigering
+     */
+    interface Navigation extends Sanity.Document {
+      _type: "navigation";
+
+      /**
+       * Title - `String`
+       */
+      title?: string;
+
+      /**
+       * Navigation Id - `Slug`
+       */
+      navId?: {
+        _type: "navId";
+        current: string;
+      };
+
+      /**
+       * Navigation items - `Array`
+       */
+      items?: Array<Sanity.Keyed<NavigationItem>>;
     }
 
     type BlockContent = Array<
@@ -413,16 +485,86 @@ Nødvendig
       description?: Array<Sanity.Keyed<Sanity.Block>>;
     };
 
+    type TextComponent = {
+      _type: "text-component";
+
+      /**
+       * Tekst - `Array`
+Nødvendig
+       */
+      text?: Array<Sanity.Keyed<Sanity.Block>>;
+    };
+
+    type ButtonComponent = {
+      _type: "button-component";
+
+      /**
+       * Tekst - `String`
+Nødvendig
+       */
+      text?: string;
+
+      /**
+       * Type knapp - `String`
+       */
+      class?: "primary";
+    };
+
+    type ButtonsComponent = {
+      _type: "buttons-component";
+
+      /**
+       * Knapper - `Array`
+       */
+      buttons?: Array<Sanity.Keyed<ButtonComponent>>;
+    };
+
+    type TitleComponent = {
+      _type: "title-component";
+
+      /**
+       * Tekst - `String`
+Nødvendig
+       */
+      text?: string;
+    };
+
+    type Link = {
+      _type: "link";
+
+      /**
+       * Internal Link - `Reference`
+Select pages for navigation
+       */
+      internalLink?: Sanity.Reference<Page>;
+    };
+
+    type NavigationItem = {
+      _type: "navigationItem";
+
+      /**
+       * Navigation Text - `String`
+       */
+      text?: string;
+
+      /**
+       * Navigation Item URL - `RegistryReference`
+       */
+      navigationItemUrl?: Link;
+    };
+
     type Document =
       | Post
       | Author
       | Category
       | Comment
-      | Title
-      | Association
       | Person
-      | Source
+      | Association
+      | Title
       | Event
-      | SiteSettings;
+      | Source
+      | SiteSettings
+      | Page
+      | Navigation;
   }
 }

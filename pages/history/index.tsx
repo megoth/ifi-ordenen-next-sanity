@@ -18,7 +18,7 @@ interface Props extends SiteSettingsPage {
 export default function AllPeoplePage({ allEvents, siteSettings }: Props) {
   const years = getYears(allEvents).reverse();
   return (
-    <Layout>
+    <Layout siteSettings={siteSettings}>
       <Container>
         <Header title={siteSettings?.title} />
         <PostTitle>Historie</PostTitle>

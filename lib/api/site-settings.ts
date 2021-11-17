@@ -4,7 +4,16 @@ export interface SiteSettingsPage {
   siteSettings?: SiteSettingsQuery;
 }
 
-export interface SiteSettingsQuery extends Sanity.Schema.SiteSettings {}
+export interface NavigationItem {
+  text: string;
+  slug: string;
+}
+
+export interface SiteSettingsQuery
+  extends Omit<Sanity.Schema.SiteSettings, "mainNav" | "subNav"> {
+  mainNavItems: Array<NavigationItem>;
+  subNavItems: Array<NavigationItem>;
+}
 
 export async function getSiteSettings(
   preview: boolean
@@ -14,6 +23,14 @@ export async function getSiteSettings(
       `*[ _id == "siteSettings" ]{
     title,
     description,
+    "mainNavItems": mainNav -> items[]{
+      text,
+      "slug": navigationItemUrl.internalLink -> slug.current
+    },
+    "subNavItems": subNav -> items[]{
+      text,
+      "slug": navigationItemUrl.internalLink -> slug.current
+    }
   }`
     )
     .then((results) => results[0]);

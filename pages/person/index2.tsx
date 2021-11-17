@@ -21,7 +21,7 @@ export default function AllPeoplePage({ allPeople, siteSettings }: Props) {
     (a, b) => a.year * 100 + a.yearOrder - b.year * 100 + b.yearOrder
   );
   return (
-    <Layout>
+    <Layout siteSettings={siteSettings}>
       <Container>
         <Header title={siteSettings?.title} />
         <PostTitle>Personer</PostTitle>

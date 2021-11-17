@@ -23,7 +23,7 @@ export default function AssociationPage({ association, siteSettings }: Props) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout>
+    <Layout siteSettings={siteSettings}>
       <Container>
         <Header title={siteSettings?.title} />
         {router.isFallback ? (

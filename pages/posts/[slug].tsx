@@ -33,7 +33,7 @@ export default function Post({ post, morePosts, siteSettings }: Props) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout>
+    <Layout siteSettings={siteSettings}>
       <Container>
         <Header title={siteSettings?.title} />
         {router.isFallback ? (

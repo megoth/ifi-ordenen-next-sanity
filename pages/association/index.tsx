@@ -19,7 +19,7 @@ export default function AllAssociationsPage({
   siteSettings,
 }: Props) {
   return (
-    <Layout>
+    <Layout siteSettings={siteSettings}>
       <Container>
         <Header title={siteSettings?.title} />
         <PostTitle>

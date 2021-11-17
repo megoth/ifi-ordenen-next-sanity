@@ -17,6 +17,14 @@ import person from "./person";
 import source from "./source";
 import event from "./event";
 import siteSettings from "./siteSettings";
+import page from "./page";
+import buttonComponent from "./buttonComponent";
+import buttonsComponent from "./buttonsComponent";
+import textComponent from "./textComponent";
+import titleComponent from "./titleComponent";
+import navigation from "./navigation";
+import link from "./link";
+import navItem from "./navItem";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -34,12 +42,20 @@ export default createSchema({
     // { type: 'typename' } in other document schemas
     blockContent,
     comment,
-    title,
-    association,
-    award,
     person,
-    source,
+    association,
+    title,
+    award,
     event,
+    source,
     siteSettings,
+    textComponent,
+    page,
+    buttonComponent,
+    buttonsComponent,
+    titleComponent,
+    link,
+    navItem,
+    navigation,
   ]),
 });

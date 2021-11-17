@@ -6,13 +6,25 @@ export default {
   fields: [
     {
       name: "title",
-      title: "Site Title",
+      title: "Sidens tittel",
       type: "string",
     },
     {
       name: "description",
-      title: "Site Description",
+      title: "Beskrivelse av siden",
       type: "text",
+    },
+    {
+      title: "Hovedmeny",
+      name: "mainNav",
+      type: "reference",
+      to: { type: "navigation" },
+    },
+    {
+      title: "Undermeny",
+      name: "subNav",
+      type: "reference",
+      to: { type: "navigation" },
     },
   ],
 };
