@@ -4,14 +4,15 @@ import Link from "next/link";
 
 interface Props {
   navItems: Array<NavigationItem>;
+  type: string;
 }
 
-export default function Navigation({ navItems }: Props) {
+export default function Navigation({ navItems, type }: Props) {
   return (
     <nav>
       <ul>
-        {navItems.map((item) => (
-          <li>
+        {navItems.map((item, index) => (
+          <li key={`navigation-${type}-${index}`}>
             <Link as={`/${item.slug}`} href="/[slug]">
               <a className="hover:underline">{item.text}</a>
             </Link>

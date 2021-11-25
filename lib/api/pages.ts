@@ -18,6 +18,7 @@ export async function getPage(
       title,
       'slug': slug.current,
       description,
+      components,
     }`,
       { slug }
     )

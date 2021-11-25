@@ -7,10 +7,11 @@ import Container from "../components/container";
 import Header from "../components/header";
 import PostTitle from "../components/post-title";
 import { GetStaticProps } from "next";
-import { getAllPagesWithSlug, getPage } from "../lib/api/pages";
+import { getAllPagesWithSlug, getPage, PageQuery } from "../lib/api/pages";
+import PageComponents from "../components/page-components";
 
 interface Props extends SiteSettingsPage {
-  page?: Sanity.Schema.Page;
+  page?: PageQuery;
 }
 
 export default function Post({ page, siteSettings }: Props) {
@@ -22,12 +23,13 @@ export default function Post({ page, siteSettings }: Props) {
     <Layout siteSettings={siteSettings}>
       <Container>
         <Header title={siteSettings?.title} />
-        {router.isFallback ? (
+        {router.isFallback || !page ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
             <div>Tittel: {page.title}</div>
             <div>Neste steg: Laste inn dynamisk innhold</div>
+            <PageComponents page={page} />
           </>
         )}
       </Container>

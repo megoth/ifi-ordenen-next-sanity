@@ -15,8 +15,8 @@ export default function Layout({ children, siteSettings }: Props) {
     <>
       <Meta />
       <div className="min-h-screen">
-        <Navigation navItems={siteSettings.mainNavItems} />
-        <Navigation navItems={siteSettings.subNavItems} />
+        <Navigation navItems={siteSettings.mainNavItems} type={"main-menu"} />
+        <Navigation navItems={siteSettings.subNavItems} type={"sub-menu"} />
         <main>{children}</main>
       </div>
       <Footer />
