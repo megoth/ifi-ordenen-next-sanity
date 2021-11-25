@@ -1,5 +1,5 @@
 export interface LinkQuery {
-  text: string;
+  text?: string;
   slug?: string;
   url?: string;
 }

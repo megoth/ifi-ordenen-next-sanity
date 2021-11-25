@@ -1,6 +1,5 @@
 import React from "react";
 import Container from "../components/container";
-import Intro from "../components/intro";
 import Layout from "../components/layout";
 import { getSiteSettings, SiteSettingsPage } from "../lib/api/site-settings";
 import { getPage, PageQuery } from "../lib/api/pages";
@@ -20,7 +19,6 @@ export default function Index({ siteSettings, page, lastMembers }: Props) {
     <>
       <Layout pageTitle={page?.title} siteSettings={siteSettings}>
         <Container>
-          <Intro {...siteSettings} />
           <PageComponents page={page} lastMembers={lastMembers} />
         </Container>
       </Layout>

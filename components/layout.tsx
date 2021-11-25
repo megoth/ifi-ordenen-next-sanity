@@ -4,6 +4,7 @@ import Meta from "../components/meta";
 import { ReactNode } from "react";
 import { SiteSettingsQuery } from "../lib/api/site-settings";
 import Navigation from "./navigation";
+import Link from "./link";
 
 interface Props {
   children: ReactNode;
@@ -19,6 +20,9 @@ export default function Layout({ children, pageTitle, siteSettings }: Props) {
     <>
       <Meta title={title} />
       <div className="min-h-screen">
+        <div>
+          <Link href={"/"}>Forside</Link>
+        </div>
         <Navigation navItems={siteSettings?.mainNavItems} type={"main-menu"} />
         <Navigation navItems={siteSettings?.subNavItems} type={"sub-menu"} />
         <main>
