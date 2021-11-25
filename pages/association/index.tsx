@@ -5,68 +5,37 @@ import {
   AssociationQuery,
   getAllAssociationsForAssociationPage,
 } from "../../lib/api/associations";
-import Header from "../../components/header";
-import PostTitle from "../../components/post-title";
-import Link from "next/link";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
+import { getPage, PageQuery } from "../../lib/api/pages";
+import PageComponents from "../../components/page-components";
 
 interface Props extends SiteSettingsPage {
   associations?: Array<AssociationQuery>;
+  page?: PageQuery;
 }
 
 export default function AllAssociationsPage({
   associations,
   siteSettings,
+  page,
 }: Props) {
   return (
-    <Layout siteSettings={siteSettings}>
+    <Layout pageTitle={page?.title} siteSettings={siteSettings}>
       <Container>
-        <Header title={siteSettings?.title} />
-        <PostTitle>
-          Organisasjoner tilknyttet Institutt for informatikk
-        </PostTitle>
-        <h2 className="text-3xl">Aktive foreninger</h2>
-        <ul className="list-disc">
-          {associations
-            ?.filter(({ active }) => active)
-            .map((association) => (
-              <li key={association.slug}>
-                <Link
-                  as={`/association/${association.slug}`}
-                  href="/association/[slug]"
-                >
-                  <a className="hover:underline">{association.name}</a>
-                </Link>
-              </li>
-            ))}
-        </ul>
-        <h2 className="text-3xl">Tidligere foreninger eller foreningsnavn</h2>
-        <ul className="list-disc">
-          {associations
-            ?.filter(({ active }) => !active)
-            .map((association) => (
-              <li key={association.slug}>
-                <Link
-                  as={`/association/${association.slug}`}
-                  href="/association/[slug]"
-                >
-                  <a className="hover:underline">{association.name}</a>
-                </Link>
-              </li>
-            ))}
-        </ul>
+        <PageComponents page={page} associations={associations} />
       </Container>
     </Layout>
   );
 }
 
 export async function getStaticProps({ preview = false }) {
-  const [associations, siteSettings] = await Promise.all([
+  const [associations, siteSettings, page] = await Promise.all([
     getAllAssociationsForAssociationPage(preview),
     getSiteSettings(preview),
+    getPage("/association", preview),
   ]);
   return {
-    props: { associations, siteSettings },
+    props: { associations, siteSettings, page },
     revalidate: 1,
   };
 }

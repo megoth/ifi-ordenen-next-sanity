@@ -1,31 +1,27 @@
 import React from "react";
 import Container from "../components/container";
-import MoreStories from "../components/more-stories";
-import HeroPost from "../components/hero-post";
 import Intro from "../components/intro";
 import Layout from "../components/layout";
-import { getAllPostsForHome, PostQuery } from "../lib/api/posts";
-import Head from "next/head";
-import { CMS_NAME } from "../lib/constants";
 import { getSiteSettings, SiteSettingsPage } from "../lib/api/site-settings";
+import { getPage, PageQuery } from "../lib/api/pages";
+import PageComponents from "../components/page-components";
+import {
+  getAllPeopleForPeoplePage,
+  PersonForListQuery,
+} from "../lib/api/people";
 
 interface Props extends SiteSettingsPage {
-  allPosts: Array<PostQuery>;
+  lastMembers?: Array<PersonForListQuery>;
+  page?: PageQuery;
 }
 
-export default function Index({ allPosts, siteSettings }: Props) {
-  const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1);
+export default function Index({ siteSettings, page, lastMembers }: Props) {
   return (
     <>
-      <Layout siteSettings={siteSettings}>
-        <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
-        </Head>
+      <Layout pageTitle={page?.title} siteSettings={siteSettings}>
         <Container>
           <Intro {...siteSettings} />
-          {/*{heroPost && <HeroPost {...heroPost} />}*/}
-          {/*{morePosts.length > 0 && <MoreStories posts={morePosts} />}*/}
+          <PageComponents page={page} lastMembers={lastMembers} />
         </Container>
       </Layout>
     </>
@@ -33,10 +29,13 @@ export default function Index({ allPosts, siteSettings }: Props) {
 }
 
 export async function getStaticProps({ preview = false }) {
-  const siteSettings = await getSiteSettings(preview);
-  const allPosts = await getAllPostsForHome(preview);
+  const [siteSettings, page, lastMembers] = await Promise.all([
+    getSiteSettings(preview),
+    getPage("/", preview),
+    getAllPeopleForPeoplePage(preview),
+  ]);
   return {
-    props: { allPosts, siteSettings },
+    props: { siteSettings, page, lastMembers },
     revalidate: 1,
   };
 }

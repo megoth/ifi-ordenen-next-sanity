@@ -1635,8 +1635,8 @@
       "type": "Document",
       "fields": [
         {
-          "name": "title",
-          "title": "Tittel",
+          "name": "name",
+          "title": "Navn",
           "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
@@ -1650,6 +1650,30 @@
             },
             "description": "Nødvendig",
             "hidden": false,
+            "name": "name",
+            "readOnly": false,
+            "title": "Navn",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "title",
+          "title": "Tittel",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
             "name": "title",
             "readOnly": false,
             "title": "Tittel",
@@ -1661,7 +1685,7 @@
         {
           "name": "slug",
           "title": "Slug",
-          "description": "Nødvendig (unntatt for forsiden)",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -1672,7 +1696,7 @@
             "codegen": {
               "required": false
             },
-            "description": "Nødvendig (unntatt for forsiden)",
+            "description": "Nødvendig",
             "hidden": false,
             "name": "slug",
             "readOnly": false,
@@ -1737,19 +1761,6 @@
                 "title": null,
                 "hasValidation": false,
                 "type": "RegistryReference",
-                "to": "title-component"
-              },
-              {
-                "codegen": {
-                  "required": false
-                },
-                "description": null,
-                "hidden": false,
-                "name": null,
-                "readOnly": false,
-                "title": null,
-                "hasValidation": false,
-                "type": "RegistryReference",
                 "to": "text-component"
               },
               {
@@ -1777,6 +1788,19 @@
                 "hasValidation": false,
                 "type": "RegistryReference",
                 "to": "buttons-component"
+              },
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "data-component"
               }
             ],
             "list": null
@@ -2114,60 +2138,6 @@
       },
       "description": null,
       "hidden": false,
-      "name": "text-component",
-      "readOnly": false,
-      "title": "Tekst",
-      "hasValidation": false,
-      "type": "Object",
-      "fields": [
-        {
-          "name": "text",
-          "title": "Tekst",
-          "description": "Nødvendig",
-          "hidden": false,
-          "readOnly": false,
-          "codegen": {
-            "required": false
-          },
-          "hasValidation": false,
-          "definition": {
-            "codegen": {
-              "required": false
-            },
-            "description": "Nødvendig",
-            "hidden": false,
-            "name": "text",
-            "readOnly": false,
-            "title": "Tekst",
-            "hasValidation": false,
-            "type": "Array",
-            "of": [
-              {
-                "codegen": {
-                  "required": false
-                },
-                "description": null,
-                "hidden": false,
-                "name": null,
-                "readOnly": false,
-                "title": null,
-                "hasValidation": false,
-                "type": "Block",
-                "of": null,
-                "markDefs": []
-              }
-            ],
-            "list": null
-          }
-        }
-      ]
-    },
-    {
-      "codegen": {
-        "required": false
-      },
-      "description": null,
-      "hidden": false,
       "name": "button-component",
       "readOnly": false,
       "title": "Knapp",
@@ -2196,6 +2166,30 @@
             "hasValidation": false,
             "type": "String",
             "list": null
+          }
+        },
+        {
+          "name": "link",
+          "title": "Lenke",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "link",
+            "readOnly": false,
+            "title": "Lenke",
+            "hasValidation": false,
+            "type": "RegistryReference",
+            "to": "link"
           }
         },
         {
@@ -2288,9 +2282,64 @@
       },
       "description": null,
       "hidden": false,
-      "name": "title-component",
+      "name": "data-component",
       "readOnly": false,
-      "title": "Undertittel",
+      "title": "Data modul",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "type",
+          "title": "Type",
+          "description": "Data må lenkes opp mot siden via kode",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Data må lenkes opp mot siden via kode",
+            "hidden": false,
+            "name": "type",
+            "readOnly": false,
+            "title": "Type",
+            "hasValidation": false,
+            "type": "String",
+            "list": [
+              {
+                "title": "Associations",
+                "value": "associations"
+              },
+              {
+                "title": "Events",
+                "value": "events"
+              },
+              {
+                "title": "Last Members",
+                "value": "lastMembers"
+              },
+              {
+                "title": "Members",
+                "value": "members"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "name": "text-component",
+      "readOnly": false,
+      "title": "Tekst",
       "hasValidation": false,
       "type": "Object",
       "fields": [
@@ -2314,7 +2363,23 @@
             "readOnly": false,
             "title": "Tekst",
             "hasValidation": false,
-            "type": "String",
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "Block",
+                "of": null,
+                "markDefs": []
+              }
+            ],
             "list": null
           }
         }
@@ -2369,6 +2434,30 @@
               }
             ],
             "weak": false
+          }
+        },
+        {
+          "name": "externalUrl",
+          "title": "External URL",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "externalUrl",
+            "readOnly": false,
+            "title": "External URL",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
           }
         }
       ]

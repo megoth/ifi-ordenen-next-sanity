@@ -17,7 +17,8 @@ export default {
     prepare(selection) {
       const { buttons } = selection;
       return {
-        title: `Knapper: ${buttons ? buttons.length : 0}`,
+        title: buttons.map((button) => button.text).join(", "),
+        subtitle: "Knapper",
       };
     },
   },

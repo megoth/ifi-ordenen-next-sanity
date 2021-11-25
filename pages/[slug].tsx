@@ -4,7 +4,6 @@ import ErrorPage from "next/error";
 import { getSiteSettings, SiteSettingsPage } from "../lib/api/site-settings";
 import Layout from "../components/layout";
 import Container from "../components/container";
-import Header from "../components/header";
 import PostTitle from "../components/post-title";
 import { GetStaticProps } from "next";
 import { getAllPagesWithSlug, getPage, PageQuery } from "../lib/api/pages";
@@ -16,19 +15,16 @@ interface Props extends SiteSettingsPage {
 
 export default function Post({ page, siteSettings }: Props) {
   const router = useRouter();
-  if (!router.isFallback && !page?.slug) {
+  if ((!router.isFallback && !page?.slug) || !page) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout siteSettings={siteSettings}>
+    <Layout pageTitle={page?.title} siteSettings={siteSettings}>
       <Container>
-        <Header title={siteSettings?.title} />
-        {router.isFallback || !page ? (
+        {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <div>Tittel: {page.title}</div>
-            <div>Neste steg: Laste inn dynamisk innhold</div>
             <PageComponents page={page} />
           </>
         )}
@@ -42,7 +38,7 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
   const [data, siteSettings] = await Promise.all([
-    getPage(params!.slug, preview),
+    getPage(`/${params!.slug}`, preview),
     getSiteSettings(preview),
   ]);
   return {

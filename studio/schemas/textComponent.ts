@@ -11,4 +11,15 @@ export default {
       of: [{ type: "block" }],
     },
   ],
+  preview: {
+    select: {
+      text: "text",
+    },
+    prepare({ text }) {
+      return {
+        title: text[0]?.children[0]?.text,
+        subtitle: "Tekst",
+      };
+    },
+  },
 };

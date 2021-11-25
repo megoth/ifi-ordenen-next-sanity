@@ -4,7 +4,6 @@ import ErrorPage from "next/error";
 import Container from "../../components/container";
 import PostBody from "../../components/post-body";
 import MoreStories from "../../components/more-stories";
-import Header from "../../components/header";
 import PostHeader from "../../components/post-header";
 import Comments from "../../components/comments";
 import SectionSeparator from "../../components/section-separator";
@@ -33,9 +32,8 @@ export default function Post({ post, morePosts, siteSettings }: Props) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout siteSettings={siteSettings}>
+    <Layout pageTitle={post.title} siteSettings={siteSettings}>
       <Container>
-        <Header title={siteSettings?.title} />
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (

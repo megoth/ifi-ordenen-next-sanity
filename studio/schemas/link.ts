@@ -4,11 +4,16 @@ export default {
   title: "Link",
   fields: [
     {
-      title: "Internal Link",
       name: "internalLink",
+      title: "Internal Link",
       description: "Select pages for navigation",
       type: "reference",
       to: [{ type: "page" }],
+    },
+    {
+      name: "externalUrl",
+      title: "External URL",
+      type: "string",
     },
   ],
 };

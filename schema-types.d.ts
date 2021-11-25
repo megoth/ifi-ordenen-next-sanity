@@ -387,14 +387,19 @@ Nødvendig
       _type: "page";
 
       /**
-       * Tittel - `String`
+       * Navn - `String`
 Nødvendig
+       */
+      name?: string;
+
+      /**
+       * Tittel - `String`
        */
       title?: string;
 
       /**
        * Slug - `Slug`
-Nødvendig (unntatt for forsiden)
+Nødvendig
        */
       slug?: {
         _type: "slug";
@@ -410,10 +415,10 @@ Nødvendig (unntatt for forsiden)
        * Innhold - `Array`
        */
       components?: Array<
-        | Sanity.Keyed<TitleComponent>
         | Sanity.Keyed<TextComponent>
         | Sanity.Keyed<ButtonComponent>
         | Sanity.Keyed<ButtonsComponent>
+        | Sanity.Keyed<DataComponent>
       >;
     }
 
@@ -485,16 +490,6 @@ Nødvendig
       description?: Array<Sanity.Keyed<Sanity.Block>>;
     };
 
-    type TextComponent = {
-      _type: "text-component";
-
-      /**
-       * Tekst - `Array`
-Nødvendig
-       */
-      text?: Array<Sanity.Keyed<Sanity.Block>>;
-    };
-
     type ButtonComponent = {
       _type: "button-component";
 
@@ -503,6 +498,11 @@ Nødvendig
 Nødvendig
        */
       text?: string;
+
+      /**
+       * Lenke - `RegistryReference`
+       */
+      link?: Link;
 
       /**
        * Type knapp - `String`
@@ -519,14 +519,24 @@ Nødvendig
       buttons?: Array<Sanity.Keyed<ButtonComponent>>;
     };
 
-    type TitleComponent = {
-      _type: "title-component";
+    type DataComponent = {
+      _type: "data-component";
 
       /**
-       * Tekst - `String`
+       * Type - `String`
+Data må lenkes opp mot siden via kode
+       */
+      type?: "associations" | "events" | "lastMembers" | "members";
+    };
+
+    type TextComponent = {
+      _type: "text-component";
+
+      /**
+       * Tekst - `Array`
 Nødvendig
        */
-      text?: string;
+      text?: Array<Sanity.Keyed<Sanity.Block>>;
     };
 
     type Link = {
@@ -537,6 +547,11 @@ Nødvendig
 Select pages for navigation
        */
       internalLink?: Sanity.Reference<Page>;
+
+      /**
+       * External URL - `String`
+       */
+      externalUrl?: string;
     };
 
     type NavigationItem = {

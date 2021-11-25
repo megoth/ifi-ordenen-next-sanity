@@ -2,9 +2,14 @@ import React from "react";
 import Head from "next/head";
 import { HOME_OG_IMAGE_URL } from "../lib/constants";
 
-export default function Meta() {
+interface Props {
+  title?: string;
+}
+
+export default function Meta({ title }: Props) {
   return (
     <Head>
+      <title>{title}</title>
       <link
         rel="apple-touch-icon"
         sizes="180x180"

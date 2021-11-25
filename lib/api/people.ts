@@ -58,3 +58,7 @@ export async function getAllPeopleWithSlug(): Promise<Array<{ slug: string }>> {
   );
   return data;
 }
+
+export function getSortOrderForYear(person: PersonForListQuery): number {
+  return person.yearOrder * 100 + person.titleOrder;
+}

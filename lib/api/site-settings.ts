@@ -1,18 +1,14 @@
 import { getClient } from "../sanity";
+import { LinkQuery } from "./link";
 
 export interface SiteSettingsPage {
   siteSettings?: SiteSettingsQuery;
 }
 
-export interface NavigationItem {
-  text: string;
-  slug: string;
-}
-
 export interface SiteSettingsQuery
   extends Omit<Sanity.Schema.SiteSettings, "mainNav" | "subNav"> {
-  mainNavItems: Array<NavigationItem>;
-  subNavItems: Array<NavigationItem>;
+  mainNavItems: Array<LinkQuery>;
+  subNavItems: Array<LinkQuery>;
 }
 
 export async function getSiteSettings(
@@ -25,11 +21,13 @@ export async function getSiteSettings(
     description,
     "mainNavItems": mainNav -> items[]{
       text,
-      "slug": navigationItemUrl.internalLink -> slug.current
+      "slug": navigationItemUrl.internalLink -> slug.current,
+      "url": navigationItemUrl.externalUrl
     },
     "subNavItems": subNav -> items[]{
       text,
-      "slug": navigationItemUrl.internalLink -> slug.current
+      "slug": navigationItemUrl.internalLink -> slug.current,
+      "url": navigationItemUrl.externalUrl
     }
   }`
     )

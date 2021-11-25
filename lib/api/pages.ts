@@ -15,6 +15,7 @@ export async function getPage(
   return await getClient(preview)
     .fetch(
       `*[ _type == "page" && slug.current == $slug ]{
+      name,
       title,
       'slug': slug.current,
       description,
@@ -22,5 +23,5 @@ export async function getPage(
     }`,
       { slug }
     )
-    .then((res) => res?.[0]);
+    .then((res) => res?.[0] || null);
 }

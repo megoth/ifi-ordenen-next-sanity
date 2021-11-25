@@ -21,10 +21,10 @@ import page from "./page";
 import buttonComponent from "./buttonComponent";
 import buttonsComponent from "./buttonsComponent";
 import textComponent from "./textComponent";
-import titleComponent from "./titleComponent";
 import navigation from "./navigation";
 import link from "./link";
-import navItem from "./navItem";
+import navigationItem from "./navigationItem";
+import dataComponent from "./dataComponent";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -49,13 +49,13 @@ export default createSchema({
     event,
     source,
     siteSettings,
-    textComponent,
     page,
     buttonComponent,
     buttonsComponent,
-    titleComponent,
+    dataComponent,
+    textComponent,
     link,
-    navItem,
+    navigationItem,
     navigation,
   ]),
 });

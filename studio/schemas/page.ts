@@ -1,20 +1,23 @@
-import React from "react";
-
 export default {
   name: "page",
   title: "Side",
   type: "document",
   fields: [
     {
+      name: "name",
+      title: "Navn",
+      description: "Nødvendig",
+      type: "string",
+    },
+    {
       name: "title",
       title: "Tittel",
-      description: "Nødvendig",
       type: "string",
     },
     {
       name: "slug",
       title: "Slug",
-      description: "Nødvendig (unntatt for forsiden)",
+      description: "Nødvendig",
       type: "slug",
       options: {
         source: "title",
@@ -31,16 +34,17 @@ export default {
       title: "Innhold",
       type: "array",
       of: [
-        { type: "title-component" },
         { type: "text-component" },
         { type: "button-component" },
         { type: "buttons-component" },
+        { type: "data-component" },
       ],
     },
   ],
   preview: {
     select: {
-      title: "title",
+      title: "name",
+      subtitle: "slug.current",
     },
   },
 };

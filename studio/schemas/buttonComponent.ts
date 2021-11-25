@@ -10,6 +10,11 @@ export default {
       type: "string",
     },
     {
+      name: "link",
+      type: "link",
+      title: "Lenke",
+    },
+    {
       name: "class",
       title: "Type knapp",
       type: "string",
@@ -23,6 +28,13 @@ export default {
     select: {
       title: "text",
       subtitle: "class",
+    },
+    prepare(selection) {
+      const { title, subtitle } = selection;
+      return {
+        title,
+        subtitle: `Knapp${subtitle ? ` (${subtitle})` : ""}`,
+      };
     },
   },
 };
