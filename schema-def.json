@@ -1907,6 +1907,107 @@
           }
         }
       ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
+      "name": "dictionaryEntry",
+      "title": "Ordbok",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "name",
+          "title": "Ord/uttrykk",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "name",
+            "readOnly": false,
+            "title": "Ord/uttrykk",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "slug",
+          "title": "Nøkkel",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "slug",
+            "readOnly": false,
+            "title": "Nøkkel",
+            "hasValidation": false,
+            "type": "Slug"
+          }
+        },
+        {
+          "name": "description",
+          "title": "Forklaring",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "description",
+            "readOnly": false,
+            "title": "Forklaring",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": "Block",
+                "hasValidation": false,
+                "type": "Block",
+                "of": null,
+                "markDefs": []
+              }
+            ],
+            "list": null
+          }
+        }
+      ]
     }
   ],
   "registeredTypes": [
@@ -2313,6 +2414,10 @@
               {
                 "title": "Associations",
                 "value": "associations"
+              },
+              {
+                "title": "Dictionary Entries",
+                "value": "dictionaryEntries"
               },
               {
                 "title": "Events",

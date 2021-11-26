@@ -447,6 +447,34 @@ Nødvendig
       items?: Array<Sanity.Keyed<NavigationItem>>;
     }
 
+    /**
+     * Ordbok
+     */
+    interface DictionaryEntry extends Sanity.Document {
+      _type: "dictionaryEntry";
+
+      /**
+       * Ord/uttrykk - `String`
+Nødvendig
+       */
+      name?: string;
+
+      /**
+       * Nøkkel - `Slug`
+Nødvendig
+       */
+      slug?: {
+        _type: "slug";
+        current: string;
+      };
+
+      /**
+       * Forklaring - `Array`
+Nødvendig
+       */
+      description?: Array<Sanity.Keyed<Sanity.Block>>;
+    }
+
     type BlockContent = Array<
       | Sanity.Keyed<Sanity.Block>
       | Sanity.Keyed<{
@@ -526,7 +554,12 @@ Nødvendig
        * Type - `String`
 Data må lenkes opp mot siden via kode
        */
-      type?: "associations" | "events" | "lastMembers" | "members";
+      type?:
+        | "associations"
+        | "dictionaryEntries"
+        | "events"
+        | "lastMembers"
+        | "members";
     };
 
     type TextComponent = {
@@ -580,6 +613,7 @@ Select pages for navigation
       | Source
       | SiteSettings
       | Page
-      | Navigation;
+      | Navigation
+      | DictionaryEntry;
   }
 }

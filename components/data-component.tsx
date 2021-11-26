@@ -5,9 +5,11 @@ import Events from "./events";
 import LastMembers from "./last-members";
 import Members from "./members";
 import { DataModules } from "../lib/api/dataModules";
+import DictionaryEntries from "./dictionaryEntries";
 
 const dataComponents: { [KEY in keyof DataModules]: Function } = {
   associations: Associations,
+  dictionaryEntries: DictionaryEntries,
   events: Events,
   lastMembers: LastMembers,
   members: Members,

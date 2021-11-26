@@ -1,15 +1,23 @@
 import { AssociationQuery } from "./associations";
 import { EventForListQuery } from "./history";
 import { PersonForListQuery } from "./people";
+import { DictionaryEntryQuery } from "./dictionary";
 
 // IMPORTANT!!!
 // Make sure that dataModules and DataModules contains the same keys
 // Also update /components/data-component.tsx
 
-export const dataModules = ["associations", "events", "lastMembers", "members"];
+export const dataModules = [
+  "associations",
+  "dictionaryEntries",
+  "events",
+  "lastMembers",
+  "members",
+];
 
 export interface DataModules {
   associations?: Array<AssociationQuery>;
+  dictionaryEntries?: Array<DictionaryEntryQuery>;
   events?: Array<EventForListQuery>;
   lastMembers?: Array<PersonForListQuery>;
   members?: Array<PersonForListQuery>;
