@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Container from "../../components/container";
 import Layout from "../../components/layout";
-import PostTitle from "../../components/post-title";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import {
@@ -11,8 +10,9 @@ import {
   getPersonAndMore,
   PersonAndMoreQuery,
 } from "../../lib/api/people";
-import CoverImage from "../../components/cover-image";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
+import Loading from "../../components/loading";
+import { imageBuilder } from "../../lib/sanity";
 
 interface Props extends PersonAndMoreQuery, SiteSettingsPage {}
 
@@ -25,21 +25,17 @@ export default function PersonPage({ person, siteSettings }: Props) {
     <Layout pageTitle={person?.name} siteSettings={siteSettings}>
       <Container>
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <div>Loading…</div>
         ) : (
-          <>
-            <article>
-              <Head>
-                <title>{person.name} | Ifi-ordenen</title>
-              </Head>
-              <PostTitle>{person.name}</PostTitle>
-              <CoverImage
-                title={person.name}
-                coverImage={person.mainImage}
-                slug={person.slug}
-              />
-            </article>
-          </>
+          <div>
+            <h1>{person.name}</h1>
+            <img
+              width={1240}
+              height={540}
+              alt={`Cover Image for ${person.name}`}
+              src={imageBuilder(person.mainImage).url() || undefined}
+            />
+          </div>
         )}
       </Container>
     </Layout>

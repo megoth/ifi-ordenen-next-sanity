@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Container from "../../components/container";
 import Layout from "../../components/layout";
-import PostTitle from "../../components/post-title";
 import { GetStaticProps } from "next";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 import {
@@ -27,7 +26,7 @@ export default function PersonPage({ album, siteSettings }: Props) {
     <Layout pageTitle={album.name} siteSettings={siteSettings}>
       <Container>
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <div>Loading…</div>
         ) : (
           <ul>
             {album.images?.map((image, index) => (

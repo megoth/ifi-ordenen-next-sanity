@@ -19,7 +19,7 @@ export default function LastMembers({ lastMembers }: Props) {
             getSortOrderForYear(a) > getSortOrderForYear(b) ? 1 : -1
           )
           .map((person) => (
-            <li>
+            <li key={person.slug}>
               {person.name} - {person.title}
             </li>
           ))}

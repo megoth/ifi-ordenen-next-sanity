@@ -1,5 +1,4 @@
 import React from "react";
-import markdownStyles from "./markdown-styles.module.css";
 import BlockContent from "@sanity/block-content-to-react";
 import { ComponentProps } from "./page-components";
 
@@ -11,7 +10,6 @@ export default function TextComponent({ text }: Props) {
       blocks={text}
       projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
       dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-      className={markdownStyles.markdown}
     />
   );
 }

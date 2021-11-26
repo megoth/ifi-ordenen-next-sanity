@@ -4,7 +4,6 @@ import ErrorPage from "next/error";
 import { getSiteSettings, SiteSettingsPage } from "../lib/api/site-settings";
 import Layout from "../components/layout";
 import Container from "../components/container";
-import PostTitle from "../components/post-title";
 import { GetStaticProps } from "next";
 import { getAllPagesWithSlug, getPage, PageQuery } from "../lib/api/pages";
 import PageComponents from "../components/page-components";
@@ -22,7 +21,7 @@ export default function Post({ page, siteSettings }: Props) {
     <Layout pageTitle={page?.title} siteSettings={siteSettings}>
       <Container>
         {router.isFallback ? (
-          <PostTitle>Loading…</PostTitle>
+          <div>Loading…</div>
         ) : (
           <>
             <PageComponents page={page} />

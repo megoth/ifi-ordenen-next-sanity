@@ -24,11 +24,11 @@ export default function DataComponent({
   componentIndex,
   ...data
 }: Props) {
-  const component = dataComponents[type];
-  if (!component) {
+  const Component = dataComponents[type];
+  if (!Component) {
     return <div>Incorrect component type: {type}</div>;
   }
-  if (component && !data[type]) {
+  if (Component && !data[type]) {
     return (
       <div>
         Missing data for module ({type}): Are you sure you wired up the page
@@ -36,5 +36,5 @@ export default function DataComponent({
       </div>
     );
   }
-  return component(data);
+  return <Component {...data} />;
 }
