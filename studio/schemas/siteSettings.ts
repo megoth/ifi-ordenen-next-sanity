@@ -2,7 +2,12 @@ export default {
   name: "siteSettings",
   title: "Site Settings",
   type: "document",
-  __experimental_actions: [/*'create',*/ "update", /*'delete',*/ "publish"],
+  __experimental_actions: [
+    // "create",
+    "update",
+    // "delete",
+    "publish",
+  ],
   fields: [
     {
       name: "title",
@@ -25,6 +30,19 @@ export default {
       name: "subNav",
       type: "reference",
       to: { type: "navigation" },
+    },
+    {
+      name: "footer",
+      title: "Tekst i foten",
+      type: "array",
+      of: [
+        {
+          title: "Block",
+          type: "block",
+          styles: [{ title: "Normal", value: "normal" }],
+          lists: [],
+        },
+      ],
     },
   ],
 };

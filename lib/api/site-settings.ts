@@ -28,7 +28,8 @@ export async function getSiteSettings(
       text,
       "slug": navigationItemUrl.internalLink -> slug.current,
       "url": navigationItemUrl.externalUrl
-    }
+    },
+    footer
   }`
     )
     .then((results) => results[0]);

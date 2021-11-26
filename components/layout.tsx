@@ -32,7 +32,7 @@ export default function Layout({ children, pageTitle, siteSettings }: Props) {
           {children}
         </main>
       </div>
-      <Footer />
+      <Footer siteSettings={siteSettings} />
     </>
   );
 }

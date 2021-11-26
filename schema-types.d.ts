@@ -245,6 +245,11 @@ Nødvendig
        * Undermeny - `Reference`
        */
       subNav?: Sanity.Reference<Navigation>;
+
+      /**
+       * Tekst i foten - `Array`
+       */
+      footer?: Array<Sanity.Keyed<Sanity.Block>>;
     }
 
     /**
