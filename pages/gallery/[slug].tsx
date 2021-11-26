@@ -30,7 +30,7 @@ export default function PersonPage({ album, siteSettings }: Props) {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <ul>
-            {album.images.map((image, index) => (
+            {album.images?.map((image, index) => (
               <li key={`${album.slug}-${index}`}>
                 <img src={imageBuilder(image.image).url() || undefined} />
                 <BlockContent

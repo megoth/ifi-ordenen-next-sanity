@@ -22,13 +22,13 @@ import { GetStaticProps } from "next";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 
 interface Props extends SiteSettingsPage {
-  post: PostAndMorePostsQuery;
+  post?: PostAndMorePostsQuery;
   morePosts: Array<PostQuery>;
 }
 
 export default function Post({ post, morePosts, siteSettings }: Props) {
   const router = useRouter();
-  if (!router.isFallback && !post?.slug) {
+  if ((!router.isFallback && !post?.slug) || !post) {
     return <ErrorPage statusCode={404} />;
   }
   return (
