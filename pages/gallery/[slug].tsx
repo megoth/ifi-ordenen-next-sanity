@@ -12,6 +12,7 @@ import {
 } from "../../lib/api/gallery";
 import BlockContent from "@sanity/block-content-to-react";
 import { imageBuilder } from "../../lib/sanity";
+import Loading from "../../components/loading";
 
 interface Props extends SiteSettingsPage {
   album: AlbumWithImagesQuery;
@@ -26,7 +27,7 @@ export default function PersonPage({ album, siteSettings }: Props) {
     <Layout pageTitle={album.name} siteSettings={siteSettings}>
       <Container>
         {router.isFallback ? (
-          <div>Loading…</div>
+          <Loading />
         ) : (
           <ul>
             {album.images?.map((image, index) => (

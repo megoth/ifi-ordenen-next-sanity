@@ -11,6 +11,7 @@ import {
 } from "../../lib/api/people";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 import { imageBuilder } from "../../lib/sanity";
+import Loading from "../../components/loading";
 
 interface Props extends PersonAndMoreQuery, SiteSettingsPage {}
 
@@ -23,7 +24,7 @@ export default function PersonPage({ person, siteSettings }: Props) {
     <Layout pageTitle={person?.name} siteSettings={siteSettings}>
       <Container>
         {router.isFallback ? (
-          <div>Loading…</div>
+          <Loading />
         ) : (
           <div>
             <h1>{person.name}</h1>

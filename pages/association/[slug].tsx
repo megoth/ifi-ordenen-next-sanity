@@ -11,6 +11,7 @@ import {
 } from "../../lib/api/associations";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 import BlockContent from "@sanity/block-content-to-react";
+import Loading from "../../components/loading";
 
 interface Props extends AssociationAndMoreQuery, SiteSettingsPage {}
 
@@ -23,7 +24,7 @@ export default function AssociationPage({ association, siteSettings }: Props) {
     <Layout pageTitle={association?.name} siteSettings={siteSettings}>
       <Container>
         {router.isFallback ? (
-          <div>Loading…</div>
+          <Loading />
         ) : (
           <div>
             <h1>{association.name}</h1>

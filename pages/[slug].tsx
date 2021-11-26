@@ -7,6 +7,7 @@ import Container from "../components/container";
 import { GetStaticProps } from "next";
 import { getAllPagesWithSlug, getPage, PageQuery } from "../lib/api/pages";
 import PageComponents from "../components/page-components";
+import Loading from "../components/loading";
 
 interface Props extends SiteSettingsPage {
   page?: PageQuery;
@@ -20,13 +21,7 @@ export default function Post({ page, siteSettings }: Props) {
   return (
     <Layout pageTitle={page?.title} siteSettings={siteSettings}>
       <Container>
-        {router.isFallback ? (
-          <div>Loading…</div>
-        ) : (
-          <>
-            <PageComponents page={page} />
-          </>
-        )}
+        {router.isFallback ? <Loading /> : <PageComponents page={page} />}
       </Container>
     </Layout>
   );
