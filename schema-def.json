@@ -2008,6 +2008,129 @@
           }
         }
       ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "readOnly": false,
+      "hasValidation": false,
+      "name": "album",
+      "title": "Album",
+      "type": "Document",
+      "fields": [
+        {
+          "name": "name",
+          "title": "Navn",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "name",
+            "readOnly": false,
+            "title": "Navn",
+            "hasValidation": false,
+            "type": "String",
+            "list": null
+          }
+        },
+        {
+          "name": "slug",
+          "title": "Slug",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "slug",
+            "readOnly": false,
+            "title": "Slug",
+            "hasValidation": false,
+            "type": "Slug"
+          }
+        },
+        {
+          "name": "date",
+          "title": "Dato",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "date",
+            "readOnly": false,
+            "title": "Dato",
+            "hasValidation": false,
+            "type": "Date"
+          }
+        },
+        {
+          "name": "images",
+          "title": "Bilder",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "images",
+            "readOnly": false,
+            "title": "Bilder",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "albumImage"
+              }
+            ],
+            "list": null
+          }
+        }
+      ]
     }
   ],
   "registeredTypes": [
@@ -2412,6 +2535,10 @@
             "type": "String",
             "list": [
               {
+                "title": "Albums",
+                "value": "albums"
+              },
+              {
                 "title": "Associations",
                 "value": "associations"
               },
@@ -2625,6 +2752,84 @@
             "hasValidation": false,
             "type": "RegistryReference",
             "to": "link"
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
+      "name": "albumImage",
+      "readOnly": false,
+      "title": "Bilde",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "image",
+          "title": "image",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "image",
+            "readOnly": false,
+            "title": "image",
+            "hasValidation": false,
+            "type": "Image",
+            "fields": null
+          }
+        },
+        {
+          "name": "description",
+          "title": "Description",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "description",
+            "readOnly": false,
+            "title": "Description",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": "Block",
+                "hasValidation": false,
+                "type": "Block",
+                "of": null,
+                "markDefs": []
+              }
+            ],
+            "list": null
           }
         }
       ]

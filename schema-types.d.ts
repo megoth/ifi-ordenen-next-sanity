@@ -475,6 +475,38 @@ Nødvendig
       description?: Array<Sanity.Keyed<Sanity.Block>>;
     }
 
+    /**
+     * Album
+     */
+    interface Album extends Sanity.Document {
+      _type: "album";
+
+      /**
+       * Navn - `String`
+Nødvendig
+       */
+      name?: string;
+
+      /**
+       * Slug - `Slug`
+Nødvendig
+       */
+      slug?: {
+        _type: "slug";
+        current: string;
+      };
+
+      /**
+       * Dato - `Date`
+       */
+      date?: string;
+
+      /**
+       * Bilder - `Array`
+       */
+      images?: Array<Sanity.Keyed<AlbumImage>>;
+    }
+
     type BlockContent = Array<
       | Sanity.Keyed<Sanity.Block>
       | Sanity.Keyed<{
@@ -555,6 +587,7 @@ Nødvendig
 Data må lenkes opp mot siden via kode
        */
       type?:
+        | "albums"
         | "associations"
         | "dictionaryEntries"
         | "events"
@@ -601,6 +634,25 @@ Select pages for navigation
       navigationItemUrl?: Link;
     };
 
+    type AlbumImage = {
+      _type: "albumImage";
+
+      /**
+       * image - `Image`
+Nødvendig
+       */
+      image?: {
+        asset: Sanity.Asset;
+        crop?: Sanity.ImageCrop;
+        hotspot?: Sanity.ImageHotspot;
+      };
+
+      /**
+       * Description - `Array`
+       */
+      description?: Array<Sanity.Keyed<Sanity.Block>>;
+    };
+
     type Document =
       | Post
       | Author
@@ -614,6 +666,7 @@ Select pages for navigation
       | SiteSettings
       | Page
       | Navigation
-      | DictionaryEntry;
+      | DictionaryEntry
+      | Album;
   }
 }

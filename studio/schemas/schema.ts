@@ -26,6 +26,8 @@ import link from "./link";
 import navigationItem from "./navigationItem";
 import dataComponent from "./dataComponent";
 import dictionaryEntry from "./dictionaryEntry";
+import album from "./album";
+import albumImage from "./albumImage";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -59,5 +61,7 @@ export default createSchema({
     navigationItem,
     navigation,
     dictionaryEntry,
+    album,
+    albumImage,
   ]),
 });

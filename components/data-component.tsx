@@ -6,8 +6,10 @@ import LastMembers from "./last-members";
 import Members from "./members";
 import { DataModules } from "../lib/api/dataModules";
 import DictionaryEntries from "./dictionaryEntries";
+import Albums from "./albums";
 
 const dataComponents: { [KEY in keyof DataModules]: Function } = {
+  albums: Albums,
   associations: Associations,
   dictionaryEntries: DictionaryEntries,
   events: Events,
