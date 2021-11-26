@@ -17,13 +17,13 @@ export default function Members({ members }: Props) {
       {titles.map((title) => (
         <section key={title}>
           <h2>{title}</h2>
-          <ul className="list-disc">
+          <ul>
             {peopleSorted
               .filter((person) => person.title === title)
               .map((person) => (
                 <li key={person.slug}>
                   <Link as={`/person/${person.slug}`} href="/person/[slug]">
-                    <a className="hover:underline">
+                    <a>
                       {person.name} ({person.title}, {person.year})
                     </a>
                   </Link>

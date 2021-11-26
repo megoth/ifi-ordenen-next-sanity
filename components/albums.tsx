@@ -24,7 +24,7 @@ export default function Albums({ albums }: Props) {
             />
             <div>
               <Link as={`/gallery/${slug}`} href="/gallery/[slug]">
-                <a className="hover:underline">{name}</a>
+                <a>{name}</a>
               </Link>
             </div>
           </li>

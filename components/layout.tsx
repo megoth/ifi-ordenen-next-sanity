@@ -19,15 +19,15 @@ export default function Layout({ children, pageTitle, siteSettings }: Props) {
   return (
     <>
       <Meta title={title} />
-      <div className="min-h-screen">
+      <div>
         <div>
           <Link href={"/"}>Forside</Link>
         </div>
         <Navigation navItems={siteSettings?.mainNavItems} type={"main-menu"} />
         <Navigation navItems={siteSettings?.subNavItems} type={"sub-menu"} />
         <main>
-          <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-            <a className="hover:underline">{pageTitle}</a>
+          <h2>
+            <a>{pageTitle}</a>
           </h2>
           {children}
         </main>

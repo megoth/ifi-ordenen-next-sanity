@@ -9,8 +9,8 @@ interface Props {
 export default function Associations({ associations }: Props) {
   return (
     <div>
-      <h2 className="text-3xl">Aktive foreninger</h2>
-      <ul className="list-disc">
+      <h2>Aktive foreninger</h2>
+      <ul>
         {associations
           ?.filter(({ active }) => active)
           .map((association) => (
@@ -19,13 +19,13 @@ export default function Associations({ associations }: Props) {
                 as={`/association/${association.slug}`}
                 href="/association/[slug]"
               >
-                <a className="hover:underline">{association.name}</a>
+                <a>{association.name}</a>
               </Link>
             </li>
           ))}
       </ul>
-      <h2 className="text-3xl">Tidligere foreninger eller foreningsnavn</h2>
-      <ul className="list-disc">
+      <h2>Tidligere foreninger eller foreningsnavn</h2>
+      <ul>
         {associations
           ?.filter(({ active }) => !active)
           .map((association) => (
@@ -34,7 +34,7 @@ export default function Associations({ associations }: Props) {
                 as={`/association/${association.slug}`}
                 href="/association/[slug]"
               >
-                <a className="hover:underline">{association.name}</a>
+                <a>{association.name}</a>
               </Link>
             </li>
           ))}

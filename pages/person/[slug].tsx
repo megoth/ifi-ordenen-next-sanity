@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Container from "../../components/container";
 import Layout from "../../components/layout";
-import Head from "next/head";
 import { GetStaticProps } from "next";
 import {
   getAllPeopleWithSlug,
@@ -11,7 +10,6 @@ import {
   PersonAndMoreQuery,
 } from "../../lib/api/people";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
-import Loading from "../../components/loading";
 import { imageBuilder } from "../../lib/sanity";
 
 interface Props extends PersonAndMoreQuery, SiteSettingsPage {}
