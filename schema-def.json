@@ -1283,6 +1283,19 @@
                 "hasValidation": false,
                 "type": "RegistryReference",
                 "to": "data-component"
+              },
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "section-component"
               }
             ],
             "list": null
@@ -1899,7 +1912,7 @@
           }
         },
         {
-          "name": "class",
+          "name": "variant",
           "title": "Type knapp",
           "description": "",
           "hidden": false,
@@ -1914,7 +1927,7 @@
             },
             "description": null,
             "hidden": false,
-            "name": "class",
+            "name": "variant",
             "readOnly": false,
             "title": "Type knapp",
             "hasValidation": false,
@@ -2051,6 +2064,127 @@
       },
       "description": null,
       "hidden": false,
+      "name": "section-component",
+      "readOnly": false,
+      "title": "Seksjon",
+      "hasValidation": false,
+      "type": "Object",
+      "fields": [
+        {
+          "name": "components",
+          "title": "Innhold",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "components",
+            "readOnly": false,
+            "title": "Innhold",
+            "hasValidation": false,
+            "type": "Array",
+            "of": [
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "text-component"
+              },
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "button-component"
+              },
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "buttons-component"
+              },
+              {
+                "codegen": {
+                  "required": false
+                },
+                "description": null,
+                "hidden": false,
+                "name": null,
+                "readOnly": false,
+                "title": null,
+                "hasValidation": false,
+                "type": "RegistryReference",
+                "to": "data-component"
+              }
+            ],
+            "list": null
+          }
+        },
+        {
+          "name": "variant",
+          "title": "Type seksjon",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "variant",
+            "readOnly": false,
+            "title": "Type seksjon",
+            "hasValidation": false,
+            "type": "String",
+            "list": [
+              {
+                "title": "Green",
+                "value": "green"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "codegen": {
+        "required": false
+      },
+      "description": null,
+      "hidden": false,
       "name": "text-component",
       "readOnly": false,
       "title": "Tekst",
@@ -2095,6 +2229,35 @@
               }
             ],
             "list": null
+          }
+        },
+        {
+          "name": "variant",
+          "title": "Type tekst",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "variant",
+            "readOnly": false,
+            "title": "Type tekst",
+            "hasValidation": false,
+            "type": "String",
+            "list": [
+              {
+                "title": "Large",
+                "value": "large"
+              }
+            ]
           }
         }
       ]

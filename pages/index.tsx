@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "../components/container";
 import Layout from "../components/layout";
 import { getSiteSettings, SiteSettingsPage } from "../lib/api/site-settings";
 import { getPage, PageQuery } from "../lib/api/pages";
@@ -14,15 +13,11 @@ interface Props extends SiteSettingsPage {
   page?: PageQuery;
 }
 
-export default function Index({ siteSettings, page, lastMembers }: Props) {
+export default function Frontpage({ siteSettings, page, lastMembers }: Props) {
   return (
-    <>
-      <Layout pageTitle={page?.title} siteSettings={siteSettings}>
-        <Container>
-          <PageComponents page={page} lastMembers={lastMembers} />
-        </Container>
-      </Layout>
-    </>
+    <Layout pageTitle={page?.title} siteSettings={siteSettings}>
+      <PageComponents page={page} lastMembers={lastMembers} />
+    </Layout>
   );
 }
 

@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import { getSiteSettings, SiteSettingsPage } from "../lib/api/site-settings";
 import Layout from "../components/layout";
-import Container from "../components/container";
 import { GetStaticProps } from "next";
 import { getAllPagesWithSlug, getPage, PageQuery } from "../lib/api/pages";
 import PageComponents from "../components/page-components";
@@ -20,9 +19,7 @@ export default function Post({ page, siteSettings }: Props) {
   }
   return (
     <Layout pageTitle={page?.title} siteSettings={siteSettings}>
-      <Container>
-        {router.isFallback ? <Loading /> : <PageComponents page={page} />}
-      </Container>
+      {router.isFallback ? <Loading /> : <PageComponents page={page} />}
     </Layout>
   );
 }

@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../../components/layout";
-import Container from "../../components/container";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 import { getPage, PageQuery } from "../../lib/api/pages";
 import PageComponents from "../../components/page-components";
@@ -21,9 +20,7 @@ export default function AllPeoplePage({
 }: Props) {
   return (
     <Layout pageTitle={page?.title} siteSettings={siteSettings}>
-      <Container>
-        <PageComponents page={page} dictionaryEntries={allEntries} />
-      </Container>
+      <PageComponents page={page} dictionaryEntries={allEntries} />
     </Layout>
   );
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Container from "../../components/container";
 import Layout from "../../components/layout";
 import { GetStaticProps } from "next";
 import {
@@ -10,8 +9,8 @@ import {
   PersonAndMoreQuery,
 } from "../../lib/api/people";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
-import { imageBuilder } from "../../lib/sanity";
 import Loading from "../../components/loading";
+import Person from "../../components/person";
 
 interface Props extends PersonAndMoreQuery, SiteSettingsPage {}
 
@@ -22,21 +21,7 @@ export default function PersonPage({ person, siteSettings }: Props) {
   }
   return (
     <Layout pageTitle={person?.name} siteSettings={siteSettings}>
-      <Container>
-        {router.isFallback ? (
-          <Loading />
-        ) : (
-          <div>
-            <h1>{person.name}</h1>
-            <img
-              width={1240}
-              height={540}
-              alt={`Cover Image for ${person.name}`}
-              src={imageBuilder(person.mainImage).url() || undefined}
-            />
-          </div>
-        )}
-      </Container>
+      {router.isFallback ? <Loading /> : <Person person={person} />}
     </Layout>
   );
 }

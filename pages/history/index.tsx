@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../../components/layout";
-import Container from "../../components/container";
 import {
   EventForListQuery,
   getAllEventsForHistoryPage,
@@ -21,9 +20,7 @@ export default function AllPeoplePage({
 }: Props) {
   return (
     <Layout pageTitle={page?.title} siteSettings={siteSettings}>
-      <Container>
-        <PageComponents page={page} events={allEvents} />
-      </Container>
+      <PageComponents page={page} events={allEvents} />
     </Layout>
   );
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Container from "../../components/container";
 import Layout from "../../components/layout";
 import { GetStaticProps } from "next";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
@@ -10,9 +9,8 @@ import {
   getAlbumWithImages,
   getAllAlbumsWithSlug,
 } from "../../lib/api/gallery";
-import BlockContent from "@sanity/block-content-to-react";
-import { imageBuilder } from "../../lib/sanity";
 import Loading from "../../components/loading";
+import Album from "../../components/album";
 
 interface Props extends SiteSettingsPage {
   album: AlbumWithImagesQuery;
@@ -25,24 +23,7 @@ export default function PersonPage({ album, siteSettings }: Props) {
   }
   return (
     <Layout pageTitle={album.name} siteSettings={siteSettings}>
-      <Container>
-        {router.isFallback ? (
-          <Loading />
-        ) : (
-          <ul>
-            {album.images?.map((image, index) => (
-              <li key={`${album.slug}-${index}`}>
-                <img src={imageBuilder(image.image).url() || undefined} />
-                <BlockContent
-                  blocks={image.description}
-                  projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-                  dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-                />
-              </li>
-            ))}
-          </ul>
-        )}
-      </Container>
+      {router.isFallback ? <Loading /> : <Album album={album} />}
     </Layout>
   );
 }

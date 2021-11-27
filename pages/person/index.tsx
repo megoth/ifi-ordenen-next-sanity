@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../../components/layout";
-import Container from "../../components/container";
 import {
   getAllPeopleForPeoplePage,
   PersonForListQuery,
@@ -17,9 +16,7 @@ interface Props extends SiteSettingsPage {
 export default function AllPeoplePage({ members, siteSettings, page }: Props) {
   return (
     <Layout pageTitle={page?.title} siteSettings={siteSettings}>
-      <Container>
-        <PageComponents page={page} members={members} />
-      </Container>
+      <PageComponents page={page} members={members} />
     </Layout>
   );
 }

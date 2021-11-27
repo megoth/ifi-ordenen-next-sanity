@@ -1,7 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Container from "../../components/container";
 import Layout from "../../components/layout";
 import { GetStaticProps } from "next";
 import {
@@ -10,8 +9,8 @@ import {
   getAssociationAndMore,
 } from "../../lib/api/associations";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
-import BlockContent from "@sanity/block-content-to-react";
 import Loading from "../../components/loading";
+import Association from "../../components/association";
 
 interface Props extends AssociationAndMoreQuery, SiteSettingsPage {}
 
@@ -22,20 +21,11 @@ export default function AssociationPage({ association, siteSettings }: Props) {
   }
   return (
     <Layout pageTitle={association?.name} siteSettings={siteSettings}>
-      <Container>
-        {router.isFallback ? (
-          <Loading />
-        ) : (
-          <div>
-            <h1>{association.name}</h1>
-            <BlockContent
-              blocks={association.description}
-              projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-              dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-            />
-          </div>
-        )}
-      </Container>
+      {router.isFallback ? (
+        <Loading />
+      ) : (
+        <Association association={association} />
+      )}
     </Layout>
   );
 }

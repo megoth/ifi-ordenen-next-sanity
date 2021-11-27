@@ -31,6 +31,9 @@
   },
   "devDependencies": {
     "@sanity/cli": "^2.22.0",
+    "@vanilla-extract/babel-plugin": "^1.1.2",
+    "@vanilla-extract/css": "^1.6.4",
+    "@vanilla-extract/next-plugin": "^1.0.1",
     "husky": "^7.0.4",
     "lerna": "^4.0.0",
     "prettier": "^2.5.0",

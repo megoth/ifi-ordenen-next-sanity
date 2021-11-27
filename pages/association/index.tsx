@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../../components/layout";
-import Container from "../../components/container";
 import {
   AssociationQuery,
   getAllAssociationsForAssociationPage,
@@ -21,9 +20,7 @@ export default function AllAssociationsPage({
 }: Props) {
   return (
     <Layout pageTitle={page?.title} siteSettings={siteSettings}>
-      <Container>
-        <PageComponents page={page} associations={associations} />
-      </Container>
+      <PageComponents page={page} associations={associations} />
     </Layout>
   );
 }

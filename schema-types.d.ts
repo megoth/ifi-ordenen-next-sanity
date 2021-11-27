@@ -291,6 +291,7 @@ Nødvendig
         | Sanity.Keyed<ButtonComponent>
         | Sanity.Keyed<ButtonsComponent>
         | Sanity.Keyed<DataComponent>
+        | Sanity.Keyed<SectionComponent>
       >;
     }
 
@@ -439,7 +440,7 @@ Nødvendig
       /**
        * Type knapp - `String`
        */
-      class?: "primary";
+      variant?: "primary";
     };
 
     type ButtonsComponent = {
@@ -467,6 +468,25 @@ Data må lenkes opp mot siden via kode
         | "members";
     };
 
+    type SectionComponent = {
+      _type: "section-component";
+
+      /**
+       * Innhold - `Array`
+       */
+      components?: Array<
+        | Sanity.Keyed<TextComponent>
+        | Sanity.Keyed<ButtonComponent>
+        | Sanity.Keyed<ButtonsComponent>
+        | Sanity.Keyed<DataComponent>
+      >;
+
+      /**
+       * Type seksjon - `String`
+       */
+      variant?: "green";
+    };
+
     type TextComponent = {
       _type: "text-component";
 
@@ -475,6 +495,11 @@ Data må lenkes opp mot siden via kode
 Nødvendig
        */
       text?: Array<Sanity.Keyed<Sanity.Block>>;
+
+      /**
+       * Type tekst - `String`
+       */
+      variant?: "large";
     };
 
     type Link = {

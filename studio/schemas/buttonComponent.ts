@@ -15,7 +15,7 @@ export default {
       title: "Lenke",
     },
     {
-      name: "class",
+      name: "variant",
       title: "Type knapp",
       type: "string",
       layout: "dropdown",
@@ -27,7 +27,7 @@ export default {
   preview: {
     select: {
       title: "text",
-      subtitle: "class",
+      subtitle: "variant",
     },
     prepare(selection) {
       const { title, subtitle } = selection;

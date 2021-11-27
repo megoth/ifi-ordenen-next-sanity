@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../../components/layout";
-import Container from "../../components/container";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 import { getPage, PageQuery } from "../../lib/api/pages";
 import PageComponents from "../../components/page-components";
@@ -14,9 +13,7 @@ interface Props extends SiteSettingsPage {
 export default function AllAlbumsPage({ albums, siteSettings, page }: Props) {
   return (
     <Layout pageTitle={page?.title} siteSettings={siteSettings}>
-      <Container>
-        <PageComponents page={page} albums={albums} />
-      </Container>
+      <PageComponents page={page} albums={albums} />
     </Layout>
   );
 }
