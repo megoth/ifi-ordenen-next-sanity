@@ -3,9 +3,11 @@ import { PersonForListQuery } from "../../../lib/api/people";
 import {
   listItemStyle,
   listStyle,
+  personHiddenStyle,
   personImageStyle,
   personLinkStyle,
   personNameStyle,
+  personSelectedCloseStyle,
   personSelectedDescriptionStyle,
   personSelectedImageStyle,
   personSelectedStyle,
@@ -25,9 +27,22 @@ interface Props {
 
 export default function MembersByYear({ members }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
+  const [hidden, setHidden] = useState<string | null>(null);
+  const usernames = members.map(({ slug }) => slug);
   const router = useRouter();
   useEffect(() => {
-    setSelected(router.asPath.substring(router.pathname.length + 1));
+    const newSelected = router.asPath.substring(router.pathname.length + 1);
+    const selectedIndex = usernames.findIndex(
+      (username) => username === newSelected
+    );
+    setSelected(newSelected);
+    setHidden(
+      selectedIndex % 2 === 1
+        ? usernames[selectedIndex - 1]
+        : selectedIndex % 2 === 0
+        ? usernames[selectedIndex + 1]
+        : null
+    );
   }, [router]);
   return (
     <ul className={listStyle}>
@@ -35,6 +50,7 @@ export default function MembersByYear({ members }: Props) {
         <li
           className={cn(listItemStyle, {
             [personSelectedStyle]: selected === person.slug,
+            [personHiddenStyle]: hidden === person.slug,
           })}
         >
           {selected === person.slug ? (
@@ -44,12 +60,16 @@ export default function MembersByYear({ members }: Props) {
                 style={{
                   backgroundImage: `url(${
                     imageBuilder(person.mainImage)
-                      .height(280)
-                      .width(300)
+                      .height(350)
+                      .width(400)
                       .url() || undefined
                   })`,
                 }}
-              />
+              >
+                <Link href={"/person"} className={personSelectedCloseStyle}>
+                  ✖
+                </Link>
+              </div>
               <div className={personSelectedDescriptionStyle}>
                 <TextBlock text={[person.description[0]]} />
                 <Button href={`/person/${person.slug}`} variant={"on-green"}>
@@ -63,7 +83,7 @@ export default function MembersByYear({ members }: Props) {
                 alt={`Cover Image for ${person.name}`}
                 className={personImageStyle}
                 src={
-                  imageBuilder(person.mainImage).height(150).width(150).url() ||
+                  imageBuilder(person.mainImage).height(200).width(200).url() ||
                   undefined
                 }
               />

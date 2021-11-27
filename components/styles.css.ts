@@ -28,6 +28,10 @@ export const [themeClass, vars] = createTheme({
   lineHeight: {
     base: "1.1875",
   },
+  pageWidth: {
+    medium: "600px",
+    large: "800px",
+  },
   zIndex: {
     base: "0",
     modal: "1000",

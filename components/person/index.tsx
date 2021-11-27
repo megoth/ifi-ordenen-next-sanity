@@ -24,7 +24,7 @@ export default function Person({ person }: Props) {
       <img
         alt={`Cover Image for ${person.name}`}
         className={imageStyle}
-        src={imageBuilder(person.mainImage).url() || undefined}
+        src={imageBuilder(person.mainImage).width(600).url() || undefined}
       />
       <TextBlock text={latestAward.description} />
       <TextBlock text={latestAward.reason} className={reasonStyle} />

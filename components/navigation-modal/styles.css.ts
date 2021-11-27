@@ -20,4 +20,14 @@ export const modalStyle = style({
 
 export const modalInnerStyle = style({
   padding: "2em",
+  "@media": {
+    "screen and (min-width: 640px)": {
+      margin: "0 auto",
+      padding: "2em 0 0",
+      maxWidth: vars.pageWidth.medium,
+    },
+    "screen and (min-width: 900px)": {
+      maxWidth: vars.pageWidth.large,
+    },
+  },
 });
