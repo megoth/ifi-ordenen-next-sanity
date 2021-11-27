@@ -21,7 +21,6 @@ export default function PersonPage({ person, siteSettings }: Props) {
   if (!router.isFallback && !person?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  console.log(person);
   return (
     <Layout pageTitle={person?.name} siteSettings={siteSettings}>
       {router.isFallback ? <Loading /> : <Person person={person} />}
