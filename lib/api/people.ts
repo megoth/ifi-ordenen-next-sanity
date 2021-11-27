@@ -1,10 +1,19 @@
 import client, { getClient } from "../sanity";
 
-export interface PersonQuery extends Omit<Sanity.Schema.Person, "slug"> {
-  slug: string;
+export interface TitleQuery extends Omit<Sanity.Schema.Award, "title"> {
+  title: Sanity.Schema.Title;
 }
 
-export interface PersonForListQuery extends PersonQuery {
+export interface PersonQuery
+  extends Omit<Sanity.Schema.Person, "slug" | "titles" | "associations"> {
+  slug: string;
+  titles: Array<TitleQuery>;
+  associations: Array<Sanity.Schema.Association>;
+}
+
+export interface PersonForListQuery
+  extends Omit<Sanity.Schema.Person, "slug" | "titles"> {
+  slug: string;
   title: string;
   titleOrder: number;
   year: number;
@@ -30,26 +39,27 @@ export async function getAllPeopleForPeoplePage(
   );
 }
 
-export interface PersonAndMoreQuery {
-  person: PersonQuery;
-}
 export async function getPersonAndMore(
   slug: string | string[] | undefined,
   preview: boolean
-): Promise<PersonAndMoreQuery> {
-  const person = await getClient(preview)
+): Promise<PersonQuery> {
+  return getClient(preview)
     .fetch(
       `*[ _type == "person" && slug.current == $slug ]{
-      name,
-      'slug': slug.current,
-      mainImage,
-      'titles': titles|order(year desc).title->,
-      'years': titles|order(year desc).year
+        name,
+        'slug': slug.current,
+        mainImage,
+        'titles': titles[]{
+          description,
+          reason,
+          title->,
+          year,
+        }|order(year desc),
+        associations[]->,
     }`,
       { slug }
     )
     .then((res) => res?.[0]);
-  return { person };
 }
 
 export async function getAllPeopleWithSlug(): Promise<Array<{ slug: string }>> {

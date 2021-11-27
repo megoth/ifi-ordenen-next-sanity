@@ -17,6 +17,7 @@ export const [themeClass, vars] = createTheme({
     h1: "2em",
     h2: "1.5em",
     h3: "1.25em",
+    small: "0.75em",
   },
   fontWeight: {
     body: "300",
