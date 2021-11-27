@@ -6,6 +6,7 @@ export const [themeClass, vars] = createTheme({
     black: "#000000",
     brown: "#312929",
     green: "#EEFFAC",
+    gray: "#6A6A6A",
     red: "#FF9C9C",
     text: "#FFFFFF",
   },
