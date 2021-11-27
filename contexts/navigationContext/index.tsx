@@ -16,7 +16,7 @@ interface Props {
 }
 
 export function NavigationProvider({ children }: Props) {
-  const [isOpen, setOpen] = useState<boolean>(true);
+  const [isOpen, setOpen] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {

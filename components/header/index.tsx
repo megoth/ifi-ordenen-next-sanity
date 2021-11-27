@@ -25,14 +25,14 @@ export default function Header({ className }: Props) {
         <svg
           aria-hidden="true"
           focusable="false"
-          width="20"
-          height="20"
-          viewBox="0 0 20 20"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
         >
           <g fill-rule="evenodd">
-            <rect width="20" height="1" x="2" y="5" />
+            <rect width="20" height="1" x="2" y="4" />
             <rect width="20" height="1" x="2" y="11" />
-            <rect width="20" height="1" x="2" y="17" />
+            <rect width="20" height="1" x="2" y="18" />
           </g>
         </svg>
       </button>
