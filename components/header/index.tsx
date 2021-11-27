@@ -29,7 +29,7 @@ export default function Header({ className }: Props) {
           height="24"
           viewBox="0 0 24 24"
         >
-          <g fill-rule="evenodd">
+          <g fillRule="evenodd">
             <rect width="20" height="1" x="2" y="4" />
             <rect width="20" height="1" x="2" y="11" />
             <rect width="20" height="1" x="2" y="18" />

@@ -17,7 +17,6 @@ interface Props {
 }
 
 export default function Person({ person }: Props) {
-  console.log(person);
   const [latestAward, ...otherAwards] = person.titles;
   return (
     <Container>
