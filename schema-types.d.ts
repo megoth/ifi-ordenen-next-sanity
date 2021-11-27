@@ -291,7 +291,6 @@ Nødvendig
         | Sanity.Keyed<ButtonComponent>
         | Sanity.Keyed<ButtonsComponent>
         | Sanity.Keyed<DataComponent>
-        | Sanity.Keyed<SectionComponent>
       >;
     }
 
@@ -466,25 +465,6 @@ Data må lenkes opp mot siden via kode
         | "events"
         | "lastMembers"
         | "members";
-    };
-
-    type SectionComponent = {
-      _type: "section-component";
-
-      /**
-       * Innhold - `Array`
-       */
-      components?: Array<
-        | Sanity.Keyed<TextComponent>
-        | Sanity.Keyed<ButtonComponent>
-        | Sanity.Keyed<ButtonsComponent>
-        | Sanity.Keyed<DataComponent>
-      >;
-
-      /**
-       * Type seksjon - `String`
-       */
-      variant?: "green";
     };
 
     type TextComponent = {

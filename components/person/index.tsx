@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { imageBuilder } from "../../lib/sanity";
 import { PersonQuery } from "../../lib/api/people";
 import Container from "../container";
@@ -30,25 +30,27 @@ export default function Person({ person }: Props) {
       <TextBlock text={latestAward.description} />
       <TextBlock text={latestAward.reason} className={reasonStyle} />
       <p>Tildelt i {latestAward.year.substring(0, 4)}</p>
-      <ul className={tagsStyle}>
-        {person.associations.map((association) => (
-          <li>
-            <Link
-              href={`/association/${association.slug.current}`}
-              className={tagStyle}
-            >
-              {association.short || association.name}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      {otherAwards.map((award) => (
-        <>
+      {person.associations && (
+        <ul className={tagsStyle}>
+          {person.associations.map((association) => (
+            <li key={association.slug.current}>
+              <Link
+                href={`/association/${association.slug.current}`}
+                className={tagStyle}
+              >
+                {association.short || association.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+      {otherAwards?.map((award) => (
+        <Fragment key={award._type}>
           <h2>Tidligere tildelt: {award.title.name}</h2>
           <TextBlock text={award.description} />
           <TextBlock text={award.reason} className={reasonStyle} />
           <p>Tildelt i {award.year.substring(0, 4)}</p>
-        </>
+        </Fragment>
       ))}
     </Container>
   );
