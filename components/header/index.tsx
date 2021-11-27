@@ -1,20 +1,41 @@
-import React from "react";
-import { SiteSettingsQuery } from "../../lib/api/site-settings";
+import React, { useContext } from "react";
 import Link from "../link";
-import Navigation from "../navigation";
+import NavigationContext from "../../contexts/navigationContext";
+import { headerStyle, triggerStyle } from "./styles.css";
+import cn from "classnames";
 
 interface Props {
-  siteSettings?: SiteSettingsQuery;
+  className?: string;
 }
 
-export default function Header({ siteSettings }: Props) {
+export default function Header({ className }: Props) {
+  const { isOpen, setOpen } = useContext(NavigationContext);
   return (
-    <header>
+    <header className={cn(headerStyle, className)}>
       <div>
         <Link href={"/"}>Forside</Link>
       </div>
-      <Navigation navItems={siteSettings?.mainNavItems} type={"main-menu"} />
-      <Navigation navItems={siteSettings?.subNavItems} type={"sub-menu"} />
+      <button
+        className={triggerStyle}
+        type="button"
+        onClick={() => setOpen(!isOpen)}
+        aria-expanded={isOpen}
+      >
+        <span>Meny</span>
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+        >
+          <g fill-rule="evenodd">
+            <rect width="20" height="1" x="2" y="5" />
+            <rect width="20" height="1" x="2" y="11" />
+            <rect width="20" height="1" x="2" y="17" />
+          </g>
+        </svg>
+      </button>
     </header>
   );
 }

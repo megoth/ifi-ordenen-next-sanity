@@ -24,6 +24,10 @@ export const [themeClass, vars] = createTheme({
   lineHeight: {
     base: "1.1875",
   },
+  zIndex: {
+    base: "0",
+    modal: "1000",
+  },
 });
 
 export const exampleStyle = style({});
