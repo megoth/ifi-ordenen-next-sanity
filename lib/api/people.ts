@@ -35,7 +35,7 @@ export async function getAllPeopleForPeoplePage(
     'yearOrder': titles|order(year desc)[0].yearOrder,
     'reason': titles|order(year desc)[0].reason,
     'description': titles|order(year desc)[0].description,
-  } | order(year desc, yearOrder asc)`);
+  } | order(year desc, yearOrder desc)`);
   return results.map((person) =>
     Object.assign({}, person, {
       year: parseInt(person.year.substr(0, 4), 10),

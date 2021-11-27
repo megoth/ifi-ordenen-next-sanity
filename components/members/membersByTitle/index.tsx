@@ -1,7 +1,7 @@
 import React from "react";
 import { PersonForListQuery } from "../../../lib/api/people";
 import { getTitles } from "../../../lib/api/awards";
-import Link from "next/link";
+import MembersList from "../membersList";
 
 interface Props {
   members: Array<PersonForListQuery>;
@@ -17,19 +17,9 @@ export default function MembersByTitle({ members }: Props) {
       {titles.map((title) => (
         <section key={title}>
           <h2>{title}</h2>
-          <ul>
-            {peopleSorted
-              .filter((person) => person.title === title)
-              .map((person) => (
-                <li key={person.slug}>
-                  <Link as={`/person/${person.slug}`} href="/person/[slug]">
-                    <a>
-                      {person.name} ({person.title}, {person.year})
-                    </a>
-                  </Link>
-                </li>
-              ))}
-          </ul>
+          <MembersList
+            members={peopleSorted.filter((person) => person.title === title)}
+          />
         </section>
       ))}
     </>
