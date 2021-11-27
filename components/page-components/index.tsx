@@ -26,22 +26,14 @@ export default function PageComponents({ page, ...data }: Props) {
         switch (component._type) {
           case "button-component":
             return (
-              <Container>
-                <ButtonComponent
-                  {...component}
-                  key={key}
-                  componentIndex={index}
-                />
+              <Container key={key}>
+                <ButtonComponent {...component} componentIndex={index} />
               </Container>
             );
           case "buttons-component":
             return (
-              <Container>
-                <ButtonsComponent
-                  {...component}
-                  key={key}
-                  componentIndex={index}
-                />
+              <Container key={key}>
+                <ButtonsComponent {...component} componentIndex={index} />
               </Container>
             );
           case "data-component":
@@ -51,12 +43,8 @@ export default function PageComponents({ page, ...data }: Props) {
             );
           case "text-component":
             return (
-              <Container>
-                <TextComponent
-                  {...component}
-                  key={key}
-                  componentIndex={index}
-                />
+              <Container key={key}>
+                <TextComponent {...component} componentIndex={index} />
               </Container>
             );
           default:
