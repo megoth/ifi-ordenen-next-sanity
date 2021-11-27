@@ -17,7 +17,7 @@ export const buttonStyle = style({
       borderColor: vars.color.green,
       color: vars.color.black,
       fontWeight: vars.fontWeight.strong,
-      paddingLeft: 0,
+      padding: 0,
     },
     "&.primary": {
       backgroundColor: vars.color.red,

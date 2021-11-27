@@ -18,6 +18,8 @@ export interface PersonForListQuery
   titleOrder: number;
   year: number;
   yearOrder: number;
+  reason: Array<Sanity.Keyed<Sanity.Block>>;
+  description: Array<Sanity.Keyed<Sanity.Block>>;
 }
 
 export async function getAllPeopleForPeoplePage(
@@ -30,8 +32,10 @@ export async function getAllPeopleForPeoplePage(
     'title': titles|order(year desc)[0].title->name,
     'titleOrder': titles|order(year desc)[0].title->order,
     'year': titles|order(year desc)[0].year,
-    'yearOrder': titles|order(year desc)[0].yearOrder
-  }`);
+    'yearOrder': titles|order(year desc)[0].yearOrder,
+    'reason': titles|order(year desc)[0].reason,
+    'description': titles|order(year desc)[0].description,
+  } | order(year desc, yearOrder asc)`);
   return results.map((person) =>
     Object.assign({}, person, {
       year: parseInt(person.year.substr(0, 4), 10),

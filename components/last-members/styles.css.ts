@@ -5,6 +5,7 @@ export const listStyle = style({
   display: "flex",
   flexDirection: "column",
   gap: "1em",
+  marginBottom: "2em",
 });
 
 export const listItemStyle = style({

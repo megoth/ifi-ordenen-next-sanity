@@ -7,6 +7,7 @@ export const [themeClass, vars] = createTheme({
     brown: "#312929",
     green: "#EEFFAC",
     gray: "#6A6A6A",
+    pink: "#FFB8B8",
     red: "#FF9C9C",
     text: "#FFFFFF",
   },
@@ -18,6 +19,7 @@ export const [themeClass, vars] = createTheme({
     h2: "1.5em",
     h3: "1.25em",
     small: "0.75em",
+    tiny: "0.6em",
   },
   fontWeight: {
     body: "300",
