@@ -3,6 +3,7 @@ import client, { getClient } from "../sanity";
 const associationFields = `
   _id,
   name,
+  short,
   active,
   'slug': slug.current,
   url,
