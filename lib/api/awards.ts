@@ -1,4 +1,5 @@
 import { PersonForListQuery } from "./people";
+import { onlyUnique } from "../utils";
 
 export function getTitles(people: Array<PersonForListQuery>): string[] {
   return people
@@ -7,10 +8,8 @@ export function getTitles(people: Array<PersonForListQuery>): string[] {
     .filter((x, i, a) => a.indexOf(x) === i);
 }
 
-export function getYearsFromAwards(
+export function getDatesFromAwards(
   people: Array<PersonForListQuery>
 ): string[] {
-  return people
-    .map(({ titles }) => titles[0].year)
-    .filter((x, i, a) => a.indexOf(x) === i);
+  return people.map(({ titles }) => titles[0].date).filter(onlyUnique);
 }

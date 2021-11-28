@@ -3,17 +3,19 @@ import { format as formatFn } from "date-fns";
 import { nb } from "date-fns/locale";
 
 interface Props {
-  date?: string;
+  date: string | undefined;
   format: string;
-  postFix?: string;
+  postfix?: string;
+  prefix?: string;
 }
 
-export default function DateFormat({ date, format, postFix }: Props) {
+export default function DateFormat({ date, format, postfix, prefix }: Props) {
   if (!date) return null;
   return (
     <span>
+      {prefix}
       {formatFn(new Date(date), format, { locale: nb })}
-      {postFix}
+      {postfix}
     </span>
   );
 }

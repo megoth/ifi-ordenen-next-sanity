@@ -571,7 +571,7 @@
       "readOnly": false,
       "hasValidation": false,
       "name": "event",
-      "title": "Historisk hendelse",
+      "title": "Historie",
       "type": "Document",
       "fields": [
         {
@@ -694,7 +694,7 @@
         {
           "name": "slug",
           "title": "Slug",
-          "description": "Nødvendig om det legges til beskrivelse",
+          "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -705,7 +705,7 @@
             "codegen": {
               "required": false
             },
-            "description": "Nødvendig om det legges til beskrivelse",
+            "description": "Nødvendig",
             "hidden": false,
             "name": "slug",
             "readOnly": false,
@@ -1710,8 +1710,8 @@
           }
         },
         {
-          "name": "year",
-          "title": "År",
+          "name": "date",
+          "title": "Dato",
           "description": "Nødvendig",
           "hidden": false,
           "readOnly": false,
@@ -1725,17 +1725,17 @@
             },
             "description": "Nødvendig",
             "hidden": false,
-            "name": "year",
+            "name": "date",
             "readOnly": false,
-            "title": "År",
+            "title": "Dato",
             "hasValidation": false,
             "type": "Date"
           }
         },
         {
-          "name": "yearOrder",
-          "title": "Rekkefølge (ift år)",
-          "description": "For å rangere mottagere innad hvert år. Et tall mellom 0 og 100",
+          "name": "dateOrder",
+          "title": "Rekkefølge (ift dato)",
+          "description": "For å rangere mottagere innad hver dato. Et tall mellom 0 og 100 (lavest rangeres først)",
           "hidden": false,
           "readOnly": false,
           "codegen": {
@@ -1746,11 +1746,11 @@
             "codegen": {
               "required": false
             },
-            "description": "For å rangere mottagere innad hvert år. Et tall mellom 0 og 100",
+            "description": "For å rangere mottagere innad hver dato. Et tall mellom 0 og 100 (lavest rangeres først)",
             "hidden": false,
-            "name": "yearOrder",
+            "name": "dateOrder",
             "readOnly": false,
-            "title": "Rekkefølge (ift år)",
+            "title": "Rekkefølge (ift dato)",
             "hasValidation": false,
             "type": "Number",
             "list": null
@@ -2039,6 +2039,10 @@
               {
                 "title": "Members",
                 "value": "members"
+              },
+              {
+                "title": "Page Updates",
+                "value": "pageUpdates"
               }
             ]
           }

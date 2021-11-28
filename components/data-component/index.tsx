@@ -5,8 +5,9 @@ import Events from "../events";
 import LastMembers from "../last-members";
 import Members from "../members";
 import { DataModules } from "../../lib/api/dataModules";
-import DictionaryEntries from "../dictionaryEntries";
+import DictionaryEntries from "../dictionary-entries";
 import Albums from "../albums";
+import PageUpdates from "../page-updates";
 
 const dataComponents: { [KEY in keyof DataModules]: Function } = {
   albums: Albums,
@@ -15,6 +16,7 @@ const dataComponents: { [KEY in keyof DataModules]: Function } = {
   events: Events,
   lastMembers: LastMembers,
   members: Members,
+  pageUpdates: PageUpdates,
 };
 
 interface Props extends Sanity.Schema.DataComponent, ComponentProps {}

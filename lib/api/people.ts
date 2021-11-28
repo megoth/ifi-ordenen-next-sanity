@@ -30,16 +30,16 @@ export async function getAllPeople(
       description,
       reason,
       title->,
-      year,
+      date,
     },
-    'year': titles|order(year desc)[0].year,
-    'yearOrder': titles|order(year desc)[0].yearOrder,
-  } | order(year desc, yearOrder desc)`
+    'date': titles|order(date desc)[0].date,
+    'dateOrder': titles|order(date desc)[0].dateOrder,
+  } | order(date desc, dateOrder desc)`
     )
     .then((people) =>
       people.map(({ titles, ...props }) => ({
         ...props,
-        titles: titles.sort((a, b) => (a.year > b.year ? -1 : 1)),
+        titles: titles.sort((a, b) => (a.date > b.date ? -1 : 1)),
       }))
     );
 }
@@ -59,11 +59,11 @@ export async function getAllPeopleForAssociation(
       description,
       reason,
       title->,
-      year,
+      date,
     },
-    'year': titles|order(year desc)[0].year,
-    'yearOrder': titles|order(year desc)[0].yearOrder,
-  } | order(year desc, yearOrder desc)
+    'date': titles|order(date desc)[0].date,
+    'dateOrder': titles|order(date desc)[0].dateOrder,
+  } | order(date desc, dateOrder desc)
 }`,
       { slug }
     )
@@ -71,7 +71,7 @@ export async function getAllPeopleForAssociation(
     .then((members) =>
       members?.map(({ titles, ...props }) => ({
         ...props,
-        titles: titles.sort((a, b) => (a.year > b.year ? -1 : 1)),
+        titles: titles.sort((a, b) => (a.date > b.date ? -1 : 1)),
       }))
     );
 }
@@ -90,8 +90,8 @@ export async function getPersonAndMore(
           description,
           reason,
           title->,
-          year,
-        } | order(year desc),
+          date,
+        } | order(date desc),
         associations[]->,
     }`,
       { slug }
@@ -104,5 +104,5 @@ export async function getAllPeopleWithSlug(): Promise<Array<{ slug: string }>> {
 }
 
 export function getSortOrderForYear(person: PersonForListQuery): number {
-  return parseInt(person.titles[0].year, 10) * 100 + person.titles[0].yearOrder;
+  return parseInt(person.titles[0].date, 10) * 100 + person.titles[0].dateOrder;
 }

@@ -3,7 +3,7 @@ import { EventForListQuery, getYearsFromEvents } from "../../lib/api/history";
 import HistoryYearEntry from "../history-year-entry";
 import Container from "../container";
 import { PersonForListQuery } from "../../lib/api/people";
-import { getYearsFromAwards } from "../../lib/api/awards";
+import { getDatesFromAwards } from "../../lib/api/awards";
 import { onlyUnique } from "../../lib/utils";
 
 interface Props {
@@ -12,7 +12,8 @@ interface Props {
 }
 
 export default function Events({ events, members }: Props) {
-  const years = [...getYearsFromEvents(events), ...getYearsFromAwards(members)]
+  const years = [...getYearsFromEvents(events), ...getDatesFromAwards(members)]
+    .map((date) => date.substring(0, 4))
     .filter(onlyUnique)
     .sort()
     .reverse();
@@ -22,9 +23,13 @@ export default function Events({ events, members }: Props) {
         {years.map((year) => (
           <li key={`year-${year}`}>
             <HistoryYearEntry
-              events={events.filter((event) => event.year === year)}
+              events={events.filter(
+                (event) => event.year.substring(0, 4) === year
+              )}
               members={members.filter((member) =>
-                member.titles.find((title) => title.year === year)
+                member.titles.find(
+                  (title) => title.date.substring(0, 4) === year
+                )
               )}
               year={year}
             />

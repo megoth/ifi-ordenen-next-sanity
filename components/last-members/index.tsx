@@ -17,16 +17,15 @@ interface Props {
 }
 
 export default function LastMembers({ lastMembers }: Props) {
-  const lastYear = Math.max.apply(
-    null,
-    lastMembers.map(({ titles }) => parseInt(titles[0].year, 10))
-  );
+  const lastDate = lastMembers
+    .map(({ titles }) => titles[0].date)
+    .sort((a, b) => (a < b ? 1 : -1))[0];
   return (
     <Container variant={"green"}>
       <h2>Siste mottakere</h2>
       <ul className={listStyle}>
         {lastMembers
-          .filter(({ titles }) => parseInt(titles[0].year, 10) === lastYear)
+          .filter(({ titles }) => titles[0].date === lastDate)
           .map((person) => (
             <li key={person.slug} className={listItemStyle}>
               <Link href={`/person/${person.slug}`} className={personName}>

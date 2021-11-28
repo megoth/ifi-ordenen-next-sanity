@@ -5,6 +5,7 @@ import Container from "../container";
 import { imageStyle, reasonStyle, titleStyle } from "./styles.css";
 import TextBlock from "../text-block";
 import Tags from "../tags";
+import DateFormat from "../date-format";
 
 interface Props {
   person: PersonQuery;
@@ -30,14 +31,16 @@ export default function Person({ person }: Props) {
       />
       <TextBlock text={latestAward.description} />
       <TextBlock text={latestAward.reason} className={reasonStyle} />
-      <p>Tildelt i {latestAward.year.substring(0, 4)}</p>
+      <p>
+        Tildelt <DateFormat date={latestAward.date} format={"PPP"} />
+      </p>
       {tags && <Tags tags={tags} />}
       {otherAwards?.map((award) => (
         <Fragment key={award._type}>
           <h2>Tidligere tildelt: {award.title.name}</h2>
           <TextBlock text={award.description} />
           <TextBlock text={award.reason} className={reasonStyle} />
-          <p>Tildelt i {award.year.substring(0, 4)}</p>
+          <p>Tildelt i {award.date.substring(0, 4)}</p>
         </Fragment>
       ))}
     </Container>

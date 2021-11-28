@@ -3,6 +3,7 @@ import { EventForListQuery } from "./history";
 import { PersonForListQuery } from "./people";
 import { DictionaryEntryQuery } from "./dictionary";
 import { AlbumQuery } from "./gallery";
+import { PageUpdateQuery } from "./page-updates";
 
 // IMPORTANT!!!
 // Make sure that dataModules and DataModules contains the same keys
@@ -15,6 +16,7 @@ export const dataModules = [
   "events",
   "lastMembers",
   "members",
+  "pageUpdates",
 ];
 
 export interface DataModules {
@@ -24,4 +26,5 @@ export interface DataModules {
   events?: Array<EventForListQuery>;
   lastMembers?: Array<PersonForListQuery>;
   members?: Array<PersonForListQuery>;
+  pageUpdates?: Array<PageUpdateQuery>;
 }

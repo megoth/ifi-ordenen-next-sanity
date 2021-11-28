@@ -10,7 +10,7 @@ interface Props {
 export default function HistoryYearListItem({ event }: Props) {
   return (
     <li>
-      <DateFormat date={event.date} format={"d. MMMM"} postFix={": "} />
+      <DateFormat date={event.date} format={"d. MMMM"} postfix={": "} />
       {event.slug ? (
         <Link href="/history/[slug]" as={`/history/${event.slug}`}>
           {event.name}

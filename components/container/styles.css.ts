@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { vars } from "../styles.css";
 
 export const containerStyle = style({
@@ -13,6 +13,10 @@ export const containerStyle = style({
       paddingBottom: "2em",
     },
   },
+});
+
+globalStyle(`${containerStyle}.green a`, {
+  color: vars.color.black,
 });
 
 export const innerStyle = style({

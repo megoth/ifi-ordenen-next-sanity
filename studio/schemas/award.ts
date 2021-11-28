@@ -11,19 +11,17 @@ export default {
       to: { type: "title" },
     },
     {
-      name: "year",
-      title: "År",
+      name: "date",
+      title: "Dato",
       description: "Nødvendig",
       type: "date",
-      options: {
-        dateFormat: "YYYY",
-      },
     },
     {
-      name: "yearOrder",
-      title: "Rekkefølge (ift år)",
+      name: "dateOrder",
+      title: "Rekkefølge (ift dato)",
       description:
-        "For å rangere mottagere innad hvert år. Et tall mellom 0 og 100",
+        "For å rangere mottagere innad hver dato. Et tall mellom 0 og 100" +
+        " (lavest rangeres først)",
       type: "number",
     },
     {
@@ -58,12 +56,12 @@ export default {
   preview: {
     select: {
       title: "title.name",
-      subtitle: "year",
+      date: "date",
     },
-    prepare({ title, subtitle }) {
+    prepare({ title, date }) {
       return {
         title,
-        subtitle: subtitle.substr(0, 4),
+        subtitle: date,
       };
     },
   },

@@ -11,7 +11,9 @@ interface Props {
 
 export default function HistoryYearAwards({ members, year }: Props) {
   const titles = members
-    ?.flatMap(({ titles }) => titles.find((title) => title.year === year))
+    ?.flatMap(({ titles }) =>
+      titles.find((title) => title.date.substring(0, 4) === year)
+    )
     .sort((a, b) => (a.title.order > b.title.order ? 1 : -1))
     .map(({ title }) => title.name)
     .filter(onlyUnique);
@@ -27,7 +29,8 @@ export default function HistoryYearAwards({ members, year }: Props) {
                 .filter((member) =>
                   member.titles.find(
                     (title) =>
-                      title.title.name === titleName && title.year === year
+                      title.title.name === titleName &&
+                      title.date.substring(0, 4) === year
                   )
                 )
                 .map((member, index) => (

@@ -143,7 +143,7 @@ Nødvendig
     }
 
     /**
-     * Historisk hendelse
+     * Historie
      */
     interface Event extends Sanity.Document {
       _type: "event";
@@ -178,7 +178,7 @@ Hvis man vet nøyaktig dato
 
       /**
        * Slug - `Slug`
-Nødvendig om det legges til beskrivelse
+Nødvendig
        */
       slug?: {
         _type: "slug";
@@ -398,16 +398,16 @@ Nødvendig
       title?: Sanity.Reference<Title>;
 
       /**
-       * År - `Date`
+       * Dato - `Date`
 Nødvendig
        */
-      year?: string;
+      date?: string;
 
       /**
-       * Rekkefølge (ift år) - `Number`
-For å rangere mottagere innad hvert år. Et tall mellom 0 og 100
+       * Rekkefølge (ift dato) - `Number`
+For å rangere mottagere innad hver dato. Et tall mellom 0 og 100 (lavest rangeres først)
        */
-      yearOrder?: number;
+      dateOrder?: number;
 
       /**
        * Fremhevet grunnlag - `Array`
@@ -464,7 +464,8 @@ Data må lenkes opp mot siden via kode
         | "dictionaryEntries"
         | "events"
         | "lastMembers"
-        | "members";
+        | "members"
+        | "pageUpdates";
     };
 
     type TextComponent = {

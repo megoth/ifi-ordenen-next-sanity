@@ -11,10 +11,10 @@ export default function MembersByTitle({ members }: Props) {
   const titles = getTitles(members);
   const peopleSorted = members.sort(
     (a, b) =>
-      parseInt(a.titles[0].year, 10) * 100 +
-      a.titles[0].yearOrder -
-      parseInt(b.titles[0].year, 10) * 100 +
-      b.titles[0].yearOrder
+      parseInt(a.titles[0].date, 10) * 100 +
+      a.titles[0].dateOrder -
+      parseInt(b.titles[0].date, 10) * 100 +
+      b.titles[0].dateOrder
   );
   return (
     <>
