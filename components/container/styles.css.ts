@@ -10,7 +10,7 @@ export const containerStyle = style({
       marginBottom: "2em",
       overflow: "auto",
       paddingTop: "1em",
-      paddingBottom: "1em",
+      paddingBottom: "2em",
     },
   },
 });
