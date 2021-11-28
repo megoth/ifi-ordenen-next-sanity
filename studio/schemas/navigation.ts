@@ -23,4 +23,17 @@ export default {
       of: [{ type: "navigationItem" }],
     },
   ],
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "navId.current",
+    },
+    prepare({ title, subtitle }) {
+      return {
+        title,
+        subtitle,
+        media: GrNavigate,
+      };
+    },
+  },
 };

@@ -1,7 +1,10 @@
+import { BiMedal } from "react-icons/bi";
+
 export default {
   name: "title",
   title: "Tittel",
   type: "document",
+  icon: BiMedal,
   fields: [
     {
       name: "name",

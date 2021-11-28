@@ -1,9 +1,11 @@
 import React from "react";
+import { GrGroup } from "react-icons/gr";
 
 export default {
   name: "association",
   title: "Forening/Organisasjon",
   type: "document",
+  icon: GrGroup,
   fields: [
     {
       name: "name",

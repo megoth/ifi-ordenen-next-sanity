@@ -1,9 +1,11 @@
 import React from "react";
+import { VscSourceControl } from "react-icons/vsc";
 
 export default {
   name: "source",
   title: "Kilde",
   type: "document",
+  icon: VscSourceControl,
   fields: [
     {
       name: "text",

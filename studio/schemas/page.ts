@@ -1,7 +1,11 @@
+import { RiPagesLine } from "react-icons/ri";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+
 export default {
   name: "page",
   title: "Side",
   type: "document",
+  icon: RiPagesLine,
   fields: [
     {
       name: "name",
@@ -45,6 +49,13 @@ export default {
     select: {
       title: "name",
       subtitle: "slug.current",
+    },
+    prepare({ title, subtitle, slug }) {
+      return {
+        title,
+        subtitle,
+        media: RiPagesLine,
+      };
     },
   },
 };
