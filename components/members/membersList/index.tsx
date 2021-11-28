@@ -20,9 +20,22 @@ import { useRouter } from "next/router";
 import cn from "classnames";
 import TextBlock from "../../text-block";
 import Button from "../../button";
+import { NextRouter } from "next/dist/shared/lib/router/router";
 
 interface Props {
   members: Array<PersonForListQuery>;
+}
+
+function getSelected(router: NextRouter): string {
+  const hasSelected = router.asPath.indexOf("#");
+  return hasSelected === -1 ? null : router.asPath.substring(hasSelected + 1);
+}
+
+function getPath(router: NextRouter): string {
+  const hasSelected = router.asPath.indexOf("#");
+  return hasSelected === -1
+    ? router.asPath
+    : router.asPath.substring(0, hasSelected);
 }
 
 export default function MembersList({ members }: Props) {
@@ -30,11 +43,9 @@ export default function MembersList({ members }: Props) {
   const [hidden, setHidden] = useState<string | null>(null);
   const usernames = useMemo(() => members.map(({ slug }) => slug), [members]);
   const router = useRouter();
-  const baseUrl = `/person${router.query.by ? `?by=${router.query.by}` : ""}`;
+  const baseUrl = getPath(router);
   useEffect(() => {
-    const hasSelected = router.asPath.indexOf("#");
-    const newSelected =
-      hasSelected === -1 ? null : router.asPath.substring(hasSelected + 1);
+    const newSelected = getSelected(router);
     const selectedIndex = usernames.findIndex(
       (username) => username === newSelected
     );
@@ -56,6 +67,7 @@ export default function MembersList({ members }: Props) {
             [personHiddenStyle]: hidden === person.slug,
           })}
           key={person.slug}
+          id={person.slug}
         >
           {selected === person.slug ? (
             <div>

@@ -21,7 +21,10 @@ export default function HistoryYearEntry({ events, members, year }: Props) {
       </h3>
       <ul className={listStyle}>
         {majorEvents.map((event, index) => (
-          <HistoryYearListItem event={event} index={index} />
+          <HistoryYearListItem
+            event={event}
+            key={`major-event-${event.year}-${index}`}
+          />
         ))}
         <HistoryYearAwards members={members} year={year} />
         {minorEvents.length > 0 && (
@@ -29,7 +32,10 @@ export default function HistoryYearEntry({ events, members, year }: Props) {
             Mindre hendelser
             <ul className={listStyle}>
               {minorEvents.map((event, index) => (
-                <HistoryYearListItem event={event} index={index} />
+                <HistoryYearListItem
+                  event={event}
+                  key={`minor-event-${event.year}-${index}`}
+                />
               ))}
             </ul>
           </li>

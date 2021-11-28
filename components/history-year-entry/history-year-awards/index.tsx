@@ -21,7 +21,7 @@ export default function HistoryYearAwards({ members, year }: Props) {
         <span>Tildelinger av Ifi-ordenen</span>
         <ul className={listStyle}>
           {titles.map((titleName) => (
-            <li>
+            <li key={titleName}>
               {titleName}:
               {members
                 .filter((member) =>
@@ -31,7 +31,7 @@ export default function HistoryYearAwards({ members, year }: Props) {
                   )
                 )
                 .map((member, index) => (
-                  <span>
+                  <span key={member.slug}>
                     {index !== 0 ? ", " : " "}
                     <Link href="/person/[slug]" as={`/person/${member.slug}`}>
                       {member.name}
