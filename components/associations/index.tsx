@@ -2,6 +2,7 @@ import React from "react";
 import { AssociationQuery } from "../../lib/api/associations";
 import Link from "next/link";
 import Container from "../container";
+import { listStyle } from "./styles.css";
 
 interface Props {
   associations: Array<AssociationQuery>;
@@ -11,7 +12,7 @@ export default function Associations({ associations }: Props) {
   return (
     <Container>
       <h2>Aktive foreninger</h2>
-      <ul>
+      <ul className={listStyle}>
         {associations
           ?.filter(({ active }) => active)
           .map((association) => (
@@ -26,7 +27,7 @@ export default function Associations({ associations }: Props) {
           ))}
       </ul>
       <h2>Tidligere foreninger eller foreningsnavn</h2>
-      <ul>
+      <ul className={listStyle}>
         {associations
           ?.filter(({ active }) => !active)
           .map((association) => (
