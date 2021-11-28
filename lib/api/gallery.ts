@@ -16,7 +16,7 @@ export async function getAllAlbums(
   preview: boolean
 ): Promise<Array<AlbumQuery>> {
   return await getClient(preview)
-    .fetch(`*[ _type == "album" ] | order(date asc){
+    .fetch(`*[ _type == "album" ] | order(date desc){
     name,
     'slug': slug.current,
     date,
