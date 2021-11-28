@@ -3,9 +3,10 @@ import NextLink from "next/link";
 import { LinkQuery } from "../../lib/api/link";
 import { LinkProps } from "next/dist/client/link";
 
-interface Props extends LinkQuery, LinkProps {
+interface Props extends LinkQuery, Omit<LinkProps, "href"> {
   children?: ReactNode;
   className?: string;
+  href?: string;
 }
 
 export default function Link({
