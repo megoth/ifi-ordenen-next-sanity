@@ -4,10 +4,7 @@ export const listStyle = style({
   display: "flex",
   flexWrap: "wrap",
   gap: "1em",
-});
-
-export const listItemStyle = style({
-  flex: "1 1 0",
+  justifyContent: "flex-start",
 });
 
 export const linkStyle = style({

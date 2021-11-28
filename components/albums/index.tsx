@@ -2,7 +2,7 @@ import React from "react";
 import { AlbumQuery } from "../../lib/api/gallery";
 import { imageBuilder } from "../../lib/sanity";
 import Container from "../container";
-import { linkStyle, listItemStyle, listStyle } from "./styles.css";
+import { linkStyle, listStyle } from "./styles.css";
 import Link from "../link";
 
 interface Props {
@@ -16,17 +16,15 @@ export default function Albums({ albums }: Props) {
         {albums
           .filter((album) => !!album.mainImage)
           .map(({ slug, mainImage, name }) => (
-            <li key={slug} className={listItemStyle}>
+            <li key={slug}>
               <Link
                 as={`/gallery/${slug}`}
                 href="/gallery/[slug]"
                 className={linkStyle}
               >
                 <img
-                  width={200}
-                  height={200}
                   src={
-                    imageBuilder(mainImage).width(200).height(200).url() ||
+                    imageBuilder(mainImage).width(256).height(200).url() ||
                     undefined
                   }
                 />
