@@ -15,7 +15,7 @@ export interface EventForListQuery
 export async function getAllEventsForHistoryPage(
   preview: boolean
 ): Promise<Array<EventForListQuery>> {
-  const results = await getClient(preview)
+  return getClient(preview)
     .fetch(`*[ _type == "event" ] | order(year asc, date asc){
     name,
     short,
@@ -25,14 +25,34 @@ export async function getAllEventsForHistoryPage(
     'slug': slug.current,
     description,
   }`);
-  return results;
+}
+
+export async function getAllEventsForAssociation(
+  slug: string | string[] | undefined,
+  preview: boolean
+): Promise<Array<EventForListQuery>> {
+  return getClient(preview)
+    .fetch(
+      `*[ _type == "association" && slug.current == $slug]{
+    "events": *[ _type == "event" && references(^._id)] | order(year asc, date asc){
+      name,
+      short,
+      year,
+      date,
+      major,
+      'slug': slug.current,
+      description,
+    }
+  }`,
+      { slug }
+    )
+    .then((res) => res?.[0]?.events);
 }
 
 export async function getAllEventsWithSlug(): Promise<Array<{ slug: string }>> {
-  const data = await client.fetch(
+  return client.fetch(
     `*[_type == "event" && defined(description) && defined(slug)]{ 'slug': slug.current }`
   );
-  return data;
 }
 
 export function getYearsFromEvents(events: Array<EventForListQuery>): string[] {

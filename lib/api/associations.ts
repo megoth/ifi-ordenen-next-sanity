@@ -6,29 +6,27 @@ const associationFields = `
   active,
   'slug': slug.current,
   url,
-  description
+  description,
+  previous->
 `;
 export interface AssociationQuery
-  extends Omit<Sanity.Schema.Association, "slug"> {
+  extends Omit<Sanity.Schema.Association, "slug" | "previous"> {
   slug: string;
+  previous: Sanity.Schema.Association;
 }
 
-export async function getAllAssociationsForAssociationPage(preview: boolean) {
-  const results = await getClient(preview)
+export async function getAllAssociations(preview: boolean) {
+  return await getClient(preview)
     .fetch(`*[_type == "association"] | order(name asc){
       ${associationFields}
     }`);
-  return results;
 }
 
-export interface AssociationAndMoreQuery {
-  association: AssociationQuery;
-}
 export async function getAssociationAndMore(
   slug: string | string[] | undefined,
   preview: boolean
-): Promise<AssociationAndMoreQuery> {
-  const association = await getClient(preview)
+): Promise<AssociationQuery> {
+  return getClient(preview)
     .fetch(
       `*[_type == "association" && slug.current == $slug] {
         ${associationFields}
@@ -36,14 +34,10 @@ export async function getAssociationAndMore(
       { slug }
     )
     .then((res) => res?.[0]);
-  return { association };
 }
 
 export async function getAllAssociationsWithSlug(): Promise<
   Array<{ slug: string }>
 > {
-  const data = await client.fetch(
-    `*[_type == "association"]{ 'slug': slug.current }`
-  );
-  return data;
+  return client.fetch(`*[_type == "association"]{ 'slug': slug.current }`);
 }

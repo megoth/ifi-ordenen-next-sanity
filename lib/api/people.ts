@@ -20,7 +20,9 @@ export interface PersonForListQuery
 export async function getAllPeople(
   preview: boolean
 ): Promise<Array<PersonForListQuery>> {
-  return getClient(preview).fetch(`*[ _type == "person" ]{
+  return getClient(preview)
+    .fetch(
+      `*[ _type == "person" ]{
     name,
     'slug': slug.current,
     mainImage,
@@ -29,8 +31,45 @@ export async function getAllPeople(
       reason,
       title->,
       year,
-    } | order(year desc),
-  } | order(titles[0].year desc, titles[0].yearOrder desc)`);
+    },
+  } | order(titles[0].year desc, titles[0].yearOrder desc)`
+    )
+    .then((people) =>
+      people.map(({ titles, ...props }) => ({
+        ...props,
+        titles: titles.sort((a, b) => (a.year > b.year ? -1 : 1)),
+      }))
+    );
+}
+
+export async function getAllPeopleForAssociation(
+  slug: string | string[] | undefined,
+  preview: boolean
+): Promise<Array<PersonForListQuery>> {
+  return getClient(preview)
+    .fetch(
+      `*[ _type == "association" && slug.current == $slug]{
+  "members": *[ _type == "person" && references(^._id) ]{
+    name,
+    'slug': slug.current,
+    mainImage,
+    'titles': titles[]{
+      description,
+      reason,
+      title->,
+      year,
+    },
+  } | order(titles[0].year desc, titles[0].yearOrder desc)
+}`,
+      { slug }
+    )
+    .then((res) => res?.[0]?.members)
+    .then((members) =>
+      members?.map(({ titles, ...props }) => ({
+        ...props,
+        titles: titles.sort((a, b) => (a.year > b.year ? -1 : 1)),
+      }))
+    );
 }
 
 export async function getPersonAndMore(
@@ -57,10 +96,7 @@ export async function getPersonAndMore(
 }
 
 export async function getAllPeopleWithSlug(): Promise<Array<{ slug: string }>> {
-  const data = await client.fetch(
-    `*[_type == "person"]{ 'slug': slug.current }`
-  );
-  return data;
+  return client.fetch(`*[_type == "person"]{ 'slug': slug.current }`);
 }
 
 export function getSortOrderForYear(person: PersonForListQuery): number {

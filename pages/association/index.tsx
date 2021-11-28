@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../../components/layout";
 import {
   AssociationQuery,
-  getAllAssociationsForAssociationPage,
+  getAllAssociations,
 } from "../../lib/api/associations";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 import { getPage, PageQuery } from "../../lib/api/pages";
@@ -27,7 +27,7 @@ export default function AllAssociationsPage({
 
 export async function getStaticProps({ preview = false }) {
   const [associations, siteSettings, page] = await Promise.all([
-    getAllAssociationsForAssociationPage(preview),
+    getAllAssociations(preview),
     getSiteSettings(preview),
     getPage("/association", preview),
   ]);
