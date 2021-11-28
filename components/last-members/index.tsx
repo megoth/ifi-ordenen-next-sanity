@@ -27,9 +27,6 @@ export default function LastMembers({ lastMembers }: Props) {
       <ul className={listStyle}>
         {lastMembers
           .filter(({ titles }) => parseInt(titles[0].year, 10) === lastYear)
-          .sort((a, b) =>
-            getSortOrderForYear(a) > getSortOrderForYear(b) ? 1 : -1
-          )
           .map((person) => (
             <li key={person.slug} className={listItemStyle}>
               <Link href={`/person/${person.slug}`} className={personName}>

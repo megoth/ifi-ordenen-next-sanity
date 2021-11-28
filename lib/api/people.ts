@@ -32,7 +32,9 @@ export async function getAllPeople(
       title->,
       year,
     },
-  } | order(titles[0].year desc, titles[0].yearOrder desc)`
+    'year': titles|order(year desc)[0].year,
+    'yearOrder': titles|order(year desc)[0].yearOrder,
+  } | order(year desc, yearOrder desc)`
     )
     .then((people) =>
       people.map(({ titles, ...props }) => ({
@@ -59,7 +61,9 @@ export async function getAllPeopleForAssociation(
       title->,
       year,
     },
-  } | order(titles[0].year desc, titles[0].yearOrder desc)
+    'year': titles|order(year desc)[0].year,
+    'yearOrder': titles|order(year desc)[0].yearOrder,
+  } | order(year desc, yearOrder desc)
 }`,
       { slug }
     )
