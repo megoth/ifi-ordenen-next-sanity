@@ -19,14 +19,14 @@ interface Props {
 export default function LastMembers({ lastMembers }: Props) {
   const lastYear = Math.max.apply(
     null,
-    lastMembers.map(({ year }) => year)
+    lastMembers.map(({ titles }) => parseInt(titles[0].year, 10))
   );
   return (
     <Container variant={"green"}>
       <h2>Siste mottakere</h2>
       <ul className={listStyle}>
         {lastMembers
-          .filter(({ year }) => year === lastYear)
+          .filter(({ titles }) => parseInt(titles[0].year, 10) === lastYear)
           .sort((a, b) =>
             getSortOrderForYear(a) > getSortOrderForYear(b) ? 1 : -1
           )
@@ -48,7 +48,7 @@ export default function LastMembers({ lastMembers }: Props) {
                     {person.name}
                   </Link>
                 </div>
-                <div className={personTitle}>{person.title}</div>
+                <div className={personTitle}>{person.titles[0].title.name}</div>
               </div>
             </li>
           ))}

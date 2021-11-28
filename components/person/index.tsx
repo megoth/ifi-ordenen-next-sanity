@@ -2,15 +2,9 @@ import React, { Fragment } from "react";
 import { imageBuilder } from "../../lib/sanity";
 import { PersonQuery } from "../../lib/api/people";
 import Container from "../container";
-import {
-  imageStyle,
-  reasonStyle,
-  tagsStyle,
-  tagStyle,
-  titleStyle,
-} from "./styles.css";
+import { imageStyle, reasonStyle, titleStyle } from "./styles.css";
 import TextBlock from "../text-block";
-import Link from "../link";
+import Tags from "../tags";
 
 interface Props {
   person: PersonQuery;
@@ -18,6 +12,14 @@ interface Props {
 
 export default function Person({ person }: Props) {
   const [latestAward, ...otherAwards] = person.titles;
+  const tags = person.associations?.reduce<Record<string, string>>(
+    (memo, association) => {
+      memo[`/association/${association.slug.current}`] =
+        association.short || association.name;
+      return memo;
+    },
+    {}
+  );
   return (
     <Container>
       <p className={titleStyle}>{latestAward.title.name}</p>
@@ -29,20 +31,7 @@ export default function Person({ person }: Props) {
       <TextBlock text={latestAward.description} />
       <TextBlock text={latestAward.reason} className={reasonStyle} />
       <p>Tildelt i {latestAward.year.substring(0, 4)}</p>
-      {person.associations && (
-        <ul className={tagsStyle}>
-          {person.associations.map((association) => (
-            <li key={association.slug.current}>
-              <Link
-                href={`/association/${association.slug.current}`}
-                className={tagStyle}
-              >
-                {association.short || association.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+      {tags && <Tags tags={tags} />}
       {otherAwards?.map((award) => (
         <Fragment key={award._type}>
           <h2>Tidligere tildelt: {award.title.name}</h2>

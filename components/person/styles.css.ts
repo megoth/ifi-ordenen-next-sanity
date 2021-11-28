@@ -13,19 +13,3 @@ export const imageStyle = style({
 export const reasonStyle = style({
   fontWeight: vars.fontWeight.strong,
 });
-
-export const tagsStyle = style({
-  display: "flex",
-  gap: "0.5em",
-  flexWrap: "wrap",
-});
-
-export const tagStyle = style({
-  backgroundColor: vars.color.green,
-  borderRadius: "1rem",
-  color: vars.color.black,
-  display: "block",
-  fontSize: vars.fontSize.small,
-  padding: "0.5em 1em",
-  textDecoration: "none",
-});

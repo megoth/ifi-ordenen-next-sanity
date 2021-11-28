@@ -1,9 +1,11 @@
-import React from "react";
+import { BsClock } from "react-icons/bs";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 export default {
   name: "event",
-  title: "Historisk hendelse",
+  title: "Historie",
   type: "document",
+  icon: BsClock,
   fields: [
     {
       name: "name",
@@ -40,7 +42,7 @@ export default {
     {
       name: "slug",
       title: "Slug",
-      description: "Nødvendig om det legges til beskrivelse",
+      description: "Nødvendig",
       type: "slug",
       options: {
         source: "name",
@@ -79,13 +81,13 @@ export default {
       title: "name",
       year: "year",
       major: "major",
+      slug: "slug.current",
     },
-    prepare(selection) {
-      const { title, year, major } = selection;
+    prepare({ title, major, slug }) {
       return {
         title,
-        subtitle: year.substr(0, 4),
-        media: <span>{major ? "⭐" : " "}</span>,
+        subtitle: slug,
+        media: major ? AiFillStar : AiOutlineStar,
       };
     },
   },

@@ -75,7 +75,7 @@ export default function MembersList({ members }: Props) {
                 </Link>
               </div>
               <div className={personSelectedDescriptionStyle}>
-                <TextBlock text={[person.description[0]]} />
+                <TextBlock text={[person.titles[0].description[0]]} />
                 <Button href={`/person/${person.slug}`} variant={"on-green"}>
                   Les hele begrunnelsen
                 </Button>
@@ -96,7 +96,9 @@ export default function MembersList({ members }: Props) {
               />
               <div className={personTextStyle}>
                 <div className={personNameStyle}>{person.name}</div>
-                <div className={personTitleStyle}>{person.title}</div>
+                <div className={personTitleStyle}>
+                  {person.titles[0].title.name}
+                </div>
               </div>
             </Link>
           )}

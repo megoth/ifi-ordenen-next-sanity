@@ -10,7 +10,11 @@ interface Props {
 export default function MembersByTitle({ members }: Props) {
   const titles = getTitles(members);
   const peopleSorted = members.sort(
-    (a, b) => a.year * 100 + a.yearOrder - b.year * 100 + b.yearOrder
+    (a, b) =>
+      parseInt(a.titles[0].year, 10) * 100 +
+      a.titles[0].yearOrder -
+      parseInt(b.titles[0].year, 10) * 100 +
+      b.titles[0].yearOrder
   );
   return (
     <>
@@ -18,7 +22,9 @@ export default function MembersByTitle({ members }: Props) {
         <section key={title}>
           <h2>{title}</h2>
           <MembersList
-            members={peopleSorted.filter((person) => person.title === title)}
+            members={peopleSorted.filter(
+              (person) => person.titles[0].title.name === title
+            )}
           />
         </section>
       ))}

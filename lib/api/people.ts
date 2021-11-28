@@ -14,33 +14,23 @@ export interface PersonQuery
 export interface PersonForListQuery
   extends Omit<Sanity.Schema.Person, "slug" | "titles"> {
   slug: string;
-  title: string;
-  titleOrder: number;
-  year: number;
-  yearOrder: number;
-  reason: Array<Sanity.Keyed<Sanity.Block>>;
-  description: Array<Sanity.Keyed<Sanity.Block>>;
+  titles: Array<TitleQuery>;
 }
 
-export async function getAllPeopleForPeoplePage(
+export async function getAllPeople(
   preview: boolean
 ): Promise<Array<PersonForListQuery>> {
-  const results = await getClient(preview).fetch(`*[ _type == "person" ]{
+  return getClient(preview).fetch(`*[ _type == "person" ]{
     name,
     'slug': slug.current,
     mainImage,
-    'title': titles|order(year desc)[0].title->name,
-    'titleOrder': titles|order(year desc)[0].title->order,
-    'year': titles|order(year desc)[0].year,
-    'yearOrder': titles|order(year desc)[0].yearOrder,
-    'reason': titles|order(year desc)[0].reason,
-    'description': titles|order(year desc)[0].description,
-  } | order(year desc, yearOrder desc)`);
-  return results.map((person) =>
-    Object.assign({}, person, {
-      year: parseInt(person.year.substr(0, 4), 10),
-    })
-  );
+    'titles': titles[]{
+      description,
+      reason,
+      title->,
+      year,
+    } | order(year desc),
+  } | order(titles[0].year desc, titles[0].yearOrder desc)`);
 }
 
 export async function getPersonAndMore(
@@ -58,7 +48,7 @@ export async function getPersonAndMore(
           reason,
           title->,
           year,
-        }|order(year desc),
+        } | order(year desc),
         associations[]->,
     }`,
       { slug }
@@ -74,5 +64,5 @@ export async function getAllPeopleWithSlug(): Promise<Array<{ slug: string }>> {
 }
 
 export function getSortOrderForYear(person: PersonForListQuery): number {
-  return person.yearOrder * 100 + person.titleOrder;
+  return parseInt(person.titles[0].year, 10) * 100 + person.titles[0].yearOrder;
 }

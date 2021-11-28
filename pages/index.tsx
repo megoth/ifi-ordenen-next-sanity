@@ -3,10 +3,7 @@ import Layout from "../components/layout";
 import { getSiteSettings, SiteSettingsPage } from "../lib/api/site-settings";
 import { getPage, PageQuery } from "../lib/api/pages";
 import PageComponents from "../components/page-components";
-import {
-  getAllPeopleForPeoplePage,
-  PersonForListQuery,
-} from "../lib/api/people";
+import { getAllPeople, PersonForListQuery } from "../lib/api/people";
 
 interface Props extends SiteSettingsPage {
   lastMembers?: Array<PersonForListQuery>;
@@ -25,7 +22,7 @@ export async function getStaticProps({ preview = false }) {
   const [siteSettings, page, lastMembers] = await Promise.all([
     getSiteSettings(preview),
     getPage("/", preview),
-    getAllPeopleForPeoplePage(preview),
+    getAllPeople(preview),
   ]);
   return {
     props: { siteSettings, page, lastMembers },

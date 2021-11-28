@@ -4,26 +4,26 @@ import ErrorPage from "next/error";
 import Layout from "../../components/layout";
 import { GetStaticProps } from "next";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
-import {
-  AlbumWithImagesQuery,
-  getAlbumWithImages,
-  getAllAlbumsWithSlug,
-} from "../../lib/api/gallery";
 import Loading from "../../components/loading";
-import Album from "../../components/album";
+import Event from "../../components/event";
+import {
+  EventQuery,
+  getAllEventsWithSlug,
+  getEvent,
+} from "../../lib/api/history";
 
 interface Props extends SiteSettingsPage {
-  album: AlbumWithImagesQuery;
+  event: EventQuery;
 }
 
-export default function AlbumPage({ album, siteSettings }: Props) {
+export default function EventPage({ event, siteSettings }: Props) {
   const router = useRouter();
-  if ((!router.isFallback && !album?.slug) || !album) {
+  if ((!router.isFallback && !event?.slug) || !event) {
     return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout pageTitle={album.name} siteSettings={siteSettings}>
-      {router.isFallback ? <Loading /> : <Album album={album} />}
+    <Layout pageTitle={event.name} siteSettings={siteSettings}>
+      {router.isFallback ? <Loading /> : <Event event={event} />}
     </Layout>
   );
 }
@@ -32,14 +32,14 @@ export const getStaticProps: GetStaticProps = async ({
   params,
   preview = false,
 }) => {
-  const [album, siteSettings] = await Promise.all([
-    getAlbumWithImages(params!.slug, preview),
+  const [event, siteSettings] = await Promise.all([
+    getEvent(params!.slug, preview),
     getSiteSettings(preview),
   ]);
   return {
     props: {
       preview,
-      album,
+      event,
       siteSettings,
     },
     revalidate: 1,
@@ -47,12 +47,12 @@ export const getStaticProps: GetStaticProps = async ({
 };
 
 export async function getStaticPaths() {
-  const albums = await getAllAlbumsWithSlug();
+  const events = await getAllEventsWithSlug();
   return {
     paths:
-      albums?.map((album) => ({
+      events?.map((event) => ({
         params: {
-          slug: album.slug,
+          slug: event.slug,
         },
       })) || [],
     fallback: true,

@@ -10,4 +10,5 @@ globalStyle(`${textBlockStyle} ul`, {
 
 globalStyle(`${textBlockStyle} blockquote`, {
   color: vars.color.green,
+  margin: "1em",
 });
