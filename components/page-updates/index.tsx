@@ -12,7 +12,7 @@ interface Props {
 export default function PageUpdates({ pageUpdates }: Props) {
   return (
     <Container>
-      <h2>Oppdager på siden</h2>
+      <h2>Oppdateringer på siden</h2>
       <ul className={listStyle}>
         {pageUpdates.map(({ created, description, name, url }) => (
           <li key={url}>
