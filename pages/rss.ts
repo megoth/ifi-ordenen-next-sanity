@@ -2,6 +2,8 @@ import React from "react";
 import { NextPageContext } from "next";
 import { getPageUpdates, PageUpdateQuery } from "../lib/api/page-updates";
 import { getSiteSettings, SiteSettingsQuery } from "../lib/api/site-settings";
+import { format } from "date-fns";
+import { nb } from "date-fns/locale";
 
 const pageUpdatesRssXml = (pageUpdates: Array<PageUpdateQuery>) => {
   let latestPostDate: string = "";
@@ -11,16 +13,21 @@ const pageUpdatesRssXml = (pageUpdates: Array<PageUpdateQuery>) => {
     if (!latestPostDate || postDate > Date.parse(latestPostDate)) {
       latestPostDate = update.created;
     }
+    const text = `${update.description}: ${update.name} (${format(
+      new Date(update.created),
+      "PPP",
+      { locale: nb }
+    )})`;
     rssItemsXml += `
       <item>
-        <title>${update.description}: ${update.name}</title>
+        <title>${text}</title>
         <link>
           ${update.url}
         </link>
         
         <pubDate>${update.created}</pubDate>
         <description>
-        <![CDATA[${update.description}: ${update.name}]]>
+        <![CDATA[${text}]]>
         </description>
     </item>`;
   });

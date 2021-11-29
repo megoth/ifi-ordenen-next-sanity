@@ -25,7 +25,7 @@ export default function PageUpdates({ pageUpdates }: Props) {
               format="PPPP"
               date={created}
               prefix={" ("}
-              postfix={"): "}
+              postfix={")"}
             />
           </li>
         ))}
