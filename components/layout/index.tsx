@@ -22,7 +22,7 @@ export default function Layout({ children, pageTitle, siteSettings }: Props) {
   return (
     <NavigationProvider>
       <div className={layoutStyle}>
-        <Meta title={title} />
+        <Meta title={title} siteSettings={siteSettings} />
         <div>
           <Container>
             <Header className={headerStyle} />

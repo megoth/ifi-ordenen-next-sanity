@@ -1,23 +1,26 @@
 import React from "react";
 import Head from "next/head";
+import { SiteSettingsQuery } from "../../lib/api/site-settings";
 
 interface Props {
-  title?: string;
+  title: string;
+  siteSettings: SiteSettingsQuery | undefined;
 }
 
-export default function Meta({ title }: Props) {
+export default function Meta({ title, siteSettings }: Props) {
+  console.log(siteSettings);
   return (
     <Head>
       <title>{title}</title>
-      {/*<link rel="preconnect" href="https://fonts.googleapis.com" />*/}
-      {/*<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />*/}
-      {/*<link*/}
-      {/*  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"*/}
-      {/*  rel="stylesheet"*/}
-      {/*/>*/}
       <link
         href="/fonts/Inter/Inter-VariableFont_slnt,wght.ttf"
         rel="stylesheet"
+      />
+      <link
+        href="/rss"
+        rel="alternate"
+        type="application/rss+xml"
+        title={`RSS for ${siteSettings?.title}`}
       />
       {/*<link*/}
       {/*  rel="apple-touch-icon"*/}
@@ -43,14 +46,11 @@ export default function Meta({ title }: Props) {
       {/*  color="#000000"*/}
       {/*/>*/}
       {/*<link rel="shortcut icon" href="/favicon/favicon.ico" />*/}
-      {/*<meta name="msapplication-TileColor" content="#212020" />*/}
+      {/*<meta name="msapplication-TileColor" content={vars.color.base} />*/}
       {/*<meta name="msapplication-config" content="/favicon/browserconfig.xml" />*/}
-      {/*<meta name="theme-color" content="#212020" />*/}
+      {/*<meta name="theme-color" content={vars.color.base} />*/}
       {/*<link rel="alternate" type="application/rss+xml" href="/feed.xml" />*/}
-      {/*<meta*/}
-      {/*  name="description"*/}
-      {/*  content={`A statically generated blog example using Next.js and Sanity.io.`}*/}
-      {/*/>*/}
+      <meta name="description" content={siteSettings?.description} />
       {/*<meta property="og:image" content={HOME_OG_IMAGE_URL} />*/}
     </Head>
   );
