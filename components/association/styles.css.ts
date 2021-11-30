@@ -2,5 +2,5 @@ import { style } from "@vanilla-extract/css";
 
 export const listStyle = style({
   listStyle: "disc",
-  margin: "1rem 0",
+  margin: "1rem",
 });
