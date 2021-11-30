@@ -5,10 +5,10 @@ export const textBlockStyle = style({});
 
 globalStyle(`${textBlockStyle} ul`, {
   listStyle: "disc",
-  margin: "1rem 0",
+  margin: "1rem",
 });
 
 globalStyle(`${textBlockStyle} blockquote`, {
   color: vars.color.green,
-  margin: "1em",
+  margin: "1rem",
 });

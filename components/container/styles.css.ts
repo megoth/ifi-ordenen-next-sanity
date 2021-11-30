@@ -6,11 +6,11 @@ export const containerStyle = style({
     "&.green": {
       backgroundColor: vars.color.green,
       color: vars.color.black,
-      marginTop: "3em",
-      marginBottom: "2em",
+      marginTop: "4em",
+      marginBottom: "3em",
       overflow: "auto",
-      paddingTop: "1em",
-      paddingBottom: "2em",
+      paddingTop: "2em",
+      paddingBottom: "3em",
     },
   },
 });
