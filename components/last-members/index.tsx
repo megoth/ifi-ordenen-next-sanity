@@ -23,14 +23,19 @@ export default function LastMembers({ lastMembers }: Props) {
     new Date(new Date().setMonth(new Date().getMonth() - 14)),
     "yyyy-MM-dd"
   );
-  const lastDates = lastMembers
+  const dates = lastMembers
     .map(({ titles }) => titles[0].date)
     .filter(onlyUnique)
-    .filter((date) => date > fromDate)
     .sort((a, b) => (a < b ? 1 : -1));
+  const lastDatesSelection = dates.filter((date) => date > fromDate);
+  const lastDates = lastDatesSelection.length ? lastDatesSelection : dates[0];
   return (
     <Container variant={"green"}>
-      <h2>Mottakere siste året</h2>
+      <h2>
+        {lastDatesSelection.length
+          ? "Mottakere siste året"
+          : "Siste" + " mottakere"}
+      </h2>
       <ul className={listStyle}>
         {lastMembers
           .filter(({ titles }) => lastDates.indexOf(titles[0].date) !== -1)
