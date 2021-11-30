@@ -10,7 +10,7 @@ interface Props {
 
 export default function Container({ children, className, variant }: Props) {
   return (
-    <div className={cn(containerStyle, variant, className)}>
+    <div className={cn(containerStyle, variant)}>
       <div className={cn(innerStyle, variant, className)}>{children}</div>
     </div>
   );

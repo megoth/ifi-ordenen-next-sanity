@@ -3,6 +3,7 @@ import Link from "../link";
 import NavigationContext from "../../contexts/navigationContext";
 import { headerStyle, triggerStyle } from "./styles.css";
 import cn from "classnames";
+import Logo from "../logo";
 
 interface Props {
   className?: string;
@@ -13,7 +14,9 @@ export default function Header({ className }: Props) {
   return (
     <header className={cn(headerStyle, className)}>
       <div>
-        <Link href={"/"}>Forside</Link>
+        <Link href={"/"}>
+          <Logo />
+        </Link>
       </div>
       <button
         className={triggerStyle}
