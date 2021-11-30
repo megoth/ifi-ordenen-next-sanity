@@ -8,7 +8,6 @@ interface Props {
 }
 
 export default function Meta({ title, siteSettings }: Props) {
-  console.log(siteSettings);
   return (
     <Head>
       <title>{title}</title>
