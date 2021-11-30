@@ -1,3 +1,4 @@
+import { globalStyle } from "@vanilla-extract/css";
 import { createTheme, style } from "@vanilla-extract/css";
 
 export const [themeClass, vars] = createTheme({
@@ -37,10 +38,6 @@ export const [themeClass, vars] = createTheme({
     modal: "1000",
   },
 });
-
-export const exampleStyle = style({});
-
-import { globalStyle } from "@vanilla-extract/css";
 
 globalStyle("html, body, #__next", {
   height: "100%",

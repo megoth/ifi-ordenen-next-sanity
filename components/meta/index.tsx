@@ -12,10 +12,6 @@ export default function Meta({ title, siteSettings }: Props) {
     <Head>
       <title>{title}</title>
       <link
-        href="/fonts/Inter/Inter-VariableFont_slnt,wght.ttf"
-        rel="stylesheet"
-      />
-      <link
         href="/rss"
         rel="alternate"
         type="application/rss+xml"
