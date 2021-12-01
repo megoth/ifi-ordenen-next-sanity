@@ -7,7 +7,7 @@ import { PersonForListQuery } from "../../lib/api/people";
 import Events from "../events";
 import MembersList from "../members/membersList";
 import Link from "../link";
-import { listStyle, logoStyle } from "./styles.css";
+import { detailsStyle, listStyle, logoStyle } from "./styles.css";
 import { imageBuilder } from "../../lib/sanity";
 
 interface Props {
@@ -20,42 +20,44 @@ export default function Association({ association, events, members }: Props) {
   return (
     <>
       <Container>
-        {association.logo && (
-          <div className={logoStyle} style={getLogoStyle(association)}>
-            <img
-              src={imageBuilder(association.logo).url() || undefined}
-              alt={`Logo for ${association.name}`}
-            />
-          </div>
-        )}
-        <TextBlock text={association.description} />
-        <h2>Annen informasjon</h2>
-        {(!association.active || association.previous || association.url) && (
-          <ul className={listStyle}>
-            {!association.active && (
-              <li>
-                <strong>Ikke lenger aktiv</strong>
-              </li>
-            )}
-            {association.previous && (
-              <li>
-                <span>Tidligere kjent som </span>
-                <Link
-                  href="/association/[slug]"
-                  as={`/association/${association.previous.slug.current}`}
-                >
-                  {association.previous.name}
-                </Link>
-              </li>
-            )}
-            {association.url && (
-              <li>
-                <span>Nettside: </span>
-                <Link href={association.url}>{association.url}</Link>
-              </li>
-            )}
-          </ul>
-        )}
+        <div className={detailsStyle}>
+          {association.logo && (
+            <div className={logoStyle} style={getLogoStyle(association)}>
+              <img
+                src={imageBuilder(association.logo).url() || undefined}
+                alt={`Logo for ${association.name}`}
+              />
+            </div>
+          )}
+          <TextBlock text={association.description} />
+          <h2>Annen informasjon</h2>
+          {(!association.active || association.previous || association.url) && (
+            <ul className={listStyle}>
+              {!association.active && (
+                <li>
+                  <strong>Ikke lenger aktiv</strong>
+                </li>
+              )}
+              {association.previous && (
+                <li>
+                  <span>Tidligere kjent som </span>
+                  <Link
+                    href="/association/[slug]"
+                    as={`/association/${association.previous.slug.current}`}
+                  >
+                    {association.previous.name}
+                  </Link>
+                </li>
+              )}
+              {association.url && (
+                <li>
+                  <span>Nettside: </span>
+                  <Link href={association.url}>{association.url}</Link>
+                </li>
+              )}
+            </ul>
+          )}
+        </div>
         {members.length > 0 && (
           <>
             <h2>Ordensbærere</h2>

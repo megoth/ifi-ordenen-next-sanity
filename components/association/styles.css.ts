@@ -4,6 +4,10 @@ import { vars } from "../styles.css";
 
 export const listStyle = style(listRule);
 
+export const detailsStyle = style({
+  overflow: "auto",
+});
+
 export const logoStyle = style({
   backgroundColor: vars.color.white,
   borderRadius: "1rem",
