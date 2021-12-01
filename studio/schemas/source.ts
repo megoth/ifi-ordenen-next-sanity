@@ -1,5 +1,6 @@
-import React from "react";
 import { VscSourceControl } from "react-icons/vsc";
+import { BsLink45Deg } from "react-icons/bs";
+import { FiBook } from "react-icons/fi";
 
 export default {
   name: "source",
@@ -28,7 +29,7 @@ export default {
       const { title, url } = selection;
       return {
         title,
-        media: <span>{url ? "🔗" : "📖"}</span>,
+        media: url ? BsLink45Deg : FiBook,
       };
     },
   },

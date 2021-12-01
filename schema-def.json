@@ -286,6 +286,54 @@
           }
         },
         {
+          "name": "logo",
+          "title": "Logo",
+          "description": "Nødvendig",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": "Nødvendig",
+            "hidden": false,
+            "name": "logo",
+            "readOnly": false,
+            "title": "Logo",
+            "hasValidation": false,
+            "type": "Image",
+            "fields": null
+          }
+        },
+        {
+          "name": "logoBackgroundColor",
+          "title": "Bakgrunnsfarge på logo",
+          "description": "",
+          "hidden": false,
+          "readOnly": false,
+          "codegen": {
+            "required": false
+          },
+          "hasValidation": false,
+          "definition": {
+            "codegen": {
+              "required": false
+            },
+            "description": null,
+            "hidden": false,
+            "name": "logoBackgroundColor",
+            "readOnly": false,
+            "title": "Bakgrunnsfarge på logo",
+            "hasValidation": false,
+            "type": "RegistryReference",
+            "to": "color"
+          }
+        },
+        {
           "name": "url",
           "title": "Nettside",
           "description": "",

@@ -15,7 +15,10 @@ export default function Associations({ associations }: Props) {
         {associations
           ?.filter(({ active }) => active)
           .map((association) => (
-            <AssociationsItem association={association} />
+            <AssociationsItem
+              association={association}
+              key={association.slug}
+            />
           ))}
       </ul>
       <h2>Tidligere foreninger eller foreningsnavn</h2>
@@ -23,7 +26,10 @@ export default function Associations({ associations }: Props) {
         {associations
           ?.filter(({ active }) => !active)
           .map((association) => (
-            <AssociationsItem association={association} />
+            <AssociationsItem
+              association={association}
+              key={association.slug}
+            />
           ))}
       </ul>
     </Container>

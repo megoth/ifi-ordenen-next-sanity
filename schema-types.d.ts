@@ -77,6 +77,21 @@ Nødvendig
       };
 
       /**
+       * Logo - `Image`
+Nødvendig
+       */
+      logo?: {
+        asset: Sanity.Asset;
+        crop?: Sanity.ImageCrop;
+        hotspot?: Sanity.ImageHotspot;
+      };
+
+      /**
+       * Bakgrunnsfarge på logo - `RegistryReference`
+       */
+      logoBackgroundColor?: Color;
+
+      /**
        * Nettside - `Url`
        */
       url?: string;

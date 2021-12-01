@@ -7,6 +7,7 @@ interface Props extends LinkQuery, Omit<LinkProps, "href"> {
   children?: ReactNode;
   className?: string;
   href?: string;
+  style?: Object;
 }
 
 export default function Link({
@@ -16,11 +17,14 @@ export default function Link({
   slug,
   text,
   url,
+  style,
   ...props
 }: Props) {
   return (
     <NextLink href={href || slug || url} {...props}>
-      <a className={className}>{text || children}</a>
+      <a className={className} style={style}>
+        {text || children}
+      </a>
     </NextLink>
   );
 }

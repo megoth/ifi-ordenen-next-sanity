@@ -1,5 +1,5 @@
-import React from "react";
-import { GrGroup } from "react-icons/gr";
+import { GrGroup, GrFormCheckmark } from "react-icons/gr";
+import { MdOutlineClear } from "react-icons/md";
 
 export default {
   name: "association",
@@ -33,6 +33,20 @@ export default {
         source: "name",
         maxLength: 96,
       },
+    },
+    {
+      name: "logo",
+      title: "Logo",
+      description: "Nødvendig",
+      type: "image",
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: "logoBackgroundColor",
+      title: "Bakgrunnsfarge på logo",
+      type: "color",
     },
     {
       name: "url",
@@ -70,7 +84,7 @@ export default {
       return {
         title: title,
         subtitle: short || "",
-        media: <span>{active ? "✅" : "❌"}</span>,
+        media: active ? GrFormCheckmark : MdOutlineClear,
       };
     },
   },

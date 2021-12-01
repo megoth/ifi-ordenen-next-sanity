@@ -6,6 +6,8 @@ const associationFields = `
   short,
   active,
   'slug': slug.current,
+  logo,
+  logoBackgroundColor,
   url,
   description,
   previous->
@@ -41,4 +43,10 @@ export async function getAllAssociationsWithSlug(): Promise<
   Array<{ slug: string }>
 > {
   return client.fetch(`*[_type == "association"]{ 'slug': slug.current }`);
+}
+
+export function getLogoStyle(association: AssociationQuery) {
+  return association.logoBackgroundColor
+    ? { backgroundColor: association.logoBackgroundColor.hex }
+    : {};
 }

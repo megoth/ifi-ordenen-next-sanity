@@ -1,13 +1,14 @@
 import React from "react";
 import Container from "../container";
-import { AssociationQuery } from "../../lib/api/associations";
+import { AssociationQuery, getLogoStyle } from "../../lib/api/associations";
 import TextBlock from "../text-block";
 import { EventForListQuery } from "../../lib/api/history";
 import { PersonForListQuery } from "../../lib/api/people";
 import Events from "../events";
 import MembersList from "../members/membersList";
 import Link from "../link";
-import { listStyle } from "./styles.css";
+import { listStyle, logoStyle } from "./styles.css";
+import { imageBuilder } from "../../lib/sanity";
 
 interface Props {
   association: AssociationQuery;
@@ -19,6 +20,14 @@ export default function Association({ association, events, members }: Props) {
   return (
     <>
       <Container>
+        {association.logo && (
+          <div className={logoStyle} style={getLogoStyle(association)}>
+            <img
+              src={imageBuilder(association.logo).url() || undefined}
+              alt={`Logo for ${association.name}`}
+            />
+          </div>
+        )}
         <TextBlock text={association.description} />
         <h2>Annen informasjon</h2>
         {(!association.active || association.previous || association.url) && (

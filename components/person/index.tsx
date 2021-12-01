@@ -25,7 +25,7 @@ export default function Person({ person }: Props) {
     <Container>
       <p className={titleStyle}>{latestAward.title.name}</p>
       <img
-        alt={`Cover Image for ${person.name}`}
+        alt={`Bilde av ${person.name}`}
         className={imageStyle}
         src={imageBuilder(person.mainImage).width(600).url() || undefined}
       />

@@ -11,6 +11,7 @@ export const [themeClass, vars] = createTheme({
     pink: "#FFB8B8",
     red: "#FF9C9C",
     text: "#FFFFFF",
+    white: "#FFFFFF",
   },
   font: {
     body: "'Inter', sans-serif",
