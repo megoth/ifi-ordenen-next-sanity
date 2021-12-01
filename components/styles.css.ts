@@ -27,7 +27,7 @@ export const [themeClass, vars] = createTheme({
     strong: "500",
   },
   lineHeight: {
-    base: "1.1875",
+    base: "1.4",
   },
   pageWidth: {
     medium: "600px",
