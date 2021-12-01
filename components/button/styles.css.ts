@@ -1,6 +1,11 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { vars } from "../styles.css";
 
+const hoverFocusRule = {
+  backgroundColor: vars.color.text,
+  borderColor: vars.color.black,
+  color: vars.color.black,
+};
 export const buttonStyle = style({
   border: "2px solid",
   borderColor: vars.color.text,
@@ -11,6 +16,8 @@ export const buttonStyle = style({
     content: "→",
     paddingLeft: "1em",
   },
+  ":focus": hoverFocusRule,
+  ":hover": hoverFocusRule,
   selectors: {
     "&.on-green": {
       backgroundColor: vars.color.green,
@@ -26,3 +33,8 @@ export const buttonStyle = style({
     },
   },
 });
+
+globalStyle(
+  `${buttonStyle}.primary:focus, ${buttonStyle}.primary:hover`,
+  hoverFocusRule
+);
