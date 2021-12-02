@@ -24,10 +24,9 @@ export default function AssociationsItem({ association }: Props) {
         style={getLogoStyle(association)}
       >
         {association.logo && (
-          <img
-            src={imageBuilder(association.logo).url() || undefined}
-            className={logoStyle}
-          />
+          <div className={logoStyle}>
+            <img src={imageBuilder(association.logo).url() || undefined} />
+          </div>
         )}
         <div
           className={cn(textStyle, {

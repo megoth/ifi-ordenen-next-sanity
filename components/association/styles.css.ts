@@ -12,6 +12,7 @@ export const logoStyle = style({
   backgroundColor: vars.color.white,
   borderRadius: "1rem",
   padding: "1rem",
+  textAlign: "center",
   "@media": {
     "screen and (min-width: 600px)": {
       float: "right",

@@ -11,7 +11,10 @@ export const associationStyle = style({
 });
 
 export const logoStyle = style({
+  aspectRatio: "1",
   borderRadius: "1rem 1rem 0 0",
+  display: "flex",
+  alignItems: "center",
   padding: "1rem",
 });
 
