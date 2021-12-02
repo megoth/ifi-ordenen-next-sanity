@@ -19,7 +19,7 @@ export const listItemStyle = style({
       flexBasis: "47.63%",
     },
     "screen and (min-width: 600px)": {
-      flexBasis: "22.76%",
+      flexBasis: "31.34%",
     },
     "screen and (min-width: 960px)": {
       flexBasis: "23.5%",

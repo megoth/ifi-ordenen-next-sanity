@@ -1,13 +1,16 @@
 import React from "react";
-import { AssociationQuery, getLogoStyle } from "../../../lib/api/associations";
-import { imageBuilder } from "../../../lib/sanity";
+import {
+  AssociationQuery,
+  getLogoStyle,
+} from "../../../../lib/api/associations";
+import { imageBuilder } from "../../../../lib/sanity";
 import {
   associationStyle,
   textHasLogoStyle,
   textStyle,
   logoStyle,
 } from "./styles.css";
-import Link from "../../link";
+import Link from "../../../link";
 import cn from "classnames";
 
 interface Props {
@@ -16,7 +19,7 @@ interface Props {
 
 export default function AssociationsItem({ association }: Props) {
   return (
-    <li>
+    <div>
       <Link
         as={`/association/${association.slug}`}
         href="/association/[slug]"
@@ -37,6 +40,6 @@ export default function AssociationsItem({ association }: Props) {
           {association.short ? ` (${association.short})` : ""}
         </div>{" "}
       </Link>
-    </li>
+    </div>
   );
 }

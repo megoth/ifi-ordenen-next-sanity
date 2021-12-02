@@ -5,7 +5,11 @@ import { vars } from "../styles.css";
 export const listStyle = style(listRule);
 
 export const detailsStyle = style({
-  overflow: "auto",
+  "@media": {
+    "screen and (min-width: 600px)": {
+      overflow: "auto",
+    },
+  },
 });
 
 export const logoStyle = style({
@@ -17,9 +21,6 @@ export const logoStyle = style({
     "screen and (min-width: 600px)": {
       float: "right",
       marginLeft: "1rem",
-      maxWidth: "30%",
-    },
-    "screen and (min-width: 960px)": {
       maxWidth: "40%",
     },
   },

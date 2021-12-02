@@ -1,8 +1,7 @@
 import React from "react";
 import { AssociationQuery } from "../../lib/api/associations";
 import Container from "../container";
-import { listStyle } from "./styles.css";
-import AssociationsItem from "./associations-item";
+import AssociationsList from "./associations-list";
 
 interface Props {
   associations: Array<AssociationQuery>;
@@ -11,27 +10,13 @@ interface Props {
 export default function Associations({ associations }: Props) {
   return (
     <Container>
-      <ul className={listStyle}>
-        {associations
-          ?.filter(({ active }) => active)
-          .map((association) => (
-            <AssociationsItem
-              association={association}
-              key={association.slug}
-            />
-          ))}
-      </ul>
+      <AssociationsList
+        associations={associations?.filter(({ active }) => active)}
+      />
       <h2>Tidligere foreninger eller foreningsnavn</h2>
-      <ul className={listStyle}>
-        {associations
-          ?.filter(({ active }) => !active)
-          .map((association) => (
-            <AssociationsItem
-              association={association}
-              key={association.slug}
-            />
-          ))}
-      </ul>
+      <AssociationsList
+        associations={associations?.filter(({ active }) => !active)}
+      />
     </Container>
   );
 }

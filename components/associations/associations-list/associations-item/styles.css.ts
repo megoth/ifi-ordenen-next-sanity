@@ -1,5 +1,5 @@
 import { style } from "@vanilla-extract/css";
-import { vars } from "../../styles.css";
+import { vars } from "../../../styles.css";
 
 export const associationStyle = style({
   backgroundColor: vars.color.white,
