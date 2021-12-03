@@ -46,6 +46,13 @@ export const personTextStyle = style({
   padding: "0.5em 0.75em 1em",
 });
 
+globalStyle(
+  `${listItemStyle}:hover ${personTextStyle}, ${personLinkStyle}:focus ${personTextStyle}`,
+  {
+    backgroundColor: vars.color.red,
+  }
+);
+
 export const personNameStyle = style({
   color: vars.color.brown,
   fontSize: vars.fontSize.small,

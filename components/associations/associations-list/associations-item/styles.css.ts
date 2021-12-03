@@ -1,4 +1,4 @@
-import { style } from "@vanilla-extract/css";
+import { globalStyle, style } from "@vanilla-extract/css";
 import { vars } from "../../../styles.css";
 
 export const associationStyle = style({
@@ -28,6 +28,13 @@ export const textStyle = style({
   color: vars.color.black,
   padding: "1em 0.75em",
 });
+
+globalStyle(
+  `${associationStyle}:hover ${textStyle}, ${associationStyle}:focus ${textStyle}`,
+  {
+    backgroundColor: vars.color.red,
+  }
+);
 
 export const textHasLogoStyle = style({
   borderRadius: "0 0 1rem 1rem",
