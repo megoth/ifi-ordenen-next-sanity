@@ -18,6 +18,10 @@ export const logoStyle = style({
   padding: "1rem",
 });
 
+export const logoIsHighStyle = style({
+  aspectRatio: "auto",
+});
+
 export const textStyle = style({
   backgroundColor: vars.color.pink,
   borderRadius: "1rem",

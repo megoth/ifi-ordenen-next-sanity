@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   AssociationQuery,
   getLogoStyle,
@@ -9,6 +9,7 @@ import {
   textHasLogoStyle,
   textStyle,
   logoStyle,
+  logoIsHighStyle,
 } from "./styles.css";
 import Link from "../../../link";
 import cn from "classnames";
@@ -18,6 +19,11 @@ interface Props {
 }
 
 export default function AssociationsItem({ association }: Props) {
+  const image = useRef(null);
+  const [isHigher, setIsHigher] = useState<boolean>(false);
+  useEffect(() => {
+    setIsHigher(image?.current?.height > image?.current?.width);
+  }, [image]);
   return (
     <div>
       <Link
@@ -27,8 +33,15 @@ export default function AssociationsItem({ association }: Props) {
         style={getLogoStyle(association)}
       >
         {association.logo && (
-          <div className={logoStyle}>
-            <img src={imageBuilder(association.logo).url() || undefined} />
+          <div
+            className={cn(logoStyle, {
+              [logoIsHighStyle]: isHigher,
+            })}
+          >
+            <img
+              src={imageBuilder(association.logo).url() || undefined}
+              ref={image}
+            />
           </div>
         )}
         <div
