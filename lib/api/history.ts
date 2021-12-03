@@ -1,4 +1,6 @@
 import client, { getClient } from "../sanity";
+import { NextRouter } from "next/dist/shared/lib/router/router";
+import { getArrayFromRouterQuery, getPathFromRouter } from "../utils";
 
 export interface EventQuery
   extends Omit<Sanity.Schema.Event, "slug" | "sources" | "associations"> {
@@ -79,4 +81,14 @@ export async function getEvent(
       { slug }
     )
     .then((res) => res?.[0]);
+}
+
+export function getYearInListHref(
+  router: NextRouter,
+  currentYear: string,
+  years: string[] | undefined
+): string {
+  return `${getPathFromRouter(router)}?${years
+    ?.map((year) => `year=${year}`)
+    ?.join("&")}${years.indexOf(currentYear) === -1 ? "" : `#${currentYear}`}`;
 }

@@ -12,7 +12,10 @@ interface Props {
 }
 
 export default function Events({ events, members }: Props) {
-  const years = [...getYearsFromEvents(events), ...getDatesFromAwards(members)]
+  const eventYears = [
+    ...getYearsFromEvents(events),
+    ...getDatesFromAwards(members),
+  ]
     .map((date) => date.substring(0, 4))
     .filter(onlyUnique)
     .sort()
@@ -20,16 +23,12 @@ export default function Events({ events, members }: Props) {
   return (
     <Container>
       <ul>
-        {years.map((year) => (
+        {eventYears.map((year) => (
           <li key={`year-${year}`}>
             <HistoryYearEntry
-              events={events.filter(
-                (event) => event.year.substring(0, 4) === year
-              )}
+              events={events.filter((event) => event.year.indexOf(year) !== -1)}
               members={members.filter((member) =>
-                member.titles.find(
-                  (title) => title.date.substring(0, 4) === year
-                )
+                member.titles.find((title) => title.date.indexOf(year) !== -1)
               )}
               year={year}
             />

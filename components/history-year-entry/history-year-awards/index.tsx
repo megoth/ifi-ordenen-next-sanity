@@ -1,7 +1,7 @@
 import React from "react";
 import { PersonForListQuery } from "../../../lib/api/people";
 import { onlyUnique } from "../../../lib/utils";
-import { listStyle } from "../styles.css";
+import { yearStyle } from "../styles.css";
 import Link from "../../link";
 
 interface Props {
@@ -21,7 +21,7 @@ export default function HistoryYearAwards({ members, year }: Props) {
     titles.length > 0 && (
       <li key={`awards-${year}`}>
         <span>Tildelinger av Ifi-ordenen</span>
-        <ul className={listStyle}>
+        <ul className={yearStyle}>
           {titles.map((titleName) => (
             <li key={titleName}>
               {titleName}:
