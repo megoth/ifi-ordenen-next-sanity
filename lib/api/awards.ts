@@ -15,11 +15,10 @@ export function getDatesFromAwards(
 }
 
 export function sortMembersByTitle(members: Array<PersonForListQuery>) {
-  return [...members].sort(
-    (a, b) =>
-      parseInt(a.titles[0].date, 10) * 100 +
-      a.titles[0].dateOrder -
-      parseInt(b.titles[0].date, 10) * 100 +
-      b.titles[0].dateOrder
+  return [...members].sort((a, b) =>
+    parseInt(a.titles[0].date, 10) * 100 + a.titles[0].dateOrder >
+    parseInt(b.titles[0].date, 10) * 100 - b.titles[0].dateOrder
+      ? -1
+      : 1
   );
 }
