@@ -6,6 +6,7 @@ import { PersonForListQuery } from "../../lib/api/people";
 import { getDatesFromAwards } from "../../lib/api/awards";
 import { onlyUnique } from "../../lib/utils";
 import { EventsProvider } from "../../contexts/eventsContext";
+import { listStyle } from "./styles.css";
 
 interface Props {
   events: Array<EventForListQuery>;
@@ -24,7 +25,7 @@ export default function Events({ events, members }: Props) {
   return (
     <EventsProvider>
       <Container>
-        <ul>
+        <ul className={listStyle}>
           {eventYears.map((year) => (
             <li key={`year-${year}`}>
               <HistoryYearEntry

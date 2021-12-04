@@ -2,8 +2,9 @@ import { EventForListQuery, getYearInListHref } from "../../lib/api/history";
 import {
   yearLinkStyle,
   yearListStyle,
-  yearSelectedStyle,
-  yearStyle,
+  yearContentSelectedStyle,
+  yearContentStyle,
+  yearTitleStyle,
 } from "./styles.css";
 import HistoryYearListItem from "./history-year-list-item";
 import { PersonForListQuery } from "../../lib/api/people";
@@ -51,7 +52,7 @@ export default function HistoryYearEntry({ events, members, year }: Props) {
 
   return (
     <>
-      <h3 id={yearAsString}>
+      <h3 className={yearTitleStyle}>
         <Link href={href} className={yearLinkStyle} onClick={selectYear}>
           <DateFormat date={yearAsString} format={"yyyy"} />
           &nbsp;
@@ -59,8 +60,8 @@ export default function HistoryYearEntry({ events, members, year }: Props) {
         </Link>
       </h3>
       <div
-        className={cn(yearStyle, {
-          [yearSelectedStyle]: isSelected,
+        className={cn(yearContentStyle, {
+          [yearContentSelectedStyle]: isSelected,
         })}
       >
         <ul className={yearListStyle}>

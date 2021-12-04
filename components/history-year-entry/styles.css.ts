@@ -1,11 +1,15 @@
 import { globalStyle, style } from "@vanilla-extract/css";
-import { listRule } from "../text-block/styles.css";
 
-export const yearStyle = style({
-  display: "none",
+export const yearTitleStyle = style({
+  margin: 0,
 });
 
-export const yearSelectedStyle = style({
+export const yearContentStyle = style({
+  display: "none",
+  padding: "2em",
+});
+
+export const yearContentSelectedStyle = style({
   display: "block",
 });
 
@@ -13,7 +17,10 @@ export const yearLinkStyle = style({
   textDecoration: "none",
 });
 
-export const yearListStyle = style(listRule);
+export const yearListStyle = style({
+  listStyle: "disc",
+  margin: "0",
+});
 
 globalStyle(`${yearListStyle} ${yearListStyle}`, {
   margin: "0 0 0 1rem",
