@@ -5,6 +5,7 @@ import Container from "../container";
 import { PersonForListQuery } from "../../lib/api/people";
 import { getDatesFromAwards } from "../../lib/api/awards";
 import { onlyUnique } from "../../lib/utils";
+import { EventsProvider } from "../../contexts/eventsContext";
 
 interface Props {
   events: Array<EventForListQuery>;
@@ -21,20 +22,24 @@ export default function Events({ events, members }: Props) {
     .sort()
     .reverse();
   return (
-    <Container>
-      <ul>
-        {eventYears.map((year) => (
-          <li key={`year-${year}`}>
-            <HistoryYearEntry
-              events={events.filter((event) => event.year.indexOf(year) !== -1)}
-              members={members.filter((member) =>
-                member.titles.find((title) => title.date.indexOf(year) !== -1)
-              )}
-              year={year}
-            />
-          </li>
-        ))}
-      </ul>
-    </Container>
+    <EventsProvider>
+      <Container>
+        <ul>
+          {eventYears.map((year) => (
+            <li key={`year-${year}`}>
+              <HistoryYearEntry
+                events={events.filter(
+                  (event) => event.year.indexOf(year) !== -1
+                )}
+                members={members.filter((member) =>
+                  member.titles.find((title) => title.date.indexOf(year) !== -1)
+                )}
+                year={year}
+              />
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </EventsProvider>
   );
 }
