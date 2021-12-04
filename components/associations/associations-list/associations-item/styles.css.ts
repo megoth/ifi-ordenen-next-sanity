@@ -8,6 +8,11 @@ export const associationStyle = style({
   display: "flex",
   flexDirection: "column",
   textDecoration: "none",
+  ":focus": {
+    outlineColor: vars.color.red,
+    outlineStyle: "solid",
+    outlineWidth: 3,
+  },
 });
 
 export const logoStyle = style({

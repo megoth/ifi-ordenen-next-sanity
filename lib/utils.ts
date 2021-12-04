@@ -30,9 +30,9 @@ interface Route {
   query: Record<string, string[]>;
 }
 
-export function getHashFromRouter(router: NextRouter) {
+export function getHashFromRouter(router: NextRouter): string | null {
   const hashIndex = router.asPath.indexOf("#");
-  return hashIndex === -1 ? "" : router.asPath.substring(hashIndex + 1);
+  return hashIndex === -1 ? null : router.asPath.substring(hashIndex + 1);
 }
 
 export function getHref(router: NextRouter, route?: Route) {

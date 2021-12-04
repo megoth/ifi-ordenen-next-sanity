@@ -1,6 +1,6 @@
 import React from "react";
 import { PersonForListQuery } from "../../../lib/api/people";
-import { getTitles } from "../../../lib/api/awards";
+import { getTitles, sortMembersByTitle } from "../../../lib/api/awards";
 import MembersList from "../membersList";
 
 interface Props {
@@ -9,13 +9,7 @@ interface Props {
 
 export default function MembersByTitle({ members }: Props) {
   const titles = getTitles(members);
-  const peopleSorted = members.sort(
-    (a, b) =>
-      parseInt(a.titles[0].date, 10) * 100 +
-      a.titles[0].dateOrder -
-      parseInt(b.titles[0].date, 10) * 100 +
-      b.titles[0].dateOrder
-  );
+  const peopleSorted = sortMembersByTitle(members);
   return (
     <>
       {titles.map((title) => (

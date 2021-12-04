@@ -64,7 +64,7 @@ export default function Association({ association, events, members }: Props) {
 
       {members.length > 0 && (
         <Container>
-          <h2>Ordensbærere</h2>
+          <h2>Siste ordensbærere</h2>
           <MembersList members={members} />
         </Container>
       )}

@@ -10,7 +10,7 @@ export default function ButtonComponent({ text, link, variant }: Props) {
   return (
     <Button
       href={link?.internalLink?._ref || link?.externalUrl}
-      variant={variant}
+      variant={variant || "secondary"}
     >
       {text}
     </Button>

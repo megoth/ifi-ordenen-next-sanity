@@ -1,18 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PersonForListQuery } from "../../lib/api/people";
 import Container from "../container";
 import MembersByYear from "./membersByYear";
 import { useRouter } from "next/router";
-import Link from "../link";
 import MembersByTitle from "./membersByTitle";
-import {
-  tabLinkSelectedStyle,
-  tabLinkStyle,
-  tabSelectedStyle,
-  tabsStyle,
-  tabStyle,
-} from "./styles.css";
-import cn from "classnames";
+import Tabs from "../tabs";
+import Tab from "../tabs/tab";
+import useHistory from "../../hooks/useHistory";
+import { getHref } from "../../lib/utils";
 
 interface Props {
   members: Array<PersonForListQuery>;
@@ -25,28 +20,38 @@ export default function Members({ members }: Props) {
   };
   const views = Object.keys(viewsMap);
   const router = useRouter();
-  const chosenView = views.find((view) => view === router.query.by) || views[0];
+  const [chosenView, setChosenView] = useState(
+    views.find((view) => view === router.query.by) || views[0]
+  );
+  useEffect(
+    () =>
+      setChosenView(views.find((view) => view === router.query.by) || views[0]),
+    [router?.query?.by]
+  );
+  const history = useHistory();
+  const selectView = (event, view) => {
+    event.preventDefault();
+    setChosenView(view);
+    history?.pushState({}, "", event.target.href);
+  };
   return (
     <Container>
-      <ul className={tabsStyle}>
+      <Tabs>
         {views.map((view) => (
-          <li
-            className={cn(tabStyle, {
-              [tabSelectedStyle]: chosenView === view,
-            })}
+          <Tab
             key={view}
+            href={getHref(router, {
+              query: {
+                by: [view],
+              },
+            })}
+            selected={chosenView === view}
+            onClick={(event) => selectView(event, view)}
           >
-            <Link
-              href={`/person?by=${view}`}
-              className={cn(tabLinkStyle, {
-                [tabLinkSelectedStyle]: chosenView === view,
-              })}
-            >
-              {viewsMap[view]}
-            </Link>
-          </li>
+            {viewsMap[view]}
+          </Tab>
         ))}
-      </ul>
+      </Tabs>
       {chosenView === "time" && <MembersByYear members={members} />}
       {chosenView === "rank" && <MembersByTitle members={members} />}
     </Container>

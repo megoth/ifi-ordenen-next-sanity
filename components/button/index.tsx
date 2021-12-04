@@ -1,22 +1,33 @@
-import React, { ReactNode } from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
 import Link from "../link";
 import cn from "classnames";
 import { buttonStyle } from "./styles.css";
+import { LinkProps } from "next/dist/client/link";
 
-interface Props {
+interface Props extends Omit<LinkProps, "href"> {
   children: ReactNode;
   className?: string;
   href?: string;
-  variant?: "primary" | "on-green";
+  onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
+  variant?: "primary" | "secondary" | "on-green" | "transparent";
 }
 
-export default function Button({ children, className, href, variant }: Props) {
-  const style = cn(className, buttonStyle, variant);
+export default function Button({
+  children,
+  className,
+  href,
+  onClick,
+  variant,
+  ...props
+}: Props) {
+  const style = cn(buttonStyle, variant, className);
   return href ? (
-    <Link href={href} className={style}>
+    <Link href={href} className={style} onClick={onClick} {...props}>
       {children}
     </Link>
   ) : (
-    <button className={style}>{children}</button>
+    <button className={style} onClick={onClick} {...props}>
+      {children}
+    </button>
   );
 }
