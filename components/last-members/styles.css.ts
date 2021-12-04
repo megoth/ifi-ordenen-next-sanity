@@ -16,10 +16,14 @@ export const listStyle = style({
   },
 });
 
-export const listItemStyle = style({
+export const listItemStyle = style({});
+
+export const personLinkStyle = style({
   alignItems: "center",
+  color: vars.color.black,
   display: "flex",
   gap: "1.5em",
+  textDecoration: "none",
 });
 
 export const personImage = style({
@@ -27,7 +31,7 @@ export const personImage = style({
 });
 
 export const personName = style({
-  color: vars.color.black,
+  textDecoration: "underline",
 });
 
 export const personTitle = style({

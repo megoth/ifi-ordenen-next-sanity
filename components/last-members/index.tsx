@@ -1,11 +1,12 @@
 import React from "react";
-import { getSortOrderForYear, PersonForListQuery } from "../../lib/api/people";
+import { PersonForListQuery } from "../../lib/api/people";
 import Button from "../button";
 import Container from "../container";
 import {
   listItemStyle,
   listStyle,
   personImage,
+  personLinkStyle,
   personName,
   personTitle,
 } from "./styles.css";
@@ -41,7 +42,7 @@ export default function LastMembers({ lastMembers }: Props) {
           .filter(({ titles }) => lastDates.indexOf(titles[0].date) !== -1)
           .map((person) => (
             <li key={person.slug} className={listItemStyle}>
-              <Link href={`/person/${person.slug}`} className={personName}>
+              <Link href={`/person/${person.slug}`} className={personLinkStyle}>
                 <img
                   className={personImage}
                   alt={`Cover Image for ${person.name}`}
@@ -50,15 +51,13 @@ export default function LastMembers({ lastMembers }: Props) {
                     undefined
                   }
                 />
-              </Link>
-              <div>
                 <div>
-                  <Link href={`/person/${person.slug}`} className={personName}>
-                    {person.name}
-                  </Link>
+                  <div className={personName}>{person.name}</div>
+                  <div className={personTitle}>
+                    {person.titles[0].title.name}
+                  </div>
                 </div>
-                <div className={personTitle}>{person.titles[0].title.name}</div>
-              </div>
+              </Link>
             </li>
           ))}
       </ul>
