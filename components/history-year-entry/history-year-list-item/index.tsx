@@ -12,9 +12,7 @@ export default function HistoryYearListItem({ event }: Props) {
     <li>
       <DateFormat date={event.date} format={"d. MMMM"} postfix={": "} />
       {event.slug ? (
-        <Link href="/history/[slug]" as={`/history/${event.slug}`}>
-          {event.name}
-        </Link>
+        <Link href={`/history/${event.slug}`}>{event.name}</Link>
       ) : (
         <span>{event.name}</span>
       )}

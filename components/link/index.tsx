@@ -24,7 +24,12 @@ export default function Link({
 }: Props) {
   return (
     <NextLink href={href || slug || url} {...props}>
-      <a className={className} style={style} onClick={onClick}>
+      <a
+        className={className}
+        href={href || slug || url}
+        style={style}
+        onClick={onClick}
+      >
         {text || children}
       </a>
     </NextLink>

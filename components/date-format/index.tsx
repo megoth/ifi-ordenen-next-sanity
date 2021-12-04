@@ -12,10 +12,10 @@ interface Props {
 export default function DateFormat({ date, format, postfix, prefix }: Props) {
   if (!date) return null;
   return (
-    <span>
+    <>
       {prefix}
       {formatFn(new Date(date), format, { locale: nb })}
       {postfix}
-    </span>
+    </>
   );
 }

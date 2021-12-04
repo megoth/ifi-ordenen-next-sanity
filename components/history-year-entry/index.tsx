@@ -12,9 +12,9 @@ import HistoryYearAwards from "./history-year-awards";
 import { useRouter } from "next/router";
 import Link from "../link";
 import cn from "classnames";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import EventsContext from "../../contexts/eventsContext";
-import { toggleValueInArray } from "../../lib/utils";
+import { getHref, toggleValueInArray } from "../../lib/utils";
 import useHistory from "../../hooks/useHistory";
 
 interface Props {
@@ -30,17 +30,25 @@ export default function HistoryYearEntry({ events, members, year }: Props) {
   const { years, toggleYear } = useContext(EventsContext);
   const router = useRouter();
   const isSelected = years.findIndex((y) => y === yearAsString) !== -1;
-  const href = getYearInListHref(
-    router,
-    yearAsString,
-    toggleValueInArray(yearAsString, years)
-  );
+  const [href, setHref] = useState(getHref(router));
   const history = useHistory();
   const selectYear = (event) => {
     event.preventDefault();
     toggleYear(yearAsString);
-    history?.pushState({}, "", href);
+    history?.pushState({}, "", event.target.href);
   };
+
+  useEffect(() => {
+    const selectedYears = toggleValueInArray(yearAsString, years);
+    setHref(
+      getHref(router, {
+        query: {
+          year: selectedYears,
+        },
+      })
+    );
+  }, [years]);
+
   return (
     <>
       <h3 id={yearAsString}>
