@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Link from "../link";
 import NavigationContext from "../../contexts/navigationContext";
-import { headerStyle, triggerStyle } from "./styles.css";
+import { frontpageLinkStyle, headerStyle, triggerStyle } from "./styles.css";
 import cn from "classnames";
 import Logo from "../logo";
 
@@ -13,11 +13,9 @@ export default function Header({ className }: Props) {
   const { isOpen, setOpen } = useContext(NavigationContext);
   return (
     <header className={cn(headerStyle, className)}>
-      <div>
-        <Link href={"/"}>
-          <Logo />
-        </Link>
-      </div>
+      <Link href={"/"} className={frontpageLinkStyle}>
+        <Logo />
+      </Link>
       <button
         className={triggerStyle}
         type="button"

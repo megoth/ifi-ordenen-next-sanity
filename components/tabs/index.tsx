@@ -6,5 +6,5 @@ interface Props {
 }
 
 export default function Tabs({ children }: Props) {
-  return <ul className={tabsStyle}>{children}</ul>;
+  return <div className={tabsStyle}>{children}</div>;
 }

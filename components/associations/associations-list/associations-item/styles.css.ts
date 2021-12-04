@@ -9,9 +9,7 @@ export const associationStyle = style({
   flexDirection: "column",
   textDecoration: "none",
   ":focus": {
-    outlineColor: vars.color.red,
-    outlineStyle: "solid",
-    outlineWidth: 3,
+    outline: 0,
   },
 });
 

@@ -24,9 +24,7 @@ export const personButtonStyle = style({
   flexDirection: "column",
   textDecoration: "none",
   ":focus": {
-    outlineColor: vars.color.red,
-    outlineStyle: "solid",
-    outlineWidth: 3,
+    outline: 0,
   },
 });
 export const personImageStyle = style({
@@ -80,10 +78,14 @@ export const personSelectedImageStyle = style({
     },
   },
 });
+const personSelectedCloseFocusHover = {
+  backgroundColor: vars.color.black,
+};
 export const personSelectedCloseStyle = style({
   backgroundColor: vars.color.base,
   borderColor: vars.color.base,
   borderRadius: "50%",
+  cursor: "pointer",
   color: vars.color.white,
   fontSize: "1rem",
   fontWeight: vars.fontWeight.body,
@@ -96,6 +98,8 @@ export const personSelectedCloseStyle = style({
   textDecoration: "none",
   top: "1rem",
   width: "1.5rem",
+  ":focus": personSelectedCloseFocusHover,
+  ":hover": personSelectedCloseFocusHover,
 });
 export const personSelectedDescriptionStyle = style({
   backgroundColor: vars.color.green,

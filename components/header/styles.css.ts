@@ -8,6 +8,8 @@ export const headerStyle = style({
   paddingBottom: "2em",
 });
 
+export const frontpageLinkStyle = style({});
+
 export const triggerStyle = style({
   alignItems: "center",
   background: "transparent",
