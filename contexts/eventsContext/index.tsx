@@ -5,9 +5,11 @@ import { getArrayFromRouterQuery, toggleValueInArray } from "../../lib/utils";
 const EventsContext = createContext<{
   years: string[];
   toggleYear: (_: string) => void;
+  setYears: (_: string[]) => void;
 }>({
   years: [],
   toggleYear: () => {},
+  setYears: () => {},
 });
 
 export default EventsContext;
@@ -32,6 +34,7 @@ export function EventsProvider({ children }: Props) {
         years,
         toggleYear: (selectedYear) =>
           setYears(toggleValueInArray(selectedYear, years)),
+        setYears,
       }}
     >
       {children}

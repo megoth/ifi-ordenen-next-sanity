@@ -22,9 +22,15 @@ interface Props {
   events: Array<EventForListQuery>;
   members: Array<PersonForListQuery>;
   year: string | number; // React parses it as number
+  expanded: boolean;
 }
 
-export default function HistoryYearEntry({ events, members, year }: Props) {
+export default function HistoryYearEntry({
+  events,
+  members,
+  year,
+  expanded,
+}: Props) {
   const majorEvents = events.filter((event) => event.major);
   const minorEvents = events.filter((event) => !event.major);
   const yearAsString = year.toString();
@@ -53,15 +59,19 @@ export default function HistoryYearEntry({ events, members, year }: Props) {
   return (
     <>
       <h3 className={yearTitleStyle}>
-        <Link href={href} className={yearLinkStyle} onClick={selectYear}>
+        {expanded ? (
           <DateFormat date={yearAsString} format={"yyyy"} />
-          &nbsp;
-          {isSelected ? "↓" : "→"}
-        </Link>
+        ) : (
+          <Link href={href} className={yearLinkStyle} onClick={selectYear}>
+            <DateFormat date={yearAsString} format={"yyyy"} />
+            &nbsp;
+            {isSelected ? "↓" : "→"}
+          </Link>
+        )}
       </h3>
       <div
         className={cn(yearContentStyle, {
-          [yearContentSelectedStyle]: isSelected,
+          [yearContentSelectedStyle]: isSelected || expanded,
         })}
       >
         <ul className={yearListStyle}>

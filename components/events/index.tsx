@@ -7,6 +7,7 @@ import { getDatesFromAwards } from "../../lib/api/awards";
 import { onlyUnique } from "../../lib/utils";
 import { EventsProvider } from "../../contexts/eventsContext";
 import { listStyle } from "./styles.css";
+import EventsExpandAll from "./events-expand-all";
 
 interface Props {
   events: Array<EventForListQuery>;
@@ -22,9 +23,11 @@ export default function Events({ events, members }: Props) {
     .filter(onlyUnique)
     .sort()
     .reverse();
+  const expanded = eventYears.length < 5;
   return (
     <EventsProvider>
       <Container>
+        {!expanded && <EventsExpandAll years={eventYears} />}
         <ul className={listStyle}>
           {eventYears.map((year) => (
             <li key={`year-${year}`}>
@@ -36,6 +39,7 @@ export default function Events({ events, members }: Props) {
                   member.titles.find((title) => title.date.indexOf(year) !== -1)
                 )}
                 year={year}
+                expanded={expanded}
               />
             </li>
           ))}
