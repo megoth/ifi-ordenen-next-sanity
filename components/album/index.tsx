@@ -22,7 +22,9 @@ export default function Album({ album }: Props) {
               <li key={`${album.slug}-${index}`}>
                 <Link href={imageBuilder(image.image).url() || undefined}>
                   <img
-                    src={imageBuilder(image.image).url() || undefined}
+                    src={
+                      imageBuilder(image.image).width(256).url() || undefined
+                    }
                     alt={toMarkdown(image.description)}
                   />
                 </Link>
