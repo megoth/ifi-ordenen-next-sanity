@@ -42,7 +42,11 @@ export default function HistoryYearEntry({
   const selectYear = (event) => {
     event.preventDefault();
     toggleYear(yearAsString);
-    history?.pushState({}, "", event.target.href);
+    history?.pushState(
+      { years: toggleValueInArray(yearAsString, years) },
+      "",
+      event.target.href
+    );
   };
 
   useEffect(() => {

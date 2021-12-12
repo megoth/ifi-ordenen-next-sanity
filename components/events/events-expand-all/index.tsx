@@ -17,7 +17,7 @@ export default function EventsExpandAll({ years }: Props) {
   const expandAll = (event) => {
     event.preventDefault();
     setYears(years);
-    history.pushState({}, "", event.target.href);
+    history.pushState({ years }, "", event.target.href);
   };
   return (
     <div className={containerStyle}>

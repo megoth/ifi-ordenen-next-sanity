@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { EventForListQuery, getYearsFromEvents } from "../../lib/api/history";
 import HistoryYearEntry from "../history-year-entry";
 import Container from "../container";

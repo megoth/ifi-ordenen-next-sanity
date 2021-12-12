@@ -8,6 +8,7 @@ import Tabs from "../tabs";
 import Tab from "../tabs/tab";
 import useHistory from "../../hooks/useHistory";
 import { getHref } from "../../lib/utils";
+import usePopState from "../../hooks/usePopState";
 
 interface Props {
   members: Array<PersonForListQuery>;
@@ -19,20 +20,28 @@ export default function Members({ members }: Props) {
     rank: "Etter tittel",
   };
   const views = Object.keys(viewsMap);
+  const popStateEvent = usePopState();
   const router = useRouter();
   const [chosenView, setChosenView] = useState(
     views.find((view) => view === router.query.by) || views[0]
   );
+
   useEffect(
     () =>
       setChosenView(views.find((view) => view === router.query.by) || views[0]),
     [router?.query?.by]
   );
+
+  useEffect(
+    () => setChosenView(popStateEvent?.state.view || views[0]),
+    [popStateEvent]
+  );
+
   const history = useHistory();
   const selectView = (event, view) => {
     event.preventDefault();
     setChosenView(view);
-    history?.pushState({}, "", event.target.href);
+    history?.pushState({ view }, "", event.target.href);
   };
   return (
     <Container>
