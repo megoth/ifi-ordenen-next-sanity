@@ -77,7 +77,7 @@ export default function MembersListItem({ person }: Props) {
             alt={`Cover Image for ${person.name}`}
             className={personImageStyle}
             src={
-              imageBuilder(person.mainImage).height(200).width(200).url() ||
+              imageBuilder(person.mainImage).height(275).width(275).url() ||
               undefined
             }
           />

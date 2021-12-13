@@ -10,7 +10,7 @@ export const listItemStyle = style({
       flexBasis: "47.63%",
     },
     "screen and (min-width: 600px)": {
-      flexBasis: "31.34%",
+      flexBasis: "21.5%",
     },
     "screen and (min-width: 960px)": {
       flexBasis: "23.5%",
@@ -18,7 +18,8 @@ export const listItemStyle = style({
   },
 });
 export const personButtonStyle = style({
-  borderRadius: "1em",
+  alignItems: "stretch",
+  borderRadius: "1rem",
   color: vars.color.black,
   display: "flex",
   flexDirection: "column",
@@ -28,23 +29,20 @@ export const personButtonStyle = style({
   },
 });
 export const personImageStyle = style({
-  borderRadius: "1em 1em 0 0 ",
+  borderRadius: "1rem 1rem 0 0 ",
   width: "100%",
 });
 export const personTextStyle = style({
   backgroundColor: vars.color.pink,
   borderRadius: "0 0 1rem 1rem",
-  padding: "0.5em 0.75em 1em",
+  color: vars.color.brown,
+  fontSize: vars.fontSize.small,
+  padding: "0.5rem 0.75rem 1rem",
 });
 export const personNameStyle = style({
-  color: vars.color.brown,
-  fontSize: vars.fontSize.small,
   fontWeight: vars.fontWeight.strong,
 });
-export const personTitleStyle = style({
-  color: vars.color.brown,
-  fontSize: vars.fontSize.small,
-});
+export const personTitleStyle = style({});
 export const personSelectedStyle = style({
   flexBasis: "99%",
   "@media": {
@@ -65,7 +63,7 @@ export const personHiddenStyle = style({
 export const personSelectedImageStyle = style({
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
-  borderRadius: "1em",
+  borderRadius: "1rem",
   height: 280,
   position: "relative",
   width: "100%",
@@ -105,7 +103,6 @@ export const personSelectedDescriptionStyle = style({
   backgroundColor: vars.color.green,
   borderRadius: "1rem",
   color: vars.color.black,
-  fontSize: vars.fontSize.small,
   margin: "-20% 5% 0 20%",
   padding: "1rem 2rem",
   position: "relative",

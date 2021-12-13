@@ -17,11 +17,12 @@ export const [themeClass, vars] = createTheme({
     body: "'Inter', sans-serif",
   },
   fontSize: {
-    h1: "2em",
-    h2: "1.5em",
-    h3: "1.25em",
-    small: "0.75em",
-    tiny: "0.6em",
+    h1: "2rem",
+    h2: "1.5rem",
+    h3: "1.25rem",
+    medium: "1rem",
+    small: "0.75rem",
+    tiny: "0.6rem",
   },
   fontWeight: {
     body: "300",
