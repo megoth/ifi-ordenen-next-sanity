@@ -28,6 +28,7 @@ export const personLinkStyle = style({
 
 export const personImage = style({
   borderRadius: "50%",
+  maxWidth: 75,
 });
 
 export const personName = style({

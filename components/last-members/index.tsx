@@ -47,8 +47,10 @@ export default function LastMembers({ lastMembers }: Props) {
                   className={personImage}
                   alt={`Cover Image for ${person.name}`}
                   src={
-                    imageBuilder(person.mainImage).width(75).height(75).url() ||
-                    undefined
+                    imageBuilder(person.mainImage)
+                      .width(150)
+                      .height(150)
+                      .url() || undefined
                   }
                 />
                 <div>
