@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { EventForListQuery, getYearsFromEvents } from "../../lib/api/history";
-import HistoryYearEntry from "../history-year-entry";
 import Container from "../container";
 import { PersonForListQuery } from "../../lib/api/people";
 import { getDatesFromAwards } from "../../lib/api/awards";
 import { onlyUnique } from "../../lib/utils";
+import { containerStyle, listStyle } from "./styles.css";
 import { EventsProvider } from "../../contexts/eventsContext";
-import { listStyle } from "./styles.css";
 import EventsExpandAll from "./events-expand-all";
+import EventsListItem from "./events-list-item";
+import EventsTimeline from "./events-timeline";
+import EventsList from "./events-list";
 
 interface Props {
   events: Array<EventForListQuery>;
@@ -24,26 +26,31 @@ export default function Events({ events, members }: Props) {
     .sort()
     .reverse();
   const expanded = eventYears.length < 5;
+  const showTimeline = eventYears.length > 5;
   return (
     <EventsProvider>
       <Container>
         {!expanded && <EventsExpandAll years={eventYears} />}
-        <ul className={listStyle}>
-          {eventYears.map((year) => (
-            <li key={`year-${year}`}>
-              <HistoryYearEntry
-                events={events.filter(
-                  (event) => event.year.indexOf(year) !== -1
-                )}
-                members={members.filter((member) =>
-                  member.titles.find((title) => title.date.indexOf(year) !== -1)
-                )}
-                year={year}
-                expanded={expanded}
-              />
-            </li>
-          ))}
-        </ul>
+      </Container>
+      <Container>
+        {showTimeline ? (
+          <div className={containerStyle}>
+            <EventsList
+              events={events}
+              eventYears={eventYears}
+              members={members}
+              expanded={expanded}
+            />
+            <EventsTimeline eventYears={eventYears} />
+          </div>
+        ) : (
+          <EventsList
+            events={events}
+            eventYears={eventYears}
+            members={members}
+            expanded={expanded}
+          />
+        )}
       </Container>
     </EventsProvider>
   );

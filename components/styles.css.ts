@@ -5,6 +5,7 @@ export const [themeClass, vars] = createTheme({
   color: {
     base: "#212020",
     black: "#000000",
+    blue: "#B8FBFF",
     brown: "#312929",
     green: "#EEFFAC",
     gray: "#6A6A6A",

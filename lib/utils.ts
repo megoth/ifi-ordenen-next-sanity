@@ -1,3 +1,4 @@
+import React from "react";
 import { NextRouter } from "next/dist/shared/lib/router/router";
 
 export function onlyUnique(value, index, self): boolean {
@@ -64,4 +65,22 @@ export function getHref(router: NextRouter, route?: Route) {
   const hashString = !!hash ? `#${hash}` : "";
   // putting it all together
   return path + queryString + hashString;
+}
+
+export function getOffsetTop(window: Window, document: Document): number {
+  return window.pageYOffset !== undefined
+    ? window.pageYOffset
+    : (document.documentElement || document.body).scrollTop;
+}
+
+export function getOffsetTopFromScrollEvent(
+  event?: React.UIEvent<Document>
+): number {
+  return typeof window !== "undefined" && event?.target
+    ? getOffsetTop(window, event.target as Document)
+    : 0;
+}
+
+export function getViewportHeight(): number {
+  return typeof window !== "undefined" ? window.innerHeight : 0;
 }

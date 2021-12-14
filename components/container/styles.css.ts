@@ -20,7 +20,7 @@ globalStyle(`${containerStyle}.green a`, {
 });
 
 export const innerStyle = style({
-  padding: "0 2rem",
+  margin: "0 2rem",
   selectors: {
     "&.contained": {
       overflow: "auto",
@@ -29,7 +29,6 @@ export const innerStyle = style({
   "@media": {
     "screen and (min-width: 640px)": {
       margin: "0 auto",
-      padding: 0,
       maxWidth: vars.pageWidth.medium,
     },
     "screen and (min-width: 900px)": {
