@@ -1,11 +1,11 @@
-import React, { MutableRefObject, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import HistoryYearEntry from "../../history-year-entry";
 import { EventForListQuery } from "../../../lib/api/history";
 import { PersonForListQuery } from "../../../lib/api/people";
+import EventsContext from "../../../contexts/eventsContext";
 
 interface Props {
   events: Array<EventForListQuery>;
-  // listRef: MutableRefObject<HTMLUListElement>;
   members: Array<PersonForListQuery>;
   year: string;
   expanded: boolean;
@@ -13,15 +13,19 @@ interface Props {
 
 export default function EventsListItem({
   events,
-  // listRef,
   members,
   year,
   expanded,
 }: Props) {
   const ref = useRef<HTMLLIElement>(null);
-  // useEffect(() => {
-  //   console.log(year, ref.current.offsetTop, listRef.current.offsetTop);
-  // }, [ref.current]);
+  const { focusYear } = useContext(EventsContext);
+
+  useEffect(() => {
+    if (focusYear === year) {
+      ref.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [focusYear]);
+
   return (
     <li ref={ref}>
       <HistoryYearEntry

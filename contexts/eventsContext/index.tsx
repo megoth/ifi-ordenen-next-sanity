@@ -7,10 +7,14 @@ const EventsContext = createContext<{
   years: string[];
   toggleYear: (_: string) => void;
   setYears: (_: string[]) => void;
+  focusYear: string | null;
+  setFocusYear: (_: string) => void;
 }>({
   years: [],
   toggleYear: () => {},
   setYears: () => {},
+  focusYear: null,
+  setFocusYear: () => {},
 });
 
 export default EventsContext;
@@ -24,6 +28,7 @@ export function EventsProvider({ children }: Props) {
   const [years, setYears] = useState<string[]>(
     getArrayFromRouterQuery(router?.query?.year)
   );
+  const [focusYear, setFocusYear] = useState<string>(null);
   const popStateEvent = usePopState();
 
   useEffect(() => {
@@ -39,6 +44,8 @@ export function EventsProvider({ children }: Props) {
         toggleYear: (selectedYear) =>
           setYears(toggleValueInArray(selectedYear, years)),
         setYears,
+        focusYear,
+        setFocusYear,
       }}
     >
       {children}

@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { EventForListQuery } from "../../../lib/api/history";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import {
+  draggableStyle,
+  draggableValueStyle,
   indicatorStyle,
-  indicatorValueStyle,
+  scrollAreaStyle,
   timelineStyle,
 } from "./styles.css";
 import useScroll from "../../../hooks/useScroll";
@@ -11,18 +12,35 @@ import {
   getViewportHeight,
 } from "../../../lib/utils";
 import cn from "classnames";
+import Draggable from "react-draggable";
+import EventsContext from "../../../contexts/eventsContext";
 
 interface Props {
-  eventYears: Array<string>;
+  eventYears: string[];
 }
 
 export default function EventsTimeline({ eventYears }: Props) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const scrollEvent = useScroll();
   const [fixed, setFixed] = useState<boolean>(false);
   const [height, setHeight] = useState<number>(0);
   const [right, setRight] = useState<number>(0);
   const [top, setTop] = useState<number>(0);
+  const { setFocusYear } = useContext(EventsContext);
+  const [year, setYear] = useState<string>(eventYears[0]);
+
+  const getYearFromDrag = (y: number) =>
+    eventYears[
+      Math.min(
+        Math.ceil((y / ref.current?.clientHeight) * (eventYears.length + 1)),
+        eventYears.length - 1
+      )
+    ];
+
+  const onDrag = (_, indicator) => setYear(getYearFromDrag(indicator.y));
+
+  const onDragStop = (_, indicator) =>
+    setFocusYear(getYearFromDrag(indicator.y));
 
   useEffect(() => {
     const viewportOffsetTop = getOffsetTopFromScrollEvent(scrollEvent);
@@ -52,9 +70,21 @@ export default function EventsTimeline({ eventYears }: Props) {
       ref={ref}
       style={{ right, height, top }}
     >
-      <div className={indicatorStyle}>
-        <div className={indicatorValueStyle}>2021</div>
-      </div>
+      <div className={scrollAreaStyle} />
+      <Draggable axis="y" bounds="parent" onStop={onDragStop} onDrag={onDrag}>
+        <button className={draggableStyle} type="button">
+          <div className={indicatorStyle} />
+          {eventYears.map((y) => (
+            <div
+              className={cn(draggableValueStyle, {
+                focus: y === year,
+              })}
+            >
+              {y}
+            </div>
+          ))}
+        </button>
+      </Draggable>
     </div>
   );
 }
