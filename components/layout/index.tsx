@@ -4,7 +4,7 @@ import Meta from "../meta";
 import { ReactNode } from "react";
 import { SiteSettingsQuery } from "../../lib/api/site-settings";
 import Header from "../header";
-import { headerStyle, layoutStyle } from "./styles.css";
+import { layoutStyle } from "./styles.css";
 import Container from "../container";
 import { NavigationProvider } from "../../contexts/navigationContext";
 import NavigationModal from "../navigation-modal";
@@ -24,9 +24,7 @@ export default function Layout({ children, pageTitle, siteSettings }: Props) {
       <div className={layoutStyle}>
         <Meta title={title} siteSettings={siteSettings} />
         <div>
-          <Container>
-            <Header className={headerStyle} />
-          </Container>
+          <Header />
           <NavigationModal siteSettings={siteSettings} />
           <main>
             {pageTitle && (

@@ -2,6 +2,7 @@ import { globalStyle, style } from "@vanilla-extract/css";
 import { vars } from "../styles.css";
 
 export const containerStyle = style({
+  backgroundColor: vars.color.base,
   selectors: {
     "&.green": {
       backgroundColor: vars.color.green,

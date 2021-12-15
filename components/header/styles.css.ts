@@ -1,14 +1,16 @@
-import { globalStyle, style } from "@vanilla-extract/css";
+import { style } from "@vanilla-extract/css";
 import { vars } from "../styles.css";
+
+export const headerHeight = 130;
 
 export const headerStyle = style({
   alignItems: "center",
+  background: vars.color.base,
   display: "flex",
+  height: headerHeight,
+  padding: 0,
   justifyContent: "space-between",
-  paddingBottom: "2em",
 });
-
-export const frontpageLinkStyle = style({});
 
 export const triggerStyle = style({
   alignItems: "center",

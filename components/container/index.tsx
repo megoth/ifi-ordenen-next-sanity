@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React, { forwardRef, ReactNode } from "react";
 import { containerStyle, innerStyle } from "./styles.css";
 import cn from "classnames";
 
@@ -8,10 +8,12 @@ interface Props {
   variant?: "contained" | "green";
 }
 
-export default function Container({ children, className, variant }: Props) {
-  return (
-    <div className={cn(containerStyle, variant)}>
+const Container = forwardRef<HTMLDivElement, Props>(
+  ({ children, className, variant }, ref) => (
+    <div className={cn(containerStyle, variant)} ref={ref}>
       <div className={cn(innerStyle, variant, className)}>{children}</div>
     </div>
-  );
-}
+  )
+);
+
+export default Container;
