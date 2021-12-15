@@ -11,6 +11,7 @@ import {
   personHiddenStyle,
   personImageStyle,
   personNameStyle,
+  personSelectedCloseInnerStyle,
   personSelectedCloseStyle,
   personSelectedDescriptionStyle,
   personSelectedImageStyle,
@@ -57,7 +58,7 @@ export default function MembersListItem({ person }: Props) {
               className={personSelectedCloseStyle}
               onClick={selectUsername}
             >
-              ✖
+              <span className={personSelectedCloseInnerStyle}>✖</span>
             </Button>
           </div>
           <div className={personSelectedDescriptionStyle}>

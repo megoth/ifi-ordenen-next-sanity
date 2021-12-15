@@ -80,6 +80,7 @@ const personSelectedCloseFocusHover = {
   backgroundColor: vars.color.black,
 };
 export const personSelectedCloseStyle = style({
+  appearance: "none",
   backgroundColor: vars.color.base,
   borderColor: vars.color.base,
   borderRadius: "50%",
@@ -88,17 +89,25 @@ export const personSelectedCloseStyle = style({
   fontSize: "1rem",
   fontWeight: vars.fontWeight.body,
   height: "1.5rem",
+  justifyContent: "center",
   opacity: "0.75",
   padding: 0,
   position: "absolute",
   right: "1rem",
   textAlign: "center",
   textDecoration: "none",
+  textTransform: "none",
   top: "1rem",
   width: "1.5rem",
   ":focus": personSelectedCloseFocusHover,
   ":hover": personSelectedCloseFocusHover,
 });
+export const personSelectedCloseInnerStyle = style({
+  lineHeight: 1.5,
+  position: "relative",
+  top: -1,
+});
+
 export const personSelectedDescriptionStyle = style({
   backgroundColor: vars.color.green,
   borderRadius: "1rem",
