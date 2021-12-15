@@ -8,36 +8,39 @@ const hoverFocusRule = {
 };
 const arrowRule = {
   content: "→",
-  paddingLeft: "1em",
+  paddingLeft: "1rem",
 };
 export const buttonStyle = style({
+  alignItems: "baseline",
   border: "2px solid",
   borderColor: vars.color.text,
+  display: "flex",
   textDecoration: "none",
   selectors: {
     "&.on-green": {
       backgroundColor: vars.color.green,
       borderColor: vars.color.green,
       color: vars.color.black,
-      display: "inline-block",
       fontWeight: vars.fontWeight.strong,
       padding: 0,
     },
-    "&.on-green:after": arrowRule,
+    "&.on-green:after": {
+      ...arrowRule,
+      fontSize: "1.1em",
+    },
     "&.primary": {
       backgroundColor: vars.color.red,
       borderColor: vars.color.red,
       color: vars.color.black,
-      display: "inline-block",
       padding: "1.25em 1em 1.25em 1.75em",
     },
     "&.primary:after": arrowRule,
     "&.secondary": {
-      display: "inline-block",
       padding: "1.25em 1em 1.25em 1.75em",
     },
     "&.secondary:after": arrowRule,
     "&.transparent": {
+      alignItems: "stretch",
       backgroundColor: "transparent",
       border: 0,
       color: "inherit",
