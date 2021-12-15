@@ -4,12 +4,14 @@ import cn from "classnames";
 import { buttonStyle } from "./styles.css";
 import { LinkProps } from "next/dist/client/link";
 
+export type ButtonVariant = "primary" | "secondary" | "on-green";
+
 interface Props extends Omit<LinkProps, "href"> {
   children: ReactNode;
   className?: string;
   href?: string;
   onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
-  variant?: "primary" | "secondary" | "on-green" | "transparent";
+  variant?: ButtonVariant;
 }
 
 export default function Button({

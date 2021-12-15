@@ -14,6 +14,7 @@ import { imageBuilder } from "../../lib/sanity";
 import Link from "../link";
 import { format } from "date-fns";
 import { onlyUnique } from "../../lib/utils";
+import Arrow from "../arrow";
 
 interface Props {
   lastMembers: Array<PersonForListQuery>;
@@ -64,7 +65,8 @@ export default function LastMembers({ lastMembers }: Props) {
           ))}
       </ul>
       <Button href={"/person"} variant={"on-green"}>
-        Se alle mottakere
+        <span>Se alle mottakere</span>
+        <Arrow />
       </Button>
     </Container>
   );

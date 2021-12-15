@@ -19,10 +19,13 @@ export const listItemStyle = style({
 });
 export const personButtonStyle = style({
   alignItems: "stretch",
+  backgroundColor: "transparent",
+  border: 0,
   borderRadius: "1rem",
   color: vars.color.black,
   display: "flex",
   flexDirection: "column",
+  padding: 0,
   textDecoration: "none",
   ":focus": {
     outline: 0,

@@ -19,6 +19,7 @@ import {
   personTextStyle,
   personTitleStyle,
 } from "./styles.css";
+import Arrow from "../../../arrow";
 
 interface Props {
   person: PersonForListQuery;
@@ -64,16 +65,13 @@ export default function MembersListItem({ person }: Props) {
           <div className={personSelectedDescriptionStyle}>
             <TextBlock text={[person.titles[0].description[0]]} />
             <Button href={`/person/${person.slug}`} variant={"on-green"}>
-              Les hele begrunnelsen
+              <span>Les hele begrunnelsen</span>
+              <Arrow />
             </Button>
           </div>
         </div>
       ) : (
-        <Button
-          className={personButtonStyle}
-          onClick={selectUsername}
-          variant="transparent"
-        >
+        <Button className={personButtonStyle} onClick={selectUsername}>
           <img
             alt={`Cover Image for ${person.name}`}
             className={personImageStyle}
