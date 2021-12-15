@@ -6,8 +6,8 @@ export const modalStyle = style({
   display: "none",
   left: 0,
   position: "fixed",
-  height: "100vh",
-  top: 0,
+  height: "calc(100vh - 125px)",
+  top: 125,
   width: "100%",
   zIndex: vars.zIndex.modal,
 

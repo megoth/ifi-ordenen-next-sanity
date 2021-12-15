@@ -22,31 +22,6 @@ export const triggerStyle = style({
   padding: 0,
   textTransform: "uppercase",
 });
-
-const size = "32px";
-
-globalStyle(`${triggerStyle} svg`, {
-  fill: vars.color.text,
-  height: size,
-  paddingLeft: "0.75em",
-  width: size,
-});
-
-globalStyle(`${triggerStyle}[aria-expanded='true'] rect`, {
-  transform: "translateY(0) rotate(0deg)",
-  transition: "transform .15s ease-in",
-});
-
-globalStyle(`${triggerStyle}[aria-expanded='true'] rect:first-child`, {
-  transform: "translateY(7px) rotate(45deg)",
-  transformOrigin: "12px 5px",
-});
-
-globalStyle(`${triggerStyle}[aria-expanded='true'] rect:nth-child(2)`, {
-  fill: "transparent",
-});
-
-globalStyle(`${triggerStyle}[aria-expanded='true'] rect:nth-child(3)`, {
-  transform: "translateY(-7px) rotate(-45deg)",
-  transformOrigin: "12px 19px",
+export const triggerTextStyle = style({
+  marginRight: "0.5rem",
 });
