@@ -1,21 +1,16 @@
 import React from "react";
 import { ComponentProps } from "../page-components";
-import Button from "../button";
-import Arrow from "../arrow";
+import ArrowButton from "../arrow-button";
+import { buttonComponentStyle } from "./styles.css";
 
 interface Props extends Sanity.Schema.ButtonComponent, ComponentProps {
   className?: string;
 }
 
-export default function ButtonComponent({ text, link, variant }: Props) {
-  const secureVariant = variant || "secondary";
+export default function ButtonComponent(props: Props) {
   return (
-    <Button
-      href={link?.internalLink?._ref || link?.externalUrl}
-      variant={secureVariant}
-    >
-      <span>{text}</span>
-      <Arrow variant={secureVariant} />
-    </Button>
+    <div className={buttonComponentStyle}>
+      <ArrowButton {...props} />
+    </div>
   );
 }
