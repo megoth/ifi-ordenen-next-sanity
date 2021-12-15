@@ -23,7 +23,8 @@ export default function Events({ events, members }: Props) {
     .filter(onlyUnique)
     .sort()
     .reverse();
-  const expanded = eventYears.length < 5;
+  // TODO: Might use expand/collapse-functionality later
+  const expanded = true;
   return (
     <EventsProvider>
       <Container>
