@@ -1,9 +1,21 @@
 import { globalStyle, style } from "@vanilla-extract/css";
-import { vars } from "../styles.css";
 
-export const navigationStyle = style({
-  selectors: {
-    "&.main-menu": {
+export const navigationStyle = style({});
+
+globalStyle(`${navigationStyle} ul`, {
+  display: "flex",
+  flexDirection: "column",
+  gap: "0.75rem",
+  "@media": {
+    "screen and (min-height: 400px)": {
+      gap: "1.25rem",
+    },
+  },
+});
+
+globalStyle(`${navigationStyle}.main-menu`, {
+  "@media": {
+    "screen and (min-height: 400px)": {
       fontSize: 22,
       marginBottom: "3em",
     },
@@ -12,7 +24,7 @@ export const navigationStyle = style({
 
 globalStyle(`${navigationStyle}.main-menu ul`, {
   "@media": {
-    "screen and (min-height: 640px)": {
+    "screen and (min-height: 600px)": {
       textAlign: "right",
     },
   },
@@ -20,8 +32,4 @@ globalStyle(`${navigationStyle}.main-menu ul`, {
 
 globalStyle(`${navigationStyle}.sub-menu ul`, {
   textAlign: "right",
-});
-
-globalStyle(`${navigationStyle} li`, {
-  margin: "1.25rem 0",
 });

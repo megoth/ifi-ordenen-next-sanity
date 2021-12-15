@@ -22,9 +22,12 @@ export const modalStyle = style({
 export const modalInnerStyle = style({
   display: "flex",
   justifyContent: "space-between",
-  padding: "2em",
+  padding: "0 2em",
   "@media": {
-    "screen and (min-height: 640px)": {
+    "screen and (min-height: 400px)": {
+      padding: "2em",
+    },
+    "screen and (min-height: 600px)": {
       display: "inherit",
     },
     "screen and (min-width: 640px)": {
