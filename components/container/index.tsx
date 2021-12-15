@@ -5,13 +5,13 @@ import cn from "classnames";
 interface Props {
   children: ReactNode;
   className?: string;
-  variant?: "contained" | "green";
+  variant?: "brown" | "green";
 }
 
 const Container = forwardRef<HTMLDivElement, Props>(
   ({ children, className, variant }, ref) => (
     <div className={cn(containerStyle, variant)} ref={ref}>
-      <div className={cn(innerStyle, variant, className)}>{children}</div>
+      <div className={cn(innerStyle, className)}>{children}</div>
     </div>
   )
 );

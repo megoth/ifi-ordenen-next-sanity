@@ -16,7 +16,7 @@ interface Props {
 export default function Footer({ siteSettings }: Props) {
   return (
     <footer className={footerStyle}>
-      <Container className={footerContainerStyle} variant="contained">
+      <Container className={footerContainerStyle} variant="brown">
         <Logo />
         <div className={footerTextStyle}>
           <p>{siteSettings?.title}</p>

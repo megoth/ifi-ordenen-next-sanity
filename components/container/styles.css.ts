@@ -4,6 +4,9 @@ import { vars } from "../styles.css";
 export const containerStyle = style({
   backgroundColor: vars.color.base,
   selectors: {
+    "&.brown": {
+      backgroundColor: vars.color.brown,
+    },
     "&.green": {
       backgroundColor: vars.color.green,
       color: vars.color.black,
@@ -22,11 +25,6 @@ globalStyle(`${containerStyle}.green a`, {
 
 export const innerStyle = style({
   padding: "0 2rem",
-  selectors: {
-    "&.contained": {
-      overflow: "auto",
-    },
-  },
   "@media": {
     "screen and (min-width: 640px)": {
       margin: "0 auto",

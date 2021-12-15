@@ -32,7 +32,7 @@ export default function LastMembers({ lastMembers }: Props) {
   const lastDatesSelection = dates.filter((date) => date > fromDate);
   const lastDates = lastDatesSelection.length ? lastDatesSelection : dates[0];
   return (
-    <Container variant={"green"}>
+    <Container variant="green">
       <h2>
         {lastDatesSelection.length
           ? "Mottakere siste året"

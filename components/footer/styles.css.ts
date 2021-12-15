@@ -9,9 +9,13 @@ export const footerStyle = style({
 });
 
 export const footerContainerStyle = style({
+  backgroundColor: vars.color.brown,
   display: "flex",
   flexDirection: "column",
   gap: "1em",
+});
+
+globalStyle(`${footerContainerStyle}${footerContainerStyle}`, {
   paddingTop: "2em",
   paddingBottom: "2em",
 });
