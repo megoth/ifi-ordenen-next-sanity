@@ -39,7 +39,9 @@ export default function AssociationsItem({ association }: Props) {
             })}
           >
             <img
-              src={imageBuilder(association.logo).url() || undefined}
+              src={
+                imageBuilder(association.logo).maxWidth(400).url() || undefined
+              }
               ref={image}
             />
           </div>

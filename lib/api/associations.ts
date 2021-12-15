@@ -10,7 +10,8 @@ const associationFields = `
   logoBackgroundColor,
   url,
   description,
-  previous->
+  previous->,
+  'orderName': lower(coalesce(short, name)),
 `;
 export interface AssociationQuery
   extends Omit<Sanity.Schema.Association, "slug" | "previous"> {
@@ -19,10 +20,9 @@ export interface AssociationQuery
 }
 
 export async function getAllAssociations(preview: boolean) {
-  return await getClient(preview)
-    .fetch(`*[_type == "association"] | order(name asc){
+  return await getClient(preview).fetch(`*[_type == "association"]{
       ${associationFields}
-    }`);
+    }|order(orderName asc)`);
 }
 
 export async function getAssociationAndMore(

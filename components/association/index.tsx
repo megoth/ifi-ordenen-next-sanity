@@ -24,7 +24,10 @@ export default function Association({ association, events, members }: Props) {
           {association.logo && (
             <div className={logoStyle} style={getLogoStyle(association)}>
               <img
-                src={imageBuilder(association.logo).url() || undefined}
+                src={
+                  imageBuilder(association.logo).maxWidth(400).url() ||
+                  undefined
+                }
                 alt={`Logo for ${association.name}`}
               />
             </div>
