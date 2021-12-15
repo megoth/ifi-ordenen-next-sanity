@@ -1,4 +1,5 @@
 import { globalStyle, style } from "@vanilla-extract/css";
+import { vars } from "../styles.css";
 
 export const navigationStyle = style({
   selectors: {
@@ -9,7 +10,15 @@ export const navigationStyle = style({
   },
 });
 
-globalStyle(`${navigationStyle} ul`, {
+globalStyle(`${navigationStyle}.main-menu ul`, {
+  "@media": {
+    "screen and (min-height: 640px)": {
+      textAlign: "right",
+    },
+  },
+});
+
+globalStyle(`${navigationStyle}.sub-menu ul`, {
   textAlign: "right",
 });
 

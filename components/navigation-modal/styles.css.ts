@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../styles.css";
+import { headerHeight } from "../header/styles.css";
 
 export const modalStyle = style({
   backgroundColor: vars.color.base,
@@ -7,7 +8,7 @@ export const modalStyle = style({
   left: 0,
   position: "fixed",
   height: "calc(100vh - 125px)",
-  top: 125,
+  top: headerHeight,
   width: "100%",
   zIndex: vars.zIndex.modal,
 
@@ -19,8 +20,13 @@ export const modalStyle = style({
 });
 
 export const modalInnerStyle = style({
+  display: "flex",
+  justifyContent: "space-between",
   padding: "2em",
   "@media": {
+    "screen and (min-height: 640px)": {
+      display: "inherit",
+    },
     "screen and (min-width: 640px)": {
       margin: "0 auto",
       padding: "2em 0 0",
