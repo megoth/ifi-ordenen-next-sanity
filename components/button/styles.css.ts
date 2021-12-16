@@ -21,8 +21,8 @@ export const buttonStyle = style({
       padding: 0,
     },
     "&.primary": {
-      backgroundColor: vars.color.red,
-      borderColor: vars.color.red,
+      backgroundColor: vars.color.pink,
+      borderColor: vars.color.pink,
       color: vars.color.black,
       padding: "1.25em 1em 1.25em 1.75em",
     },
@@ -32,37 +32,34 @@ export const buttonStyle = style({
   },
 });
 
-const buttonHoverFocusRule = {
-  backgroundColor: vars.color.text,
-  borderColor: vars.color.text,
-  color: vars.color.black,
-};
 globalStyle(
-  [
-    `${buttonStyle}.primary:focus`,
-    `${buttonStyle}.primary:hover`,
-    `${buttonStyle}.primary:focus`,
-    `${buttonStyle}.primary:hover`,
-    `${buttonStyle}.secondary:focus`,
-    `${buttonStyle}.secondary:hover`,
-  ].join(", "),
-  buttonHoverFocusRule
+  [`${buttonStyle}.primary:focus`, `${buttonStyle}.primary:hover`].join(", "),
+  {
+    backgroundColor: vars.color.red,
+    borderColor: vars.color.red,
+  }
+);
+
+globalStyle(
+  [`${buttonStyle}.secondary:focus`, `${buttonStyle}.secondary:hover`].join(
+    ", "
+  ),
+  {
+    backgroundColor: vars.color.text,
+    borderColor: vars.color.text,
+    color: vars.color.black,
+  }
 );
 
 globalStyle(`${buttonStyle}.secondary ${arrowStyle} path`, {
   fill: vars.color.text,
 });
-const arrowHoverFocusRule = {
-  fill: vars.color.black,
-};
 globalStyle(
   [
-    `${buttonStyle}.primary:focus ${arrowStyle} path`,
-    `${buttonStyle}.primary:hover ${arrowStyle} path`,
-    `${buttonStyle}.primary:focus ${arrowStyle} path`,
-    `${buttonStyle}.primary:hover ${arrowStyle} path`,
     `${buttonStyle}.secondary:focus ${arrowStyle} path`,
     `${buttonStyle}.secondary:hover ${arrowStyle} path`,
   ].join(", "),
-  arrowHoverFocusRule
+  {
+    fill: vars.color.black,
+  }
 );
