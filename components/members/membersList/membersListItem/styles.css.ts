@@ -105,11 +105,6 @@ export const personSelectedCloseStyle = style({
   ":focus": personSelectedCloseFocusHover,
   ":hover": personSelectedCloseFocusHover,
 });
-export const personSelectedCloseInnerStyle = style({
-  lineHeight: 1.5,
-  position: "relative",
-  top: -1,
-});
 
 export const personSelectedDescriptionStyle = style({
   backgroundColor: vars.color.green,

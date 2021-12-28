@@ -11,7 +11,6 @@ import {
   personHiddenStyle,
   personImageStyle,
   personNameStyle,
-  personSelectedCloseInnerStyle,
   personSelectedCloseStyle,
   personSelectedDescriptionStyle,
   personSelectedImageStyle,
@@ -20,6 +19,7 @@ import {
   personTitleStyle,
 } from "./styles.css";
 import Arrow from "../../../arrow";
+import Cross from "../../../cross";
 
 interface Props {
   person: PersonForListQuery;
@@ -59,7 +59,7 @@ export default function MembersListItem({ person }: Props) {
               className={personSelectedCloseStyle}
               onClick={selectUsername}
             >
-              <span className={personSelectedCloseInnerStyle}>✖</span>
+              <Cross size={12} />
             </Button>
           </div>
           <div className={personSelectedDescriptionStyle}>
