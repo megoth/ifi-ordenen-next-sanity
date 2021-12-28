@@ -26,22 +26,23 @@ export default function Members({ members }: Props) {
     views.find((view) => view === router.query.by) || views[0]
   );
 
-  useEffect(
-    () =>
-      setChosenView(views.find((view) => view === router.query.by) || views[0]),
-    [router?.query?.by]
-  );
+  useEffect(() => {
+    setChosenView(popStateEvent?.state.view || views[0]);
+  }, [popStateEvent]);
 
-  useEffect(
-    () => setChosenView(popStateEvent?.state.view || views[0]),
-    [popStateEvent]
-  );
+  useEffect(() => {
+    setChosenView(views.find((view) => view === router.query.by) || views[0]);
+  }, [router?.query?.by]);
 
   const history = useHistory();
   const selectView = (event, view) => {
     event.preventDefault();
     setChosenView(view);
-    history?.pushState({ view }, "", event.target.href);
+    history?.pushState(
+      { view, pathname: router.pathname },
+      "",
+      event.target.href
+    );
   };
   return (
     <Container>
