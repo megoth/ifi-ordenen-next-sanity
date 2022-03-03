@@ -55,6 +55,6 @@ export async function getStaticPaths() {
           slug: event.slug,
         },
       })) || [],
-    fallback: true,
+    fallback: false,
   };
 }

@@ -21,7 +21,7 @@ export default function Frontpage({ siteSettings, page, lastMembers }: Props) {
 export async function getStaticProps({ preview = false }) {
   const [siteSettings, page, lastMembers] = await Promise.all([
     getSiteSettings(preview),
-    getPage("/", preview),
+    getPage("index", preview),
     getAllPeople(preview),
   ]);
   return {

@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "next",
     "build": "npm run build:sanity && pwd && npm run build:web",
+    "export": "npm run build && next export",
     "build:web": "next build",
     "start:web": "next start",
     "build:sanity": "cd studio && npx @sanity/cli build ../public/studio -y && cd ..",

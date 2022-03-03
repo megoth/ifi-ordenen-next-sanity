@@ -32,7 +32,7 @@ export async function getStaticProps({ preview = false }) {
   const [allEvents, siteSettings, page, members] = await Promise.all([
     getAllEventsForHistoryPage(preview),
     getSiteSettings(preview),
-    getPage("/history", preview),
+    getPage("history", preview),
     getAllPeople(preview),
   ]);
   return {

@@ -22,7 +22,7 @@ export async function getStaticProps({ preview = false }) {
   const [members, siteSettings, page] = await Promise.all([
     getAllPeople(preview),
     getSiteSettings(preview),
-    getPage("/person", preview),
+    getPage("person", preview),
   ]);
   return {
     props: { members, siteSettings, page },

@@ -55,6 +55,6 @@ export async function getStaticPaths() {
           slug: album.slug,
         },
       })) || [],
-    fallback: true,
+    fallback: false,
   };
 }

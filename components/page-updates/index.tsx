@@ -13,9 +13,6 @@ export default function PageUpdates({ pageUpdates }: Props) {
   return (
     <Container>
       <h2>Oppdateringer på siden</h2>
-      <p>
-        Tilgjengelig som <a href="/rss">RSS</a>.
-      </p>
       <ul className={listStyle}>
         {pageUpdates.map(({ created, description, name, url }) => (
           <li key={url}>
