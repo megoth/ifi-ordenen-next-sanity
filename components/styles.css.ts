@@ -1,5 +1,4 @@
-import { globalStyle } from "@vanilla-extract/css";
-import { createTheme, style } from "@vanilla-extract/css";
+import { createTheme, globalStyle } from "@vanilla-extract/css";
 
 export const [themeClass, vars] = createTheme({
   color: {
