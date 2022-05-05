@@ -17,9 +17,18 @@ export interface PersonForListQuery
   titles: Array<TitleQuery>;
 }
 
+interface GetAllPeopleOptions {
+  dateOrder?: "desc" | "asc";
+}
+
 export async function getAllPeople(
-  preview: boolean
+  preview: boolean,
+  options: GetAllPeopleOptions = {}
 ): Promise<Array<PersonForListQuery>> {
+  const { dateOrder } = {
+    dateOrder: "asc",
+    ...options,
+  };
   return getClient(preview)
     .fetch(
       `*[ _type == "person" ]{
@@ -34,7 +43,7 @@ export async function getAllPeople(
     },
     'date': titles|order(date desc)[0].date,
     'dateOrder': titles|order(date desc)[0].dateOrder,
-  } | order(date desc, dateOrder desc)`
+  } | order(date desc, dateOrder ${dateOrder})`
     )
     .then((people) =>
       people.map(({ titles, ...props }) => ({

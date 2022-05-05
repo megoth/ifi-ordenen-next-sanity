@@ -20,7 +20,7 @@ export default function AllPeoplePage({ members, siteSettings, page }: Props) {
 
 export async function getStaticProps({ preview = false }) {
   const [members, siteSettings, page] = await Promise.all([
-    getAllPeople(preview),
+    getAllPeople(preview, { dateOrder: "desc" }),
     getSiteSettings(preview),
     getPage("person", preview),
   ]);
