@@ -53,7 +53,7 @@ export async function getAllEventsForAssociation(
 
 export async function getAllEventsWithSlug(): Promise<Array<{ slug: string }>> {
   return client.fetch(
-    `*[_type == "event" && defined(description) && defined(slug)]{ 'slug': slug.current }`
+    `*[_type == "event" && defined(slug)]{ 'slug': slug.current }`
   );
 }
 
