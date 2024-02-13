@@ -30,5 +30,4 @@ To update [ordenen.ifi.uio.no](https://ordenen.ifi.uio.no/) set up a local devel
 - Run `npm run build` after doing all change
 - Push changes to Git
 - Log in to a Ifi server
-- Navigate to `/projects/ifi-ordenen`
-- Run `update.sh`
+- Run `/projects/ifi-ordenen/update.sh`
