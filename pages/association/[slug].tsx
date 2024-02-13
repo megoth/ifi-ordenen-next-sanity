@@ -69,7 +69,6 @@ export const getStaticProps: GetStaticProps = async ({
       events,
       members,
     },
-    revalidate: 1,
   };
 };
 

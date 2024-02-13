@@ -42,7 +42,6 @@ export const getStaticProps: GetStaticProps = async ({
       event,
       siteSettings,
     },
-    revalidate: 1,
   };
 };
 

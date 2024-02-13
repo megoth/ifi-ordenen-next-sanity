@@ -23,6 +23,5 @@ export async function getStaticProps({ preview = false }) {
   ]);
   return {
     props: { siteSettings, page },
-    revalidate: 1,
   };
 }

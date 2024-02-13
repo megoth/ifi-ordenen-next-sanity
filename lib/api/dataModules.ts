@@ -7,17 +7,7 @@ import { PageUpdateQuery } from "./page-updates";
 
 // IMPORTANT!!!
 // Make sure that dataModules and DataModules contains the same keys
-// Also update /components/data-component.tsx
-
-export const dataModules = [
-  "albums",
-  "associations",
-  "dictionaryEntries",
-  "events",
-  "lastMembers",
-  "members",
-  "pageUpdates",
-];
+// Also update ifi-ordenen-studio/lib/data-component.tsx
 
 export interface DataModules {
   albums?: Array<AlbumQuery>;

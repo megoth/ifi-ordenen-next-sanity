@@ -42,7 +42,6 @@ export const getStaticProps: GetStaticProps = async ({
       album,
       siteSettings,
     },
-    revalidate: 1,
   };
 };
 

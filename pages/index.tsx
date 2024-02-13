@@ -26,6 +26,5 @@ export async function getStaticProps({ preview = false }) {
   ]);
   return {
     props: { siteSettings, page, lastMembers },
-    revalidate: 1,
   };
 }

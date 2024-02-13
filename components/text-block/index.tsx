@@ -4,7 +4,7 @@ import { textBlockStyle } from "./styles.css";
 import cn from "classnames";
 
 interface Props {
-  text: Array<Sanity.Keyed<Sanity.Block>>;
+  text: string[];
   className?: string;
 }
 

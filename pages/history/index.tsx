@@ -37,6 +37,5 @@ export async function getStaticProps({ preview = false }) {
   ]);
   return {
     props: { allEvents, siteSettings, page, members },
-    revalidate: 1,
   };
 }

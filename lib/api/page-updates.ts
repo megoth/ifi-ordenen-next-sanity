@@ -1,6 +1,6 @@
 import { getClient } from "../sanity";
 
-export interface PageUpdateQuery extends Sanity.Document {
+export interface PageUpdateQuery {
   created: string;
   name: string;
   description: string;

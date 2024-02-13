@@ -42,7 +42,6 @@ export const getStaticProps: GetStaticProps = async ({
       person,
       siteSettings,
     },
-    revalidate: 1,
   };
 };
 

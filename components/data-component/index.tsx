@@ -39,5 +39,6 @@ export default function DataComponent({
       </div>
     );
   }
+  // @ts-ignore
   return <Component {...component} />;
 }

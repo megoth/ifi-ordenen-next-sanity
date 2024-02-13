@@ -3,7 +3,8 @@ const withVanillaExtract = createVanillaExtractPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  exportTrailingSlash: true,
+  output: "export",
+  trailingSlash: true,
 };
 
 module.exports = withVanillaExtract(nextConfig);
