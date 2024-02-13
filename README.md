@@ -1,11 +1,13 @@
-# Next.js blog with comment section
+# Ifi-ordenen webpage
 
-This is a demo of how to add a simple comment section to blog post using [Next.js](https://nextjs.org), [Sanity.io](https://www.sanity.io), and [Vercel](https://vercel.com).
+This is the website of Hennes Majestet Keiserpingvinen den Fornemmes. It is
+using [Next.js](https://nextjs.org), [Sanity.io](https://www.sanity.io), and [Vercel](https://vercel.com).
 
+## Setting up local development
 
-### Running the front-end
-
-Rename the `.env.test` file to `.env` and store the environment variables that Next and Sanity will use to pull data from the Sanity API. You can get or create the tokens, ids, and secrets from [manage.sanity.io](https://manage.sanity.io).
+Rename the `.env.test` file to `.env` and store the environment variables that Next and Sanity will use to pull data
+from the Sanity API. You can get or create the tokens, ids, and secrets
+from [manage.sanity.io](https://manage.sanity.io).
 
 Once those env variables are ready, you can run the following commands to get Next's development server up and running:
 
@@ -15,12 +17,8 @@ npm install
 # Run the frontend
 npm run dev
 
-# Run the Studio
+# Run Sanity Studio
 npm run start:sanity
-
-# Generating types for Sanity schemes
-npm run types
 ```
 
-The blog will be running at `http://localhost:3000`, the Studio will run at `http://localhost:3333`. The types need 
-to be generated after changes in Sanity schemes.
+The website will be running at `http://localhost:3000`, the Studio will run at `http://localhost:3333`.

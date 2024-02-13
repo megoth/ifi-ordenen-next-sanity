@@ -5,11 +5,13 @@
     "dev": "next",
     "build": "next build",
     "export": "npm run build && next export",
+    "sanity": "cd studio && npm run dev",
     "start:web": "next start",
     "lint": "prettier --check \"**/*.ts(x)\"",
     "lint:fix": "prettier --write \"**/*.ts(x)\"",
     "ci": "npm run lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "postinstall": "cd studio && npm i"
   },
   "dependencies": {
     "@sanity/block-content-to-markdown": "^0.0.5",
