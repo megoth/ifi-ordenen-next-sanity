@@ -6,8 +6,8 @@ import { AlbumQuery } from "./gallery";
 import { PageUpdateQuery } from "./page-updates";
 
 // IMPORTANT!!!
-// Make sure that dataModules and DataModules contains the same keys
-// Also update ifi-ordenen-studio/lib/data-component.tsx
+// Also update src/components/data-component.tsx
+// Also update studio/lib/data-component.tsx
 
 export interface DataModules {
   albums?: Array<AlbumQuery>;

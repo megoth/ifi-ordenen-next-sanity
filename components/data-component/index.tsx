@@ -1,3 +1,7 @@
+// IMPORTANT!!!
+// Also update lib/api/dataModules.ts
+// Also update studio/lib/dataModules.ts
+
 import React from "react";
 import { ComponentProps } from "../page-components";
 import Associations from "../associations";
