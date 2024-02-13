@@ -22,3 +22,13 @@ npm run start:sanity
 ```
 
 The website will be running at `http://localhost:3000`, the Studio will run at `http://localhost:3333`.
+
+## Updating webpage
+
+To update [ordenen.ifi.uio.no](https://ordenen.ifi.uio.no/) set up a local development and do the following steps:
+
+- Run `npm run build` after doing all change
+- Push changes to Git
+- Log in to a Ifi server
+- Navigate to `/projects/ifi-ordenen`
+- Run `update.sh`
