@@ -9,8 +9,7 @@
     "lint": "prettier --check \"**/*.ts(x)\"",
     "lint:fix": "prettier --write \"**/*.ts(x)\"",
     "ci": "npm run lint",
-    "prepare": "husky install",
-    "generate:types": "npx sanity-codegen schema-codegen"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@sanity/block-content-to-markdown": "^0.0.5",
@@ -34,7 +33,6 @@
     "@vanilla-extract/next-plugin": "^2.3.5",
     "husky": "^9.0.10",
     "prettier": "^3.2.4",
-    "sanity-codegen": "^0.9.8",
     "typescript": "^5.3.3"
   }
 }
