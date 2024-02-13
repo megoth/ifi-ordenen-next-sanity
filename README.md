@@ -1,6 +1,6 @@
 # Ifi-ordenen webpage
 
-This is the website of Hennes Majestet Keiserpingvinen den Fornemmes. It is
+This is the website of Hennes Majestet Keiserpingvinen den Fornemmes orden. It is
 using [Next.js](https://nextjs.org), [Sanity.io](https://www.sanity.io), and [Vercel](https://vercel.com).
 
 ## Setting up local development
