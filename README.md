@@ -31,3 +31,8 @@ To update [ordenen.ifi.uio.no](https://ordenen.ifi.uio.no/) set up a local devel
 - Push changes to Git
 - Log in to a Ifi server
 - Run `/projects/ifi-ordenen/update.sh`
+
+### Note for former students (aka old people like Arne)
+
+You might need to set up local 2FA authentication via [passord.uio.no](https://passord.uio.no/). You can then log on to
+UiO servers via rlogin.uio.no, and then continue to log onto an Ifi server via login.ifi.uio.no.
