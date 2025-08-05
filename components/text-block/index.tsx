@@ -1,21 +1,18 @@
 import React from "react";
-import BlockContent from "@sanity/block-content-to-react";
 import { textBlockStyle } from "./styles.css";
 import cn from "classnames";
+import { PortableText } from "@portabletext/react";
+import { TypedObject } from "@portabletext/types";
 
 interface Props {
-  text: string[];
+  text: TypedObject[];
   className?: string;
 }
 
 export default function TextBlock({ text, className }: Props) {
   return (
     <div className={cn(textBlockStyle, className)}>
-      <BlockContent
-        blocks={text}
-        projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-        dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
-      />
+      <PortableText value={text} />
     </div>
   );
 }
