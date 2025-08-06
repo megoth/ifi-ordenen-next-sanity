@@ -1,7 +1,7 @@
 import client, { getClient } from "../sanity";
-import { Association, Person, Title } from "../../studio/sanity.types";
+import { Association, Award, Person, Title } from "../../studio/sanity.types";
 
-export interface TitleQuery extends Omit<Sanity.Schema.Award, "title"> {
+export interface TitleQuery extends Omit<Award, "title"> {
   title: Title;
 }
 
