@@ -1,7 +1,7 @@
 import client, { getClient } from "../sanity";
 import { NextRouter } from "next/dist/shared/lib/router/router";
 import { getPathFromRouter } from "../utils";
-import { Association, Source } from "../../studio/sanity.types";
+import { Association, Source, Event } from "../../studio/sanity.types";
 
 export interface EventQuery
   extends Omit<Event, "slug" | "sources" | "associations"> {
