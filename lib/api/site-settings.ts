@@ -1,12 +1,13 @@
 import { getClient } from "../sanity";
 import { LinkQuery } from "./link";
+import { SiteSettings } from "../../studio/sanity.types";
 
 export interface SiteSettingsPage {
   siteSettings?: SiteSettingsQuery;
 }
 
 export interface SiteSettingsQuery
-  extends Omit<Sanity.Schema.SiteSettings, "mainNav" | "subNav"> {
+  extends Omit<SiteSettings, "mainNav" | "subNav"> {
   mainNavItems: Array<LinkQuery>;
   subNavItems: Array<LinkQuery>;
 }

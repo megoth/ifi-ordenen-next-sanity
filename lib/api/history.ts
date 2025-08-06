@@ -1,16 +1,17 @@
 import client, { getClient } from "../sanity";
 import { NextRouter } from "next/dist/shared/lib/router/router";
-import { getArrayFromRouterQuery, getPathFromRouter } from "../utils";
+import { getPathFromRouter } from "../utils";
+import { Association, Source } from "../../studio/sanity.types";
 
 export interface EventQuery
-  extends Omit<Sanity.Schema.Event, "slug" | "sources" | "associations"> {
+  extends Omit<Event, "slug" | "sources" | "associations"> {
   slug: string;
-  sources: Array<Sanity.Schema.Source>;
-  associations: Array<Sanity.Schema.Association>;
+  sources: Array<Source>;
+  associations: Array<Association>;
 }
 
 export interface EventForListQuery
-  extends Omit<Sanity.Schema.Event, "slug" | "sources" | "associations"> {
+  extends Omit<Event, "slug" | "sources" | "associations"> {
   slug: string;
 }
 

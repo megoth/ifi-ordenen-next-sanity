@@ -1,14 +1,15 @@
 import client, { getClient } from "../sanity";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { Album } from "../../studio/sanity.types";
 
 export interface AlbumQuery
-  extends Omit<Sanity.Schema.Album, "slug" | "images"> {
+  extends Omit<Album, "slug" | "images"> {
   slug: string;
   mainImage: SanityImageSource;
 }
 
 export interface AlbumWithImagesQuery
-  extends Omit<Sanity.Schema.Album, "slug"> {
+  extends Omit<Album, "slug"> {
   slug: string;
 }
 

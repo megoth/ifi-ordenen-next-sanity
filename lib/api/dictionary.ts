@@ -1,7 +1,8 @@
 import { getClient } from "../sanity";
+import { DictionaryEntry } from "../../studio/sanity.types";
 
 export interface DictionaryEntryQuery
-  extends Omit<Sanity.Schema.DictionaryEntry, "slug"> {
+  extends Omit<DictionaryEntry, "slug"> {
   slug: string;
 }
 

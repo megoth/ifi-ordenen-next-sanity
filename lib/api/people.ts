@@ -1,18 +1,19 @@
 import client, { getClient } from "../sanity";
+import { Association, Person, Title } from "../../studio/sanity.types";
 
 export interface TitleQuery extends Omit<Sanity.Schema.Award, "title"> {
-  title: Sanity.Schema.Title;
+  title: Title;
 }
 
 export interface PersonQuery
-  extends Omit<Sanity.Schema.Person, "slug" | "titles" | "associations"> {
+  extends Omit<Person, "slug" | "titles" | "associations"> {
   slug: string;
   titles: Array<TitleQuery>;
-  associations: Array<Sanity.Schema.Association>;
+  associations: Array<Association>;
 }
 
 export interface PersonForListQuery
-  extends Omit<Sanity.Schema.Person, "slug" | "titles"> {
+  extends Omit<Person, "slug" | "titles"> {
   slug: string;
   titles: Array<TitleQuery>;
 }
