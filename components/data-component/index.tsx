@@ -12,6 +12,7 @@ import { DataModules } from "../../lib/api/dataModules";
 import DictionaryEntries from "../dictionary-entries";
 import Albums from "../albums";
 import PageUpdates from "../page-updates";
+import { DataComponent as DataComponentSchema } from "../../studio/sanity.types";
 
 const dataComponents: { [KEY in keyof DataModules]: Function } = {
   albums: Albums,
@@ -23,7 +24,7 @@ const dataComponents: { [KEY in keyof DataModules]: Function } = {
   pageUpdates: PageUpdates,
 };
 
-interface Props extends Sanity.Schema.DataComponent, ComponentProps {}
+interface Props extends DataComponentSchema, ComponentProps {}
 
 export default function DataComponent({
   type,

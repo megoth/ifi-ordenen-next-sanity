@@ -1,4 +1,5 @@
 import client, { getClient } from "../sanity";
+import { Association } from "../../studio/sanity.types";
 
 const associationFields = `
   _id,
@@ -14,9 +15,9 @@ const associationFields = `
   'orderName': lower(coalesce(short, name)),
 `;
 export interface AssociationQuery
-  extends Omit<Sanity.Schema.Association, "slug" | "previous"> {
+  extends Omit<Association, "slug" | "previous"> {
   slug: string;
-  previous: Sanity.Schema.Association;
+  previous: Association;
 }
 
 export async function getAllAssociations(preview: boolean) {

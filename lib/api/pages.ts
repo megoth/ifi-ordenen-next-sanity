@@ -1,6 +1,7 @@
 import client, { getClient } from "../sanity";
+import { Page } from "../../studio/sanity.types";
 
-export interface PageQuery extends Omit<Sanity.Schema.Page, "slug"> {
+export interface PageQuery extends Omit<Page, "slug"> {
   slug: string;
 }
 

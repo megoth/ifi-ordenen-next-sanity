@@ -2,8 +2,9 @@ import React from "react";
 import { ComponentProps } from "../page-components";
 import ArrowButton from "../arrow-button";
 import { buttonComponentStyle } from "./styles.css";
+import { ButtonComponent as ButtonComponentSchema } from "../../studio/sanity.types";
 
-interface Props extends Sanity.Schema.ButtonComponent, ComponentProps {
+interface Props extends ButtonComponentSchema, ComponentProps {
   className?: string;
 }
 
