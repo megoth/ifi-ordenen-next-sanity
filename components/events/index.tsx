@@ -8,16 +8,18 @@ import { onlyUnique } from "../../lib/utils";
 import { EventsProvider } from "../../contexts/eventsContext";
 import { listStyle } from "./styles.css";
 import EventsExpandAll from "./events-expand-all";
+import { GeneralAssemblyForListQuery } from "../../lib/api/generalAssembly";
 
 interface Props {
   events: Array<EventForListQuery>;
   members: Array<PersonForListQuery>;
+  assemblies: Array<GeneralAssemblyForListQuery>;
 }
 
-export default function Events({ events, members }: Props) {
+export default function Events({ events, members, assemblies }: Props) {
   const eventYears = [
     ...getYearsFromEvents(events),
-    ...getDatesFromAwards(members),
+    ...getDatesFromAwards(members)
   ]
     .map((date) => date.substring(0, 4))
     .filter(onlyUnique)
@@ -39,6 +41,7 @@ export default function Events({ events, members }: Props) {
                 members={members.filter((member) =>
                   member.titles.find((title) => title.date.indexOf(year) !== -1)
                 )}
+                assemblies={assemblies.filter((assembly) => assembly.date.substring(0, 4) === year)}
                 year={year}
                 expanded={expanded}
               />

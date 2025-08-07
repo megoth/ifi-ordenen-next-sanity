@@ -1,10 +1,10 @@
-import { EventForListQuery, getYearInListHref } from "../../lib/api/history";
+import { EventForListQuery } from "../../lib/api/history";
 import {
   yearLinkStyle,
   yearListStyle,
   yearContentSelectedStyle,
   yearContentStyle,
-  yearTitleStyle,
+  yearTitleStyle, assembliesStyle
 } from "./styles.css";
 import HistoryYearListItem from "./history-year-list-item";
 import { PersonForListQuery } from "../../lib/api/people";
@@ -17,23 +17,29 @@ import { useContext, useEffect, useState } from "react";
 import EventsContext from "../../contexts/eventsContext";
 import { getHref, toggleValueInArray } from "../../lib/utils";
 import useHistory from "../../hooks/useHistory";
+import { GeneralAssemblyForListQuery } from "../../lib/api/generalAssembly";
+import HistoryYearAssembly from "./history-year-assembly";
 
 interface Props {
   events: Array<EventForListQuery>;
   members: Array<PersonForListQuery>;
+  assemblies: Array<GeneralAssemblyForListQuery>;
   year: string | number; // React parses it as number
   expanded: boolean;
 }
 
 export default function HistoryYearEntry({
-  events,
-  members,
-  year,
-  expanded,
-}: Props) {
+                                           events,
+                                           members,
+                                           assemblies,
+                                           year,
+                                           expanded
+                                         }: Props) {
   const majorEvents = events.filter((event) => event.major);
   const minorEvents = events.filter((event) => !event.major);
   const yearAsString = year.toString();
+  const sortedAssemblies = assemblies.sort((a, b) => a.date > b.date ? 1 : -1);
+  const numberOfAssemblies = assemblies.length;
   const { years, toggleYear } = useContext(EventsContext);
   const router = useRouter();
   const isSelected = years.findIndex((y) => y === yearAsString) !== -1;
@@ -54,8 +60,8 @@ export default function HistoryYearEntry({
     setHref(
       getHref(router, {
         query: {
-          year: selectedYears,
-        },
+          year: selectedYears
+        }
       })
     );
   }, [years]);
@@ -75,7 +81,7 @@ export default function HistoryYearEntry({
       </h3>
       <div
         className={cn(yearContentStyle, {
-          [yearContentSelectedStyle]: isSelected || expanded,
+          [yearContentSelectedStyle]: isSelected || expanded
         })}
       >
         <ul className={yearListStyle}>
@@ -97,6 +103,19 @@ export default function HistoryYearEntry({
                   />
                 ))}
               </ul>
+            </li>
+          )}
+          {numberOfAssemblies > 0 && (
+            <li key={`assemblies-${year}`}>
+              <span className={assembliesStyle}>
+                <span>Generalforsamlinger: </span>
+                {sortedAssemblies.map((assembly, index) => (
+                  <>
+                    <HistoryYearAssembly assembly={assembly} key={`assembly-${assembly._id}`} />
+                    {index <= (numberOfAssemblies - 2) && <span>, </span>}
+                  </>
+                ))}
+              </span>
             </li>
           )}
         </ul>

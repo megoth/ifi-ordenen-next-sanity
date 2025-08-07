@@ -25,3 +25,7 @@ export const yearListStyle = style({
 globalStyle(`${yearListStyle} ${yearListStyle}`, {
   margin: "0 0 0 1rem",
 });
+
+export const assembliesStyle = style({
+  display: "flex",
+})

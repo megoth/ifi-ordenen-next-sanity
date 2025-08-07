@@ -8,6 +8,7 @@ import buttonsComponent from "./buttonsComponent";
 import dataComponent from "./dataComponent";
 import dictionaryEntry from "./dictionaryEntry";
 import event from "./event";
+import generalAssembly from "./generalAssembly";
 import link from "./link";
 import navigation from "./navigation";
 import navigationItem from "./navigationItem";
@@ -29,6 +30,7 @@ export const schemaTypes = [
     dataComponent,
     dictionaryEntry,
     event,
+    generalAssembly,
     link,
     navigation,
     navigationItem,
