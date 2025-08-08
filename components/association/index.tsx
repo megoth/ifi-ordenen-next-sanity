@@ -9,14 +9,16 @@ import MembersList from "../members/membersList";
 import Link from "../link";
 import { detailsStyle, listStyle, logoStyle } from "./styles.css";
 import { imageBuilder } from "../../lib/sanity";
+import { GeneralAssemblyForListQuery } from "../../lib/api/generalAssembly";
 
 interface Props {
+  assemblies: Array<GeneralAssemblyForListQuery>;
   association: AssociationQuery;
   events: Array<EventForListQuery>;
   members: Array<PersonForListQuery>;
 }
 
-export default function Association({ association, events, members }: Props) {
+export default function Association({ assemblies, association, events, members }: Props) {
   return (
     <>
       <Container>
@@ -77,7 +79,7 @@ export default function Association({ association, events, members }: Props) {
           <Container>
             <h2>Historie</h2>
           </Container>
-          <Events events={events} members={members} />
+          <Events assemblies={assemblies} events={events} members={members} />
         </>
       )}
     </>
