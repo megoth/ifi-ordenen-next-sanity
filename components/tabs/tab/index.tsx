@@ -1,6 +1,6 @@
 import React, { MouseEventHandler, ReactNode } from "react";
 import cn from "classnames";
-import { tabLinkSelectedStyle, tabLinkStyle } from "./styles.css";
+import { tabLinkSelectedStyle, tabLinkStyle, tabStyle } from "./styles.css";
 import Button from "../../button";
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 export default function Tab({ children, href, onClick, selected }: Props) {
   return (
     <Button
-      className={cn(tabLinkStyle, {
+      className={cn(tabStyle, tabLinkStyle, {
         [tabLinkSelectedStyle]: selected,
       })}
       href={href}
