@@ -9,6 +9,7 @@ import { EventsProvider } from "../../contexts/eventsContext";
 import { listStyle } from "./styles.css";
 import EventsExpandAll from "./events-expand-all";
 import { GeneralAssemblyForListQuery } from "../../lib/api/generalAssembly";
+import EventsFilter from "./events-filter";
 
 interface Props {
   events: Array<EventForListQuery>;
@@ -30,22 +31,22 @@ export default function Events({ events, members, assemblies }: Props) {
   return (
     <EventsProvider>
       <Container>
+        <EventsFilter />
         {!expanded && <EventsExpandAll years={eventYears} />}
         <ul className={listStyle}>
           {eventYears.map((year) => (
-            <li key={`year-${year}`}>
-              <HistoryYearEntry
-                events={events.filter(
-                  (event) => event.year.indexOf(year) !== -1
-                )}
-                members={members.filter((member) =>
-                  member.titles.find((title) => title.date.indexOf(year) !== -1)
-                )}
-                assemblies={assemblies.filter((assembly) => assembly.date.substring(0, 4) === year)}
-                year={year}
-                expanded={expanded}
-              />
-            </li>
+            <HistoryYearEntry
+              key={`year-${year}`}
+              events={events.filter(
+                (event) => event.year.indexOf(year) !== -1
+              )}
+              members={members.filter((member) =>
+                member.titles.find((title) => title.date.indexOf(year) !== -1)
+              )}
+              assemblies={assemblies.filter((assembly) => assembly.date.substring(0, 4) === year)}
+              year={year}
+              expanded={expanded}
+            />
           ))}
         </ul>
       </Container>

@@ -19,6 +19,7 @@ import { getHref, toggleValueInArray } from "../../lib/utils";
 import useHistory from "../../hooks/useHistory";
 import { GeneralAssemblyForListQuery } from "../../lib/api/generalAssembly";
 import HistoryYearAssembly from "./history-year-assembly";
+import { useSearchParams } from "next/navigation";
 
 interface Props {
   events: Array<EventForListQuery>;
@@ -54,6 +55,17 @@ export default function HistoryYearEntry({
       event.target.href
     );
   };
+  const searchParams = useSearchParams();
+  const selectedFilters = searchParams.getAll("filter");
+  const filterSelected = selectedFilters.length !== 0;
+  const eventsFilterSelected = !filterSelected || (filterSelected && selectedFilters.indexOf("events") !== -1);
+  const awardsFilterSelected = !filterSelected || (filterSelected && selectedFilters.indexOf("awards") !== -1);
+  const assembliesFilterSelected = !filterSelected || (filterSelected && selectedFilters.indexOf("assemblies") !== -1);
+  const showYear = [
+    eventsFilterSelected && (majorEvents.length > 0 || minorEvents.length > 0),
+    awardsFilterSelected && members.length > 0,
+    assembliesFilterSelected && numberOfAssemblies > 0
+  ].reduce((memo, value) => memo || value, false);
 
   useEffect(() => {
     const selectedYears = toggleValueInArray(yearAsString, years);
@@ -66,8 +78,12 @@ export default function HistoryYearEntry({
     );
   }, [years]);
 
+  if (!showYear) {
+    return null;
+  }
+
   return (
-    <>
+    <li>
       <h3 className={yearTitleStyle}>
         {expanded ? (
           <DateFormat date={yearAsString} format={"yyyy"} />
@@ -85,14 +101,14 @@ export default function HistoryYearEntry({
         })}
       >
         <ul className={yearListStyle}>
-          {majorEvents.map((event, index) => (
+          {eventsFilterSelected && majorEvents.map((event, index) => (
             <HistoryYearListItem
               event={event}
               key={`major-event-${event.year}-${index}`}
             />
           ))}
-          <HistoryYearAwards members={members} year={yearAsString} />
-          {minorEvents.length > 0 && (
+          {awardsFilterSelected && <HistoryYearAwards members={members} year={yearAsString} />}
+          {eventsFilterSelected && minorEvents.length > 0 && (
             <li key={`minor-events-${year}`}>
               Mindre hendelser
               <ul className={yearListStyle}>
@@ -105,7 +121,7 @@ export default function HistoryYearEntry({
               </ul>
             </li>
           )}
-          {numberOfAssemblies > 0 && (
+          {assembliesFilterSelected && numberOfAssemblies > 0 && (
             <li key={`assemblies-${year}`}>
               <span className={assembliesStyle}>
                 <span>Generalforsamlinger: </span>
@@ -120,6 +136,6 @@ export default function HistoryYearEntry({
           )}
         </ul>
       </div>
-    </>
+    </li>
   );
 }

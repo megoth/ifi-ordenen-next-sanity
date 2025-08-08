@@ -1,11 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles.css";
 
-const focusHoverRule = {
-  borderColor: vars.color.text,
-  color: vars.color.text,
-};
-export const tabLinkStyle = style({
+export const tabStyle = style({
   border: "solid 2px",
   borderColor: vars.color.gray,
   color: vars.color.gray,
@@ -20,13 +16,20 @@ export const tabLinkStyle = style({
     borderRadius: "0 1em 1em 0",
     borderLeftWidth: 0,
   },
-  ":focus": focusHoverRule,
+});
+
+const focusHoverRule = {
+  borderColor: vars.color.text,
+  color: vars.color.text,
+};
+export const tabLinkStyle = style({
   ":hover": focusHoverRule,
 });
 
 export const tabLinkSelectedStyle = style({
   borderColor: vars.color.text,
   color: vars.color.text,
+  ":focus": focusHoverRule,
   ":first-child": {
     borderRightWidth: 2,
   },
