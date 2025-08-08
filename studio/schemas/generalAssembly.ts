@@ -1,6 +1,5 @@
 import { BiSitemap } from "react-icons/bi";
 import { defineField, defineType } from "sanity";
-import client from "../lib/client";
 
 export default defineType({
   name: "generalAssembly",
@@ -26,19 +25,6 @@ export default defineType({
       title: "Dato",
       description: "Nødvendig",
       type: "date"
-    }),
-    defineField({
-      name: "slug",
-      title: "Slug",
-      description: "Nødvendig",
-      type: "slug",
-      options: {
-        source: async (doc) => {
-          const association = await client.fetch('*[_id == $id][0]', { id: doc.association._ref})
-          return `${association.short.toLowerCase()}-${doc.date}`;
-        },
-        maxLength: 96,
-      },
     }),
     defineField({
       name: "extraordinary",
