@@ -13,7 +13,7 @@ import HistoryYearAwards from "./history-year-awards";
 import { useRouter } from "next/router";
 import Link from "../link";
 import cn from "classnames";
-import { useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import EventsContext from "../../contexts/eventsContext";
 import { getHref, toggleValueInArray } from "../../lib/utils";
 import useHistory from "../../hooks/useHistory";
@@ -126,10 +126,10 @@ export default function HistoryYearEntry({
               <span className={assembliesStyle}>
                 <span>Generalforsamlinger: </span>
                 {sortedAssemblies.map((assembly, index) => (
-                  <>
-                    <HistoryYearAssembly assembly={assembly} key={`assembly-${assembly._id}`} />
+                  <Fragment key={`assembly-${assembly._id}`}>
+                    <HistoryYearAssembly assembly={assembly} />
                     {index <= (numberOfAssemblies - 2) && <span>, </span>}
-                  </>
+                  </Fragment>
                 ))}
               </span>
             </li>
