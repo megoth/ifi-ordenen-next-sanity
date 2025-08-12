@@ -20,6 +20,7 @@ import {
   PersonForListQuery
 } from "../../lib/api/people";
 import { GeneralAssemblyForListQuery, getAllGeneralAssemblies } from "../../lib/api/generalAssembly";
+import { Association as AssociationType } from "../../studio/sanity.types";
 
 interface Props extends SiteSettingsPage {
   association: AssociationQuery;
@@ -39,7 +40,7 @@ export default function AssociationPage({
   if (!router.isFallback && !association?.slug) {
     return <ErrorPage statusCode={404} />;
   }
-  const associationAssemblies = assemblies.filter((assembly) => assembly.association._id === association._id);
+  const associationAssemblies = assemblies.filter((assembly) => (assembly.association as unknown as AssociationType)._id === association._id);
   return (
     <Layout pageTitle={association?.name} siteSettings={siteSettings}>
       {router.isFallback ? (
