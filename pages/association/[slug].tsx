@@ -39,13 +39,14 @@ export default function AssociationPage({
   if (!router.isFallback && !association?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+  const associationAssemblies = assemblies.filter((assembly) => assembly.association._id === association._id);
   return (
     <Layout pageTitle={association?.name} siteSettings={siteSettings}>
       {router.isFallback ? (
         <Loading />
       ) : (
         <Association
-          assemblies={assemblies.filter((assembly) => assembly._id === association._id)}
+          assemblies={associationAssemblies}
           association={association}
           events={events}
           members={members}
