@@ -5,8 +5,6 @@ import { arrowStyle } from "../arrow/styles.css";
 export const buttonStyle = style({
   alignItems: "center",
   border: "2px solid",
-  borderColor: vars.color.text,
-  color: "inherit",
   cursor: "pointer",
   display: "flex",
   font: "inherit",

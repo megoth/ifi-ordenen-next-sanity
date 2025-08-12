@@ -18,7 +18,7 @@ export const listItemStyle = style({
   },
 });
 export const personButtonStyle = style({
-  alignItems: "stretch",
+  alignItems: "stretch !important",
   backgroundColor: "transparent",
   border: 0,
   borderRadius: "1rem",
