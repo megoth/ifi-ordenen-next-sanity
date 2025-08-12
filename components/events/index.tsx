@@ -30,7 +30,7 @@ export default function Events({ events, members, assemblies }: Props) {
   const expanded = true;
   return (
     <EventsProvider>
-      <Container>
+      <Container id="events">
         <EventsFilter />
         {!expanded && <EventsExpandAll years={eventYears} />}
         <ul className={listStyle}>
