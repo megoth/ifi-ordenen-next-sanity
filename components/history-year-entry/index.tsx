@@ -13,7 +13,7 @@ import HistoryYearAwards from "./history-year-awards";
 import { useRouter } from "next/router";
 import Link from "../link";
 import cn from "classnames";
-import { Fragment, useContext, useEffect, useState } from "react";
+import { Fragment, useContext, useEffect, useMemo, useState } from "react";
 import EventsContext from "../../contexts/eventsContext";
 import { getHref, toggleValueInArray } from "../../lib/utils";
 import useHistory from "../../hooks/useHistory";
@@ -39,7 +39,15 @@ export default function HistoryYearEntry({
   const majorEvents = events.filter((event) => event.major);
   const minorEvents = events.filter((event) => !event.major);
   const yearAsString = year.toString();
-  const sortedAssemblies = assemblies.sort((a, b) => a.date > b.date ? 1 : -1);
+  const sortedAssemblies = useMemo(
+    () => assemblies.sort((a, b) => a.date > b.date ? 1 : -1),
+    [assemblies]);
+  const groupedAssemblies = useMemo<Record<string, Array<GeneralAssemblyForListQuery>>>(
+    () => sortedAssemblies.reduce((memo, assembly) => ({
+      ...memo,
+      [assembly.association.slug.current]: (memo[assembly.association.slug.current] || []).concat(assembly)
+    }), {}),
+    [sortedAssemblies]);
   const numberOfAssemblies = assemblies.length;
   const { years, toggleYear } = useContext(EventsContext);
   const router = useRouter();
@@ -123,15 +131,22 @@ export default function HistoryYearEntry({
           )}
           {assembliesFilterSelected && numberOfAssemblies > 0 && (
             <li key={`assemblies-${year}`}>
-              <span className={assembliesStyle}>
-                <span>Generalforsamlinger: </span>
-                {sortedAssemblies.map((assembly, index) => (
-                  <Fragment key={`assembly-${assembly._id}`}>
-                    <HistoryYearAssembly assembly={assembly} />
-                    {index <= (numberOfAssemblies - 2) && <span>, </span>}
-                  </Fragment>
+              Generalforsamlinger:
+              <ul className={yearListStyle}>
+                {Object.values(groupedAssemblies).map((assembliesGroup) => (
+                  <li key={`assemblies-${year}-${assembliesGroup[0].association.slug.current}`}>
+                    <span className={assembliesStyle}>
+                      <span>{assembliesGroup[0].association.short}:&nbsp;</span>
+                      {assembliesGroup.map((assembly, assemblyIndex) => (
+                        <Fragment key={`assembly-${assembly._id}`}>
+                          <HistoryYearAssembly assembly={assembly} />
+                          {assemblyIndex <= (assembliesGroup.length - 2) && <span>, </span>}
+                        </Fragment>
+                      ))}
+                    </span>
+                  </li>
                 ))}
-              </span>
+              </ul>
             </li>
           )}
         </ul>
