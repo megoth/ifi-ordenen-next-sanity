@@ -17,9 +17,9 @@ export default function EventsFilter() {
 
   return (
     <Tabs>
-      <Tab href={`/${pathname}#events`} selected={selectedFilters.length === 0}>Alt</Tab>
+      <Tab href={`${pathname}#events`} selected={selectedFilters.length === 0}>Alt</Tab>
       {tabs.map((tab) => (
-        <Tab key={`filter-${tab.filter}`} href={`/${pathname}?filter=${tab.filter}#events`}
+        <Tab key={`filter-${tab.filter}`} href={`${pathname}?filter=${tab.filter}#events`}
              selected={isSelected(tab.filter)}>{tab.title}</Tab>
       ))}
     </Tabs>
