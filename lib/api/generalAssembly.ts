@@ -16,6 +16,6 @@ export async function getAllGeneralAssemblies(preview: boolean): Promise<Array<G
   },
   date,
   'slug': slug.current,
-  extraOrdinary,
+  extraordinary,
     }|order(date asc)`);
 }

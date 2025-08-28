@@ -12,7 +12,9 @@ export default function HistoryYearAssembly({ assembly }: Props) {
   return (
     <a className={linkStyle} href={(assembly.file.asset as unknown as FileAsset).url}>
       <PdfIcon className={svgStyle} height={"16px"} width={"16px"} />
-      <span>{(assembly.association as unknown as Association).short} {new Date(assembly.date).toLocaleString("nb-no", { month: "long" })}</span>
+      <span>{(assembly.association as unknown as Association).short}&nbsp;</span>
+      <span>{new Date(assembly.date).toLocaleString("nb-no", { month: "long" })}&nbsp;</span>
+      {assembly.extraordinary && <span>(ekstraordinær)</span>}
     </a>
   );
 }
