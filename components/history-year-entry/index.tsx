@@ -140,7 +140,7 @@ export default function HistoryYearEntry({
                       {assembliesGroup.map((assembly, assemblyIndex) => (
                         <Fragment key={`assembly-${assembly._id}`}>
                           <HistoryYearAssembly assembly={assembly} />
-                          {assemblyIndex <= (assembliesGroup.length - 2) && <span>, </span>}
+                          {assemblyIndex <= (assembliesGroup.length - 2) && <span>,&nbsp;</span>}
                         </Fragment>
                       ))}
                     </span>

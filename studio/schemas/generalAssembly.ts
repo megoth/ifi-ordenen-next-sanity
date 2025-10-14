@@ -15,6 +15,12 @@ export default defineType({
       to: [{ type: "association" }]
     }),
     defineField({
+      name: "name",
+      title: "Navn",
+      description: "(Default: Generalforsamling)",
+      type: "string"
+    }),
+    defineField({
       name: "file",
       title: "Protokoll",
       description: "Nødvendig",
@@ -23,20 +29,21 @@ export default defineType({
     defineField({
       name: "date",
       title: "Dato",
-      description: "Nødvendig",
+      description: "Nødvendig (skriv 00 om du ikke vet nøyaktig dag eller måned)",
       type: "date"
-    }),
-    defineField({
-      name: "extraordinary",
-      title: "Ekstraordinær",
-      type: "boolean",
-      initialValue: false
     })
   ],
   preview: {
     select: {
-      title: "association.name",
-      subtitle: "date"
+      associationName: "association.name",
+      date: "date",
+      meetingName: "name"
+    },
+    prepare({ associationName, date, meetingName }) {
+      return {
+        title: associationName,
+        subtitle: `${date} (${meetingName || "Generalforsamling"})`
+      };
     }
   }
 });

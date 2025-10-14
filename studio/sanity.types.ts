@@ -179,6 +179,7 @@ export type GeneralAssembly = {
     _weak?: boolean
     [internalGroqTypeReferenceTo]?: 'association'
   }
+  name?: string
   file?: {
     asset?: {
       _ref: string
@@ -190,7 +191,6 @@ export type GeneralAssembly = {
     _type: 'file'
   }
   date?: string
-  extraordinary?: boolean
 }
 
 export type Event = {

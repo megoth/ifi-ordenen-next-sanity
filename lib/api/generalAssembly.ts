@@ -11,11 +11,11 @@ export async function getAllGeneralAssemblies(preview: boolean): Promise<Array<G
   return await getClient(preview).fetch(`*[_type == "generalAssembly"]{
   _id,
   association->,
+  name,
   file {
     asset->
   },
   date,
   'slug': slug.current,
-  extraordinary,
     }|order(date asc)`);
 }
