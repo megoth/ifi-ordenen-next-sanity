@@ -6,42 +6,48 @@ import { GetStaticProps } from "next";
 import {
   AssociationQuery,
   getAllAssociationsWithSlug,
-  getAssociationAndMore,
+  getAssociationAndMore
 } from "../../lib/api/associations";
 import { getSiteSettings, SiteSettingsPage } from "../../lib/api/site-settings";
 import Loading from "../../components/loading";
 import Association from "../../components/association";
 import {
   EventForListQuery,
-  getAllEventsForAssociation,
+  getAllEventsForAssociation
 } from "../../lib/api/history";
 import {
   getAllPeopleForAssociation,
-  PersonForListQuery,
+  PersonForListQuery
 } from "../../lib/api/people";
+import { GeneralAssemblyForListQuery, getAllGeneralAssemblies } from "../../lib/api/generalAssembly";
+import { Association as AssociationType } from "../../studio/sanity.types";
 
 interface Props extends SiteSettingsPage {
   association: AssociationQuery;
   events: Array<EventForListQuery>;
   members: Array<PersonForListQuery>;
+  assemblies: Array<GeneralAssemblyForListQuery>;
 }
 
 export default function AssociationPage({
-  association,
-  siteSettings,
-  events,
-  members,
-}: Props) {
+                                          association,
+                                          siteSettings,
+                                          events,
+                                          members,
+                                          assemblies
+                                        }: Props) {
   const router = useRouter();
   if (!router.isFallback && !association?.slug) {
     return <ErrorPage statusCode={404} />;
   }
+  const associationAssemblies = assemblies.filter((assembly) => (assembly.association as unknown as AssociationType)._id === association._id);
   return (
     <Layout pageTitle={association?.name} siteSettings={siteSettings}>
       {router.isFallback ? (
         <Loading />
       ) : (
         <Association
+          assemblies={associationAssemblies}
           association={association}
           events={events}
           members={members}
@@ -52,14 +58,15 @@ export default function AssociationPage({
 }
 
 export const getStaticProps: GetStaticProps = async ({
-  params,
-  preview = false,
-}) => {
-  const [association, siteSettings, events, members] = await Promise.all([
+                                                       params,
+                                                       preview = false
+                                                     }) => {
+  const [association, siteSettings, events, members, assemblies] = await Promise.all([
     getAssociationAndMore(params!.slug, preview),
     getSiteSettings(preview),
     getAllEventsForAssociation(params!.slug, preview),
     getAllPeopleForAssociation(params!.slug, preview),
+    getAllGeneralAssemblies(preview)
   ]);
   return {
     props: {
@@ -68,7 +75,8 @@ export const getStaticProps: GetStaticProps = async ({
       siteSettings,
       events,
       members,
-    },
+      assemblies
+    }
   };
 };
 
@@ -78,9 +86,9 @@ export async function getStaticPaths() {
     paths:
       allAssociations?.map((post) => ({
         params: {
-          slug: post.slug,
-        },
+          slug: post.slug
+        }
       })) || [],
-    fallback: false,
+    fallback: false
   };
 }

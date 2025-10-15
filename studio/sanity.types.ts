@@ -167,6 +167,32 @@ export type Page = {
   >
 }
 
+export type GeneralAssembly = {
+  _id: string
+  _type: 'generalAssembly'
+  _createdAt: string
+  _updatedAt: string
+  _rev: string
+  association?: {
+    _ref: string
+    _type: 'reference'
+    _weak?: boolean
+    [internalGroqTypeReferenceTo]?: 'association'
+  }
+  name?: string
+  file?: {
+    asset?: {
+      _ref: string
+      _type: 'reference'
+      _weak?: boolean
+      [internalGroqTypeReferenceTo]?: 'sanity.fileAsset'
+    }
+    media?: unknown
+    _type: 'file'
+  }
+  date?: string
+}
+
 export type Event = {
   _id: string
   _type: 'event'
@@ -663,6 +689,7 @@ export type AllSanitySchemaTypes =
   | NavigationItem
   | Navigation
   | Page
+  | GeneralAssembly
   | Event
   | DictionaryEntry
   | DataComponent
