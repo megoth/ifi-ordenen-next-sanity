@@ -1,5 +1,6 @@
 import { getClient } from "../sanity";
 import { Association, GeneralAssembly } from "../../studio/sanity.types";
+import { onlyUnique } from "../utils";
 
 
 export interface GeneralAssemblyForListQuery extends Omit<GeneralAssembly, "association"> {
@@ -17,4 +18,10 @@ export async function getAllGeneralAssemblies(preview: boolean): Promise<Array<G
   date,
   'slug': slug.current,
     }|order(date asc)`);
+}
+
+export function getDatesFromGeneralAssemblies(
+  assemblies: Array<GeneralAssemblyForListQuery>
+): string[] {
+  return assemblies.map(({ date }) => date).filter(onlyUnique);
 }

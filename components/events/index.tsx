@@ -8,7 +8,7 @@ import { onlyUnique } from "../../lib/utils";
 import { EventsProvider } from "../../contexts/eventsContext";
 import { listStyle } from "./styles.css";
 import EventsExpandAll from "./events-expand-all";
-import { GeneralAssemblyForListQuery } from "../../lib/api/generalAssembly";
+import { GeneralAssemblyForListQuery, getDatesFromGeneralAssemblies } from "../../lib/api/generalAssembly";
 import EventsFilter from "./events-filter";
 
 interface Props {
@@ -20,7 +20,8 @@ interface Props {
 export default function Events({ events, members, assemblies }: Props) {
   const eventYears = [
     ...getYearsFromEvents(events),
-    ...getDatesFromAwards(members)
+    ...getDatesFromAwards(members),
+    ...getDatesFromGeneralAssemblies(assemblies)
   ]
     .map((date) => date.substring(0, 4))
     .filter(onlyUnique)
