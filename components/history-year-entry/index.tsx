@@ -1,10 +1,11 @@
 import { EventForListQuery } from "../../lib/api/history";
 import {
-  yearLinkStyle,
-  yearListStyle,
+  assembliesStyle,
   yearContentSelectedStyle,
   yearContentStyle,
-  yearTitleStyle, assembliesStyle
+  yearLinkStyle,
+  yearListStyle,
+  yearTitleStyle
 } from "./styles.css";
 import HistoryYearListItem from "./history-year-list-item";
 import { PersonForListQuery } from "../../lib/api/people";
@@ -40,7 +41,7 @@ export default function HistoryYearEntry({
   const minorEvents = events.filter((event) => !event.major);
   const yearAsString = year.toString();
   const sortedAssemblies = useMemo(
-    () => assemblies.sort((a, b) => a.date > b.date ? 1 : -1),
+    () => assemblies.sort((a, b) => a.date + a.name > b.date + b.name ? 1 : -1),
     [assemblies]);
   const groupedAssemblies = useMemo<Record<string, Array<GeneralAssemblyForListQuery>>>(
     () => sortedAssemblies.reduce((memo, assembly) => ({

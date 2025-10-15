@@ -1,10 +1,9 @@
 import { getClient } from "../sanity";
-import { GeneralAssembly } from "../../studio/sanity.types";
+import { Association, GeneralAssembly } from "../../studio/sanity.types";
 
 
-export interface GeneralAssemblyForListQuery
-  extends Omit<GeneralAssembly, "slug"> {
-  slug: string;
+export interface GeneralAssemblyForListQuery extends Omit<GeneralAssembly, "association"> {
+  association: Association;
 }
 
 export async function getAllGeneralAssemblies(preview: boolean): Promise<Array<GeneralAssemblyForListQuery>> {
