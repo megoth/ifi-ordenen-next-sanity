@@ -137,7 +137,7 @@ export default function HistoryYearEntry({
                 {Object.values(groupedAssemblies).map((assembliesGroup) => (
                   <li key={`assemblies-${year}-${assembliesGroup[0].association.slug.current}`}>
                     <span className={assembliesStyle}>
-                      <span>{assembliesGroup[0].association.short}:&nbsp;</span>
+                      <span>{assembliesGroup[0].association.short || assembliesGroup[0].association.name}:&nbsp;</span>
                       {assembliesGroup.map((assembly, assemblyIndex) => (
                         <Fragment key={`assembly-${assembly._id}`}>
                           <HistoryYearAssembly assembly={assembly} />
