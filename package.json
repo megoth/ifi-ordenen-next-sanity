@@ -14,8 +14,8 @@
     "postinstall": "cd studio && npm i"
   },
   "dependencies": {
+    "@portabletext/markdown": "^2.9.2",
     "@portabletext/react": "^8.0.1",
-    "@sanity/block-content-to-markdown": "^1.0.1",
     "@sanity/cli": "^8.28.0",
     "@sanity/client": "^8.15.0",
     "@sanity/image-url": "^2.1.1",
