@@ -6,7 +6,10 @@ import { UrlObject } from "url";
 
 export type LinkUrl = string | UrlObject;
 
-interface Props extends Omit<LinkProps, "href">, Omit<HTMLProps<HTMLAnchorElement>, "as" | "href"> {
+interface Props
+  extends
+    Omit<LinkProps, "href">,
+    Omit<HTMLProps<HTMLAnchorElement>, "as" | "href"> {
   children?: ReactNode;
   className?: string;
   href?: LinkUrl;
@@ -17,22 +20,24 @@ interface Props extends Omit<LinkProps, "href">, Omit<HTMLProps<HTMLAnchorElemen
 }
 
 export default function Link({
-                               children,
-                               className,
-                               href,
-                               onClick,
-                               slug,
-                               text,
-                               url,
-                               style,
-                               ...props
-                             }: Props) {
+  children,
+  className,
+  href,
+  onClick,
+  slug,
+  text,
+  url,
+  style,
+  ...props
+}: Props) {
   return (
-    <NextLink href={href || (slug && `/${slug}`) || url}
-              className={className}
-              style={style}
-              onClick={onClick}
-              {...props}>
+    <NextLink
+      href={href || (slug && `/${slug}`) || url}
+      className={className}
+      style={style}
+      onClick={onClick}
+      {...props}
+    >
       {text || children}
     </NextLink>
   );

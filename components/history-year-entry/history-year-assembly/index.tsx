@@ -9,10 +9,16 @@ interface Props {
 
 export default function HistoryYearAssembly({ assembly }: Props) {
   return (
-    <a className={linkStyle} href={(assembly.file.asset as unknown as FileAsset).url}>
+    <a
+      className={linkStyle}
+      href={(assembly.file.asset as unknown as FileAsset).url}
+    >
       <PdfIcon className={svgStyle} height={"16px"} width={"16px"} />
       <span>{assembly.name || "Generalforsamling"}</span>
-      <span>&nbsp;({new Date(assembly.date).toLocaleString("nb-no", { month: "long" })})</span>
+      <span>
+        &nbsp;(
+        {new Date(assembly.date).toLocaleString("nb-no", { month: "long" })})
+      </span>
     </a>
   );
 }

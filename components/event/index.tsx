@@ -18,7 +18,7 @@ export default function Event({ event }: Props) {
         association.short || association.name;
       return memo;
     },
-    {}
+    {},
   );
   return (
     <Container>

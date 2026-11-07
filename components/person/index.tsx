@@ -19,7 +19,7 @@ export default function Person({ person }: Props) {
         association.short || association.name;
       return memo;
     },
-    {}
+    {},
   );
   return (
     <Container>

@@ -5,7 +5,7 @@ import {
   yearContentStyle,
   yearLinkStyle,
   yearListStyle,
-  yearTitleStyle
+  yearTitleStyle,
 } from "./styles.css";
 import HistoryYearListItem from "./history-year-list-item";
 import { PersonForListQuery } from "../../lib/api/people";
@@ -31,24 +31,35 @@ interface Props {
 }
 
 export default function HistoryYearEntry({
-                                           events,
-                                           members,
-                                           assemblies,
-                                           year,
-                                           expanded
-                                         }: Props) {
+  events,
+  members,
+  assemblies,
+  year,
+  expanded,
+}: Props) {
   const majorEvents = events.filter((event) => event.major);
   const minorEvents = events.filter((event) => !event.major);
   const yearAsString = year.toString();
   const sortedAssemblies = useMemo(
-    () => assemblies.sort((a, b) => a.date + a.name > b.date + b.name ? 1 : -1),
-    [assemblies]);
-  const groupedAssemblies = useMemo<Record<string, Array<GeneralAssemblyForListQuery>>>(
-    () => sortedAssemblies.reduce((memo, assembly) => ({
-      ...memo,
-      [assembly.association.slug.current]: (memo[assembly.association.slug.current] || []).concat(assembly)
-    }), {}),
-    [sortedAssemblies]);
+    () =>
+      assemblies.sort((a, b) => (a.date + a.name > b.date + b.name ? 1 : -1)),
+    [assemblies],
+  );
+  const groupedAssemblies = useMemo<
+    Record<string, Array<GeneralAssemblyForListQuery>>
+  >(
+    () =>
+      sortedAssemblies.reduce(
+        (memo, assembly) => ({
+          ...memo,
+          [assembly.association.slug.current]: (
+            memo[assembly.association.slug.current] || []
+          ).concat(assembly),
+        }),
+        {},
+      ),
+    [sortedAssemblies],
+  );
   const numberOfAssemblies = assemblies.length;
   const { years, toggleYear } = useContext(EventsContext);
   const router = useRouter();
@@ -61,19 +72,25 @@ export default function HistoryYearEntry({
     history?.pushState(
       { years: toggleValueInArray(yearAsString, years) },
       "",
-      event.target.href
+      event.target.href,
     );
   };
   const searchParams = useSearchParams();
   const selectedFilters = searchParams.getAll("filter");
   const filterSelected = selectedFilters.length !== 0;
-  const eventsFilterSelected = !filterSelected || (filterSelected && selectedFilters.indexOf("events") !== -1);
-  const awardsFilterSelected = !filterSelected || (filterSelected && selectedFilters.indexOf("awards") !== -1);
-  const assembliesFilterSelected = !filterSelected || (filterSelected && selectedFilters.indexOf("assemblies") !== -1);
+  const eventsFilterSelected =
+    !filterSelected ||
+    (filterSelected && selectedFilters.indexOf("events") !== -1);
+  const awardsFilterSelected =
+    !filterSelected ||
+    (filterSelected && selectedFilters.indexOf("awards") !== -1);
+  const assembliesFilterSelected =
+    !filterSelected ||
+    (filterSelected && selectedFilters.indexOf("assemblies") !== -1);
   const showYear = [
     eventsFilterSelected && (majorEvents.length > 0 || minorEvents.length > 0),
     awardsFilterSelected && members.length > 0,
-    assembliesFilterSelected && numberOfAssemblies > 0
+    assembliesFilterSelected && numberOfAssemblies > 0,
   ].reduce((memo, value) => memo || value, false);
 
   useEffect(() => {
@@ -81,9 +98,9 @@ export default function HistoryYearEntry({
     setHref(
       getHref(router, {
         query: {
-          year: selectedYears
-        }
-      })
+          year: selectedYears,
+        },
+      }),
     );
   }, [years]);
 
@@ -106,17 +123,20 @@ export default function HistoryYearEntry({
       </h3>
       <div
         className={cn(yearContentStyle, {
-          [yearContentSelectedStyle]: isSelected || expanded
+          [yearContentSelectedStyle]: isSelected || expanded,
         })}
       >
         <ul className={yearListStyle}>
-          {eventsFilterSelected && majorEvents.map((event, index) => (
-            <HistoryYearListItem
-              event={event}
-              key={`major-event-${event.year}-${index}`}
-            />
-          ))}
-          {awardsFilterSelected && <HistoryYearAwards members={members} year={yearAsString} />}
+          {eventsFilterSelected &&
+            majorEvents.map((event, index) => (
+              <HistoryYearListItem
+                event={event}
+                key={`major-event-${event.year}-${index}`}
+              />
+            ))}
+          {awardsFilterSelected && (
+            <HistoryYearAwards members={members} year={yearAsString} />
+          )}
           {eventsFilterSelected && minorEvents.length > 0 && (
             <li key={`minor-events-${year}`}>
               Mindre hendelser
@@ -135,13 +155,21 @@ export default function HistoryYearEntry({
               Generalforsamlinger:
               <ul className={yearListStyle}>
                 {Object.values(groupedAssemblies).map((assembliesGroup) => (
-                  <li key={`assemblies-${year}-${assembliesGroup[0].association.slug.current}`}>
+                  <li
+                    key={`assemblies-${year}-${assembliesGroup[0].association.slug.current}`}
+                  >
                     <span className={assembliesStyle}>
-                      <span>{assembliesGroup[0].association.short || assembliesGroup[0].association.name}:&nbsp;</span>
+                      <span>
+                        {assembliesGroup[0].association.short ||
+                          assembliesGroup[0].association.name}
+                        :&nbsp;
+                      </span>
                       {assembliesGroup.map((assembly, assemblyIndex) => (
                         <Fragment key={`assembly-${assembly._id}`}>
                           <HistoryYearAssembly assembly={assembly} />
-                          {assemblyIndex <= (assembliesGroup.length - 2) && <span>,&nbsp;</span>}
+                          {assemblyIndex <= assembliesGroup.length - 2 && (
+                            <span>,&nbsp;</span>
+                          )}
                         </Fragment>
                       ))}
                     </span>

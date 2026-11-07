@@ -23,7 +23,7 @@ interface Props {
 export default function LastMembers({ lastMembers }: Props) {
   const fromDate = format(
     new Date(new Date().setMonth(new Date().getMonth() - 14)),
-    "yyyy-MM-dd"
+    "yyyy-MM-dd",
   );
   const dates = lastMembers
     .map(({ titles }) => titles[0].date)
