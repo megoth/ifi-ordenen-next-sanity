@@ -5,7 +5,7 @@ import { imageBuilder } from "../../lib/sanity";
 import TextBlock from "../text-block";
 import { listStyle } from "./styles.css";
 import Link from "../link";
-import toMarkdown from "@sanity/block-content-to-markdown";
+import { portableTextToMarkdown } from "@portabletext/markdown";
 
 interface Props {
   album: AlbumWithImagesQuery;
@@ -20,7 +20,7 @@ export default function Album({ album }: Props) {
             <Link href={imageBuilder(image.image).url() || undefined}>
               <img
                 src={imageBuilder(image.image).width(256).url() || undefined}
-                alt={toMarkdown(image.description)}
+                alt={portableTextToMarkdown(image.description || [])}
               />
             </Link>
             <TextBlock text={image.description} />
