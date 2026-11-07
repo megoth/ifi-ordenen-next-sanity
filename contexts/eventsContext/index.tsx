@@ -22,7 +22,7 @@ interface Props {
 export function EventsProvider({ children }: Props) {
   const router = useRouter();
   const [years, setYears] = useState<string[]>(
-    getArrayFromRouterQuery(router?.query?.year)
+    getArrayFromRouterQuery(router?.query?.year),
   );
   const popStateEvent = usePopState();
 

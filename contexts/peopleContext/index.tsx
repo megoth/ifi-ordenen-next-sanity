@@ -24,7 +24,7 @@ interface Props {
 export function PeopleProvider({ children, usernames }: Props) {
   const router = useRouter();
   const [username, setUsername] = useState<string | null>(
-    getHashFromRouter(router)
+    getHashFromRouter(router),
   );
   const [hidden, setHidden] = useState<string | null>(null);
   const toggleUsername = (selectedUsername) => {
@@ -35,8 +35,8 @@ export function PeopleProvider({ children, usernames }: Props) {
       selectedIndex % 2 === 1
         ? usernames[selectedIndex - 1]
         : selectedIndex % 2 === 0
-        ? usernames[selectedIndex + 1]
-        : null
+          ? usernames[selectedIndex + 1]
+          : null,
     );
   };
   return (

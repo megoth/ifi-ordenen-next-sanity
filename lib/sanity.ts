@@ -1,7 +1,7 @@
 import { ClientConfig, createClient } from "next-sanity";
-import sanityClient from "@sanity/client";
-import imageUrlBuilder from "@sanity/image-url";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { createClient as createSanityClient } from "@sanity/client";
+import { createImageUrlBuilder } from "@sanity/image-url";
+import type { SanityImageSource } from "@sanity/image-url";
 
 const config: ClientConfig = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET!,
@@ -10,8 +10,8 @@ const config: ClientConfig = {
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION,
 };
 
-const configuredSanityClient = sanityClient(config);
-const builder = imageUrlBuilder(configuredSanityClient);
+const configuredSanityClient = createSanityClient(config);
+const builder = createImageUrlBuilder(configuredSanityClient);
 
 export const imageBuilder = (source: SanityImageSource) =>
   builder.image(source);

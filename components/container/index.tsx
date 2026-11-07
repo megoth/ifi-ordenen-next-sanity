@@ -14,7 +14,7 @@ const Container = forwardRef<HTMLDivElement, Props>(
     <div className={cn(containerStyle, variant)} ref={ref} {...props}>
       <div className={cn(innerStyle, className)}>{children}</div>
     </div>
-  )
+  ),
 );
 
 export default Container;

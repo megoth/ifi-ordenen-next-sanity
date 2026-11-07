@@ -5,7 +5,10 @@ import { buttonStyle } from "./styles.css";
 
 export type ButtonVariant = "primary" | "secondary" | "on-green";
 
-interface Props extends Omit<HTMLAttributes<HTMLAnchorElement | HTMLButtonElement>, "href"> {
+interface Props extends Omit<
+  HTMLAttributes<HTMLAnchorElement | HTMLButtonElement>,
+  "href"
+> {
   children: ReactNode;
   className?: string;
   href?: LinkUrl;
@@ -14,13 +17,13 @@ interface Props extends Omit<HTMLAttributes<HTMLAnchorElement | HTMLButtonElemen
 }
 
 export default function Button({
-                                 children,
-                                 className,
-                                 href,
-                                 onClick,
-                                 variant,
-                                 ...props
-                               }: Props) {
+  children,
+  className,
+  href,
+  onClick,
+  variant,
+  ...props
+}: Props) {
   const style = cn(buttonStyle, variant, className);
   return href ? (
     <Link href={href} className={style} onClick={onClick} {...props}>

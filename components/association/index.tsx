@@ -18,7 +18,12 @@ interface Props {
   members: Array<PersonForListQuery>;
 }
 
-export default function Association({ assemblies, association, events, members }: Props) {
+export default function Association({
+  assemblies,
+  association,
+  events,
+  members,
+}: Props) {
   return (
     <>
       <Container>

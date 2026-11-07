@@ -17,7 +17,7 @@ export default function MembersByTitle({ members }: Props) {
           <h2>{title}</h2>
           <MembersList
             members={peopleSorted.filter(
-              (person) => person.titles[0].title.name === title
+              (person) => person.titles[0].title.name === title,
             )}
           />
         </section>

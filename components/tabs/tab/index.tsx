@@ -15,7 +15,7 @@ export default function Tab({ children, href, onClick, selected }: Props) {
   return (
     <Button
       className={cn(tabStyle, tabLinkStyle, {
-        [tabLinkSelectedStyle]: selected
+        [tabLinkSelectedStyle]: selected,
       })}
       href={href}
       onClick={onClick}

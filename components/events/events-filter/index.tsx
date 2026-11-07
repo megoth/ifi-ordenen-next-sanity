@@ -10,17 +10,27 @@ export default function EventsFilter() {
   const tabs = [
     { title: "Hendelser", filter: "events" },
     { title: "Tildelinger", filter: "awards" },
-    { title: "Protokoller", filter: "assemblies" }
+    { title: "Protokoller", filter: "assemblies" },
   ];
 
-  const isSelected = useCallback((filter: string) => selectedFilters.indexOf(filter) !== -1, [selectedFilters]);
+  const isSelected = useCallback(
+    (filter: string) => selectedFilters.indexOf(filter) !== -1,
+    [selectedFilters],
+  );
 
   return (
     <Tabs>
-      <Tab href={`${pathname}#events`} selected={selectedFilters.length === 0}>Alt</Tab>
+      <Tab href={`${pathname}#events`} selected={selectedFilters.length === 0}>
+        Alt
+      </Tab>
       {tabs.map((tab) => (
-        <Tab key={`filter-${tab.filter}`} href={`${pathname}?filter=${tab.filter}#events`}
-             selected={isSelected(tab.filter)}>{tab.title}</Tab>
+        <Tab
+          key={`filter-${tab.filter}`}
+          href={`${pathname}?filter=${tab.filter}#events`}
+          selected={isSelected(tab.filter)}
+        >
+          {tab.title}
+        </Tab>
       ))}
     </Tabs>
   );

@@ -8,7 +8,10 @@ import { onlyUnique } from "../../lib/utils";
 import { EventsProvider } from "../../contexts/eventsContext";
 import { listStyle } from "./styles.css";
 import EventsExpandAll from "./events-expand-all";
-import { GeneralAssemblyForListQuery, getDatesFromGeneralAssemblies } from "../../lib/api/generalAssembly";
+import {
+  GeneralAssemblyForListQuery,
+  getDatesFromGeneralAssemblies,
+} from "../../lib/api/generalAssembly";
 import EventsFilter from "./events-filter";
 
 interface Props {
@@ -21,7 +24,7 @@ export default function Events({ events, members, assemblies }: Props) {
   const eventYears = [
     ...getYearsFromEvents(events),
     ...getDatesFromAwards(members),
-    ...getDatesFromGeneralAssemblies(assemblies)
+    ...getDatesFromGeneralAssemblies(assemblies),
   ]
     .map((date) => date.substring(0, 4))
     .filter(onlyUnique)
@@ -38,13 +41,13 @@ export default function Events({ events, members, assemblies }: Props) {
           {eventYears.map((year) => (
             <HistoryYearEntry
               key={`year-${year}`}
-              events={events.filter(
-                (event) => event.year.indexOf(year) !== -1
-              )}
+              events={events.filter((event) => event.year.indexOf(year) !== -1)}
               members={members.filter((member) =>
-                member.titles.find((title) => title.date.indexOf(year) !== -1)
+                member.titles.find((title) => title.date.indexOf(year) !== -1),
               )}
-              assemblies={assemblies.filter((assembly) => assembly.date.substring(0, 4) === year)}
+              assemblies={assemblies.filter(
+                (assembly) => assembly.date.substring(0, 4) === year,
+              )}
               year={year}
               expanded={expanded}
             />

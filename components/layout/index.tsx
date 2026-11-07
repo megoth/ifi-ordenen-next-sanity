@@ -30,7 +30,7 @@ export default function Layout({ children, pageTitle, siteSettings }: Props) {
       popStateEvent?.state.pathname !== router?.pathname
     ) {
       router.push(
-        `${popStateEvent?.state.pathname}?by=${popStateEvent?.state.view}`
+        `${popStateEvent?.state.pathname}?by=${popStateEvent?.state.view}`,
       );
     }
   }, [popStateEvent]);

@@ -23,7 +23,7 @@ export default function Members({ members }: Props) {
   const popStateEvent = usePopState();
   const router = useRouter();
   const [chosenView, setChosenView] = useState(
-    views.find((view) => view === router.query.by) || views[0]
+    views.find((view) => view === router.query.by) || views[0],
   );
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function Members({ members }: Props) {
     history?.pushState(
       { view, pathname: router.pathname },
       "",
-      event.target.href
+      event.target.href,
     );
   };
   return (
