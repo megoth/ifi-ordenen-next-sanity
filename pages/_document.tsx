@@ -6,10 +6,15 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="no" className={themeClass}>
-        <Head />
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
         <body>
-          <Main />
-          <NextScript />
+        <Main />
+        <NextScript />
         </body>
       </Html>
     );
